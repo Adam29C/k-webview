@@ -18,7 +18,7 @@ const auth_container = ({ title, subtitle, children, icon }) => {
                 <img src={secoLogo} alt="" className="secon-logo ms-2" />
               )}
             </div>
-            <div className="description px-2">
+            <div className="description ">
               <b>{subtitle}</b>
             </div>
           </div>

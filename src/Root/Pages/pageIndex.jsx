@@ -3,8 +3,10 @@ import * as allServices from "../Service/all.services";
 import * as authServices from "../Service/auth.service";
 import { apiRoutes } from "../Config/endpoints";
 import * as gameSlice from "../Redux/slice/game.slice";
+
 import { useDispatch, useSelector } from "react-redux";
-export {
+import Toast from "../Components/Toast";
+const PagesIndex = {
   baseUrl,
   allServices,
   authServices,
@@ -12,4 +14,7 @@ export {
   gameSlice,
   useDispatch,
   useSelector,
+  Toast,
 };
+
+export default PagesIndex;

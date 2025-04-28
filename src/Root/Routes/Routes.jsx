@@ -9,8 +9,7 @@ import MPIN_Set from "../Pages/Auth/MPIN_Set";
 import Funddepositehistory from "../Components/Funddepositehistory";
 import Fundwithdrowhistory from "../Components/Fundwithdrowhistory";
 import Tessting from "../Components/Tessting";
-
-
+import VerifyUser from "../Pages/Auth/VarifyUsername";
 // import ErrorPage from "../Pages/Auth/NotFound";
 
 const router = createBrowserRouter([
@@ -43,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "withdrawhistory",
     element: <Funddepositehistory />,
+  },
+  {
+    path: "userverify",
+    element: <VerifyUser />,
   },
   {
     path: "test",

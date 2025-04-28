@@ -1,1 +1,2 @@
-export const baseUrl = "http://3.250.174.141:6789";
+export const baseUrl = "http://13.38.171.243:9206/";
+// export const baseUrl = "https://blitz.lappu.vip/";

@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 
+@import url("./extra.css");
 @keyframes fireworkLine {
   0% {
     right: 20%;
@@ -4232,10 +4233,10 @@
   outline: none;
   /* position: absolute; */
   /* bottom: 90px; */
-  margin-left: 10px;
+  /* margin-left: 10px; */
   margin-top: 80px;
   width: 96%;
-  left: 2%;
+  /* left: 2%; */
 }
 
 .secondary-button {
@@ -5157,10 +5158,10 @@ body.dark .modal .modal-content .modal-header .btn-close {
   filter: invert(1) brightness(1);
 }
 
-.modal-header , .modal-title {
+.modal-header,
+.modal-title {
   background-color: var(--Root-color) !important;
   color: white !important;
-
 }
 
 .modal.filter-modal {
@@ -8934,6 +8935,11 @@ body.dark
   .product-conditions .condition-listing .condition-box {
     border-right: none;
   }
+  .chakra-dialog__content {
+    padding: 18px !important;
+    background: #ffff !important;
+    width: 82%;
+  }
 }
 .product-conditions .condition-listing .condition-box .condition-icon {
   width: 40px;
@@ -9343,7 +9349,7 @@ body.dark
   /* color: var(--Root-color) !important;/ */
   color: #000;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.rem;
 }
 
 .play_icon_class,
@@ -9435,7 +9441,7 @@ body.dark
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: 1.11rem;
   /* margin-left: 26px; */
   /* font-weight: bold; */
   margin-left: 2%;
@@ -9828,3 +9834,11 @@ body.dark
 }
 
 /* ---------------  MPIN CONTAINER ------------------ */
+
+.icon-color {
+  color: var(--Root-color);
+}
+.go4109123758 {
+  font-size: 12px !important;
+  font-weight: bold;
+}

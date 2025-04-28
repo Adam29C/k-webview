@@ -1,0 +1,57 @@
+.modal-icon {
+  position: absolute;
+  top: -30px;
+  left: 29%;
+  color: red;
+  border: 5px solid white;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  background: white;
+}
+
+.parent-icon {
+  position: absolute;
+  top: 0;
+  left: 37%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.iagreecheckbox {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--Root-color);
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* optional for demo */
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #9997;
+  font-size: 16px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.styled-input {
+  width: 100%;
+  padding: 10px 12px 10px 40px; /* extra left padding for icon */
+  border: 1px solid #ccc;
+  border-radius: 26px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.styled-input:focus {
+  border-color: var(--Root-color);
+}
