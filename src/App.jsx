@@ -27,9 +27,15 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "./Root/Routes/Routes";
+import { AuthProvider } from "./Root/Auth/AuthContext";
 // import "react-toastify/dist/ReactToastify.css";
 // import "react-datepicker/dist/react-datepicker.css";
 
-const App = () => <RouterProvider router={router} />;
-
+const App = () => {
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
+};
 export default App;

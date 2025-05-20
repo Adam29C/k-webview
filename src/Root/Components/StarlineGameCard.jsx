@@ -3,12 +3,11 @@ import React from "react";
 const StarlineGameCard = ({ index, game }) => {
   return (
     <div>
-      {" "}
       <div className="custom-container my-3  ">
         <div className="row gy-3 gx-0">
           <div className="col-12 ">
             <div
-              className=" card rounded-4 mb-2 px-4 py-2  border-2 border-danger"
+              className="card rounded-4 mb-2 px-4 py-2  border-2 border-danger"
               data-bs-toggle="modal"
             >
               <span className="maintitle text-dark">{game?.providerName}</span>

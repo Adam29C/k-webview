@@ -269,8 +269,8 @@ const ReusableForm = ({
                   <span className="text-danger">*</span>
                 </label>
                 <textarea
-                  className="form-control  "
-                  style={{backgroundColor :"#ebe1e1"}}
+                  className="form-control"
+                  style={{ backgroundColor: "#ebe1e1" }}
                   rows={field.row_size}
                   id={field.name}
                   name={field.name}

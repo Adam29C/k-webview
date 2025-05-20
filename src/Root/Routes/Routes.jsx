@@ -9,8 +9,10 @@ import MPIN_Set from "../Pages/Auth/MPIN_Set";
 import Funddepositehistory from "../Components/Funddepositehistory";
 import Fundwithdrowhistory from "../Components/Fundwithdrowhistory";
 import Tessting from "../Components/Tessting";
-
-
+import VerifyUser from "../Pages/Auth/VarifyUsername";
+import Testing123 from "../Components/Testing123";
+import RedBracket from "../Gamepages/RedBracket/RedBracket";
+import DigitBasedjodi from "../Gamepages/DigitBasedJodi/DigitBasedjodi";
 // import ErrorPage from "../Pages/Auth/NotFound";
 
 const router = createBrowserRouter([
@@ -18,8 +20,9 @@ const router = createBrowserRouter([
   ...adminRoutes,
   // {
   //   path: "*",
-  // //  element: <ErrorPage />,
+  //   element: <ErrorPage />,
   // },
+
   {
     path: "splash",
     element: <SplashScreen />,
@@ -45,9 +48,13 @@ const router = createBrowserRouter([
     element: <Funddepositehistory />,
   },
   {
-    path: "test",
-    element: <Tessting />,
+    path: "userverify",
+    element: <VerifyUser />,
   },
+  // {
+  //   path: "test",
+  //   element: <Tessting />,
+  // },
 ]);
 
 export default router;

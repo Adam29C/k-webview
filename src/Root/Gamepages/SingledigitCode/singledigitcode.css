@@ -1,0 +1,126 @@
+.container16 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.form-group16 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  align-items: center;
+  gap: 20px;
+}
+.form-group16 label {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+  color: #707070;
+}
+
+.form-group16 select {
+  width: 70%;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #333;
+  border: none;
+  outline: none;
+  appearance: none;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-repeat: no-repeat;
+  background-image: url("../../../assets/images/svg/select-arrow.svg");
+  background-position: right 12px center;
+  background-size: 26px;
+  background-color: #fff;
+}
+
+.divider16 {
+  border-bottom: 1px solid black;
+}
+
+.input-grid16 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 16px;
+}
+
+.input-wrapper16 {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 50px;
+  padding: 10px 12px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.circle16 {
+  width: 30px;
+  height: 30px;
+  background-color: #ececec;
+  color: var(--Root-color);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+.input-wrapper16 input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  background: transparent;
+  width: 80px;
+}
+
+.info16 {
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 14px;
+  color: #000;
+}
+.infosum16 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.infotext16 {
+  font-size: 15px;
+  font-weight: 500;
+}
+.submit-button16 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 14px;
+  background-color:var(--Root-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button16:hover {
+  background-color: #146060;
+}

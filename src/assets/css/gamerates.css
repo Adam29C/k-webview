@@ -1,0 +1,52 @@
+.gameratecontainer {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.gamerateheading {
+  font-size: 8px;
+  text-align: center;
+  color: var(--Root-color);
+  margin-bottom: 5px;
+}
+
+.gameratelist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 25px;
+  align-items: center;
+}
+
+.gameratelist-item {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 5px;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  text-align: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 420px) {
+  .gameratecontainer {
+    padding: 10px;
+  }
+
+  .gamerateheading {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .gameratelist-item {
+    padding: 8px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+}

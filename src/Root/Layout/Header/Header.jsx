@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FOR_GET_LIST, FOR_POST_REQUEST } from "../../Service/commanservice";
+import { apiRoutes } from "../../Config/endpoints";
 
 const Header = () => {
+  const [data, setdata] = useState({});
+  const [notifications, setnotifications] = useState([]);
+  const getbalance = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_USERBALANCE}`);
+      if (res) {
+        if (res.status == true) {
+          setdata(res.data);
+          // console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getNotification = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_NOTIFICATION_UNREAD}`);
+      if (res) {
+        if (res.status == true) {
+          setnotifications(res.data);
+          // console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getNotification();
+    getbalance();
+  }, []);
+
   return (
     <>
       <header className="header">
@@ -11,7 +47,7 @@ const Header = () => {
               className="sidebar-btn text-decoration-none"
               data-bs-toggle="offcanvas"
             >
-              <i className="fa-solid fa-bars-staggered "></i>
+              <i className="fa-solid fa-bars-staggered"></i>
             </a>
             <span className="logo">
               <img
@@ -25,12 +61,35 @@ const Header = () => {
               <div className="Wallet-div">
                 <span className="Wallet-main">
                   <i class="fa-solid fa-wallet mx-2"></i>
-                  <span className="t">120012</span>
+                  <span className="t">{data?.wallet_balance || 0}</span>
                 </span>
               </div>
-              <span className="text-decoration-none">
-                <i class="fa-solid fa-bell icons-font-size ms-2"></i>
-              </span>
+              {/* <span
+                className="text-decoration-none"
+                style={{ marginRight: "5px" }}
+              >
+                <i class="fa-solid fa-bell icons-font-size"></i>
+              </span> */}
+              <Link
+                to={"/notification"}
+                style={{
+                  textDecoration: "none",
+                  marginTop: "10px",
+                  color: "inherit",
+                  background: "none",
+                  padding: 0,
+                  border: "none",
+                  borderRadius: 0,
+                  display: "inline",
+                }}
+              >
+                <div class="notify-bell-wrapper">
+                  <i class="fa-solid fa-bell notify-bell-icon"></i>
+                  <span class="notify-bell-badge">
+                    {notifications.length || 0}
+                  </span>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
