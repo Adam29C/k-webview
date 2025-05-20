@@ -4288,7 +4288,7 @@ a {
 
 .custom-container {
   width: 100%;
-  padding: 0 calc(15px + (20 - 15) * ((100vw - 320px) / (1920 - 320)));
+  /* padding: 0 calc(15px + (20 - 15) * ((100vw - 320px) / (1920 - 320))); */
 }
 
 section,
@@ -6299,16 +6299,19 @@ body.dark .main-header .header-panel a .icon-btn.back-arrow {
 }
 
 .header {
-  padding: 30px 0 15px;
+  padding: 20px 0 15px;
   display: flex;
   justify-content: space-between;
-  background: url("../img/bg_header_appbar.SVG");
+  background: url("../img/bg_header_appbar.SVG") no-repeat center center;
+  /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6GddO-S2p3d352nwaemrAKmULVD8lPrHRCQ&s") no-repeat center center; */
+
   /* opacity: 0.8; */
+  background-size: cover;
   z-index: 2;
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw !important;
 }
 .header .head-content {
   display: flex;
@@ -9349,7 +9352,13 @@ body.dark
   /* color: var(--Root-color) !important;/ */
   color: #000;
   font-weight: bold;
-  font-size: 1.rem;
+  font-size: 1rem;
+}
+.maintitle1 {
+  /* color: var(--Root-color) !important;/ */
+  color: #000;
+  font-weight: bold;
+  font-size: 1.7rem;
 }
 
 .play_icon_class,
@@ -9442,6 +9451,18 @@ body.dark
 
 .description {
   font-size: 1.11rem;
+  /* margin-left: 26px; */
+  /* font-weight: bold; */
+  margin-left: 2%;
+  font-weight: normal !important;
+}
+.nodatafoundtext {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+.description1 {
+  font-size: 1rem;
   /* margin-left: 26px; */
   /* font-weight: bold; */
   margin-left: 2%;
@@ -9662,14 +9683,21 @@ body.dark
   position: absolute;
   right: 63px;
   top: 10px;
-  font-size: 19px;
+  font-size: 14px;
   /* background-color: #00796b; */
   background-color: #bdece7;
   padding: 10px 11px;
   border-radius: 50%;
 }
+
+.disabledbutton {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
 .chat-footer button {
-  background-color: #00796b;
+  background-color: #268d91;
   color: white;
   border: none;
   padding: 10px 11px;
@@ -9682,7 +9710,7 @@ body.dark
 /* ---------------  Passbook ------------------ */
 
 .passbook-title {
-  font-size: 13px;
+  font-size: 12px;
   margin-top: 12px;
   font-weight: bold;
 }
@@ -9708,7 +9736,30 @@ body.dark
 /* ---------------  Bid Hostory Title ------------------ */
 
 /* ---------------  Game Result History ------------------ */
-
+/* CSS for flexbox alignment */
+.date-picker-container {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+  justify-content: center; /* Align items to the left */
+}
+.date-picker-container i {
+  font-size: 20px; /* Size for the calendar icon */
+  margin-right: 8px; /* Space between the icon and the input field */
+}
+.date-input {
+  width: 120px; /* Width for the date input */
+  /* padding: 5px; */
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--Root-color);
+  outline: #000000;
+  background-color: var(--Root-color); /* Light gray background */
+  color: white; /* Dark text color */
+}
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* This will change the icon to a white color */
+  color: white; /* This will change the icon's background */
+}
 .game-result-left {
   background-color: var(--Root-color);
   border-radius: 50rem 0 0 50rem;
@@ -9716,13 +9767,19 @@ body.dark
   color: white;
   font-weight: bold;
 }
+.rightside {
+  margin-top: 50px;
+}
 .game-result-right {
   color: var(--Root-color);
   text-align: center;
 }
-
 .game-result-card {
-  position: relative;
+  margin-top: 10px;
+  position: sticky;
+  top: 90px;
+  z-index: 10;
+  background-color: white;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   /* border: 2px solid var(--Root-color) !important; */
@@ -9841,4 +9898,83 @@ body.dark
 .go4109123758 {
   font-size: 12px !important;
   font-weight: bold;
+}
+/* modal.... */
+.notify-bell-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.notify-bell-icon {
+  font-size: 24px;
+  color: #fff;
+}
+
+.notify-bell-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+  min-width: 18px;
+  text-align: center;
+}
+.box321 {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+}
+
+.grid321 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 5px;
+}
+
+.grid-item321 {
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+.newdiv321 {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+}
+.gameprice{
+  color: var(--Root-color);
+}
+.icon-grid-containerjackpot {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  /* background-color: #f6f7f9; */
+}
+.andarbaharconatiner {
+  background-color: white;
+  color: var(--Root-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.andarbahartext {
+  border-radius: 10px;
+  width: 100px;
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-bottom: 5px;
+}
+.andarbahardivider {
+  border-bottom: 2px solid black;
 }

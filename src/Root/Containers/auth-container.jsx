@@ -13,12 +13,12 @@ const auth_container = ({ title, subtitle, children, icon }) => {
         <div className="test-container">
           <div className="px-2">
             <div className="subtext d-flex align-items-center  mt-5">
-              <div className="maintitle">{title}</div>
+              <div className="maintitle1">{title}</div>
               {icon && (
                 <img src={secoLogo} alt="" className="secon-logo ms-2" />
               )}
             </div>
-            <div className="description ">
+            <div className="description1">
               <b>{subtitle}</b>
             </div>
           </div>

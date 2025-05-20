@@ -12,9 +12,9 @@ import {
 const MyAlertDialog = ({ ShowModal, setShowModal, title, body ,   btn_title }) => {
   return (
     <>
-      <Button variant="outlined" onClick={setShowModal}>
+      {/* <Button variant="outlined" onClick={setShowModal}>
         Open alert dialog
-      </Button>
+      </Button> */}
 
       <Dialog
         open={ShowModal}

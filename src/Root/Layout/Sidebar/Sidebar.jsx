@@ -1,5 +1,6 @@
 import React from "react";
 import { sidebar } from "./data";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -30,10 +31,15 @@ const Sidebar = () => {
                 return (
                   <>
                     <li className="active">
-                      <a className="neviation-color">
-                        <i class={` me-3 neviation-color ${items.icon}`}></i>
-                        <span className="tab-name">{items.title}</span>
-                      </a>
+                      <Link to={items.path} className="neviation-color">
+                        <i
+                          class={`me-3 neviation-color ${items.icon}`}
+                          data-bs-toggle="offcanvas"
+                        ></i>
+                        <span className="tab-name" data-bs-toggle="offcanvas">
+                          {items.title}
+                        </span>
+                      </Link>
                     </li>
                   </>
                 );
@@ -44,6 +50,7 @@ const Sidebar = () => {
               <i className="iconsax sidebar-icon" data-icon="logout-2">
                 {" "}
               </i>
+
               <h3>Logout</h3>
             </a>
           </div> */}

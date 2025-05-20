@@ -6,6 +6,7 @@ import CustomDialog from "../../Components/Custom-modal";
 import PageIndex from "../pageIndex";
 import toast from "react-hot-toast";
 import { data, replace, useNavigate } from "react-router-dom";
+import { useAuth } from "../../Auth/AuthContext";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -22,55 +23,57 @@ const Welcome = () => {
 
     return () => clearTimeout(timer);
   }, []);
+  const { login, token } = useAuth();
 
   const getOTP = async () => {
+    login("abcd", "abc");
     // setShowModal(true);
     // return;
     // console.log("Mobile Number", MobileNumber.length);
 
-    if (MobileNumber.length === 0) {
-      toast.error("Mobile Number Should Not Be Empty");
-    } else if (MobileNumber.length < 10) {
-      toast.error("Enter Valid Mobile Number");
-    } else {
-      // localStorage.setItem("mobile", MobileNumber);
-      // window.location.href = "/verify";
+    // if (MobileNumber.length === 0) {
+    //   toast.error("Mobile Number Should Not Be Empty");
+    // } else if (MobileNumber.length < 10) {
+    //   toast.error("Enter Valid Mobile Number");
+    // } else {
+    //   // localStorage.setItem("mobile", MobileNumber);
+    //   // window.location.href = "/verify";
 
-      let paylaod = { mobileNumber: MobileNumber };
-      let Url = PageIndex.apiRoutes.VERIFY_NUMBER_FOR_REGISTER_USER;
+    //   let paylaod = { mobileNumber: MobileNumber };
+    //   let Url = PageIndex.apiRoutes.VERIFY_NUMBER_FOR_REGISTER_USER;
 
-      const response = await PageIndex.authServices.FOR_POST_REQUEST(
-        Url,
-        paylaod
-      );
+    //   const response = await PageIndex.authServices.FOR_POST_REQUEST(
+    //     Url,
+    //     paylaod
+    //   );
 
-      if (
-        response.status === 1 ||
-        response.status === "success" ||
-        response.status
-      ) {
-        let Url = PageIndex.apiRoutes.CHECK_NUMBER_FOR_REGISTER_USER;
+    //   if (
+    //     response.status === 1 ||
+    //     response.status === "success" ||
+    //     response.status
+    //   ) {
+    //     let Url = PageIndex.apiRoutes.CHECK_NUMBER_FOR_REGISTER_USER;
 
-        const response1 = await PageIndex.authServices.FOR_POST_REQUEST(
-          Url,
-          paylaod
-        );
+    //     const response1 = await PageIndex.authServices.FOR_POST_REQUEST(
+    //       Url,
+    //       paylaod
+    //     );
 
-        console.log("response", response1);
+    //     console.log("response", response1);
 
-        if (response1.status == 0 || response1.status == 0) {
-          // setShowModal(true);
+    //     if (response1.status == 0 || response1.status == 0) {
+    //       // setShowModal(true);
 
-          navigate("/verify", {
-            replace: true,
-            state: { mobileNumber: MobileNumber },
-          });
-        } else {
-          setShowModal(true);
-          setPreRegistedUser(response1.data);
-        }
-      }
-    }
+    //       navigate("/verify", {
+    //         replace: true,
+    //         state: { mobileNumber: MobileNumber },
+    //       });
+    //     } else {
+    //       setShowModal(true);
+    //       setPreRegistedUser(response1.data);
+    //     }
+    //   }
+    // }
   };
 
   const handleConfirm = () => {
@@ -97,7 +100,7 @@ const Welcome = () => {
                   {/* <label htmlFor="basic-addon1">Phone Number</label> */}
                   <span class="input-group-text" id="basic-addon1">
                     <i class="fa-solid fa-phone primary-color icon-color"></i>
-                    +91
+                    &nbsp; +91
                   </span>
                   <input
                     type="text"
@@ -110,7 +113,7 @@ const Welcome = () => {
                   />
                 </div>
                 {/* <button className=" position-absolute  mt-5 primary-button ">Submit</button> */}
-                <button className="   primary-button " onClick={() => getOTP()}>
+                <button className="primary-button" onClick={() => getOTP()}>
                   Get OTP
                 </button>
               </>

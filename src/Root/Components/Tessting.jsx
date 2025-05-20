@@ -576,7 +576,6 @@
 //             <span>777-77-777</span>
 //           </div>
 //         </div>
-
 //       </NewContainer>
 //     </>
 //   );
@@ -1177,86 +1176,92 @@
 
 // ---------------------- GAME RATES    -------------
 
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import { useFormik } from "formik";
+// import * as Yup from "yup";
+// import ReusableForm from "./Formik_form";
+// import CenterModal from "./Reusable_modal";
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import ReusableForm from "./Formik_form";
-import CenterModal from "./Reusable_modal";
+// import Home_Container from "../Containers/Home_Container";
 
-import Home_Container from "../Containers/Home_Container";
+// const Tessting = () => {
+//   const formFields = [
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "Old MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "New MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "Confirm New MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//   ];
 
-const Tessting = () => {
-  const formFields = [
-    {
-      type: "text",
-      name: "username",
-      label: "Old MPIN",
-      col_size: 6,
-      label_size: 4,
-      disable: false,
-      showButton: false,
-    },
-    {
-      type: "text",
-      name: "username",
-      label: "New MPIN",
-      col_size: 6,
-      label_size: 4,
-      disable: false,
-      showButton: false,
-    },
-    {
-      type: "text",
-      name: "username",
-      label: "Confirm New MPIN",
-      col_size: 6,
-      label_size: 4,
-      disable: false,
-      showButton: false,
-    },
-  ];
+//   const initialValues = {
+//     username: "",
+//     password: "",
+//     gender: "",
+//   };
 
-  const initialValues = {
-    username: "",
-    password: "",
-    gender: "",
-  };
+//   const formik = useFormik({
+//     initialValues,
+//     validationSchema: Yup.object({
+//       username: Yup.string().required("Username is required"),
+//     }),
+//     onSubmit: (values) => {
+//       console.log("Form values:", values);
+//     },
+//   });
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema: Yup.object({
-      username: Yup.string().required("Username is required"),
-    }),
-    onSubmit: (values) => {
-      console.log("Form values:", values);
-    },
-  });
+//   const [selectedGame, setSelectedGame] = useState(false);
 
-  const [selectedGame, setSelectedGame] = useState(false);
+//   const handleOpenModal = () => {
+//     setSelectedGame(!selectedGame);
+//   };
 
-  const handleOpenModal = () => {
-    setSelectedGame(!selectedGame);
-  };
+//   return (
+//     <>
+//       <Home_Container title="MADHUR DAY - Single Digit Board">
+//         <div className=" py-3 px-3 my-2 border rounded">
+//           <div className="container-fluid">
+//             <div className="row">
+//               <div className="col-12 d-flex d-flex align-items-center justify-content-center flex-column">
+//                 <div className="border-bottom border-2 w-100 my-2 text-center ">
+//                   <span className="text-center   ">Jodi Digit : 100</span>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </Home_Container>
+//     </>
+//   );
+// };
 
-  return (
-    <>
-      <Home_Container title="MADHUR DAY - Single Digit Board">
-        <div className=" py-3 px-3 my-2 border rounded">
-          <div className="container-fluid">
-            <div className="row"> 
-              <div className="col-12 d-flex d-flex align-items-center justify-content-center flex-column">
-                <div className="border-bottom border-2 w-100 my-2 text-center ">
-                  <span className="text-center   ">Jodi Digit : 100</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Home_Container>
-    </>
-  );
-};
+// export default Tessting;
+import React from "react";
+
+function Tessting() {
+  return <div>Tessting</div>;
+}
 
 export default Tessting;

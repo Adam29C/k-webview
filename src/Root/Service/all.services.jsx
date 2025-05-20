@@ -1,5 +1,5 @@
 import axios from "axios";
-import dataservice  from "../Config/api.config";
+import dataservice from "../Config/api.config";
 
 export const FOR_GET_LIST = async (URL, sendData) => {
   try {
@@ -14,7 +14,6 @@ export const FOR_GET_LIST = async (URL, sendData) => {
     return { status: "error", data: error.response?.data?.message };
   }
 };
-
 export const FOR_POST_REQUEST = async (URL, sendData) => {
   try {
     const response = await dataservice.post(`${URL}`, sendData, {
@@ -28,7 +27,6 @@ export const FOR_POST_REQUEST = async (URL, sendData) => {
     return error.response;
   }
 };
-
 export const FOR_DELETE_REQUEST = async (URL, sendData) => {
   try {
     const response = await dataservice.delete(`${URL}/${sendData}`, {
@@ -42,7 +40,6 @@ export const FOR_DELETE_REQUEST = async (URL, sendData) => {
     return error.response;
   }
 };
-
 export const FOR_UPDATE_REQUEST = async (URL, sendData) => {
   try {
     const response = await dataservice.patch(`${URL}`, sendData, {

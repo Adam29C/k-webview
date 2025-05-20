@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import CenterModal from "./Reusable_modal";
+import { Link } from "react-router-dom";
 
 const GameCard = ({ index, game }) => {
   const [selectedGame, setSelectedGame] = useState(null);
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (game) => {
     setSelectedGame(game);
   };
 
   useEffect(() => {
-    console.log("Selected game updated:", selectedGame); // Check karein ki state update ho rahi hai ya nahi
+    // console.log("Selected game updated:", selectedGame); // Check karein ki state update ho rahi hai ya nahi
   }, [selectedGame]);
   return (
     <>
@@ -21,7 +22,7 @@ const GameCard = ({ index, game }) => {
                 className=" card rounded-4 mb-2"
                 data-bs-toggle="modal"
                 data-bs-target={`#timinig-${index}`}
-                onClick={handleOpenModal}
+                onClick={() => handleOpenModal(game)}
               >
                 <div className="d-flex justify-content-between align-items-center  px-3 py-2">
                   <div className="text-left">
@@ -33,20 +34,26 @@ const GameCard = ({ index, game }) => {
                       <span> {game?.providerResult}</span>
                     </div>
                     <div
-                      className={`open-close ${
-                        game.gameDetails[0]?.message === "Close for today"
-                          ? "close-for-today"
-                          : game.gameDetails[0]?.message ===
-                            "Betting is running for close"
-                          ? "forClose"
-                          : game.gameDetails[0]?.message ===
-                            "Betting is running for open"
-                          ? "forOpen"
-                          : "forOpen"
-                      }`}
+                    // className={`open-close ${
+                    //   game.displayText == "Closed for today"
+                    //     ? "close-for-today"
+                    //     : game.displayText == "running for close"
+                    //     ? "forClose"
+                    //     : game.displayText == "running for open"
+                    //     ? "forOpen"
+                    //     : "forOpen"
+                    // }`}
                     >
-                      <span className="text-denger">
-                        {game.gameDetails[0]?.message}
+                      {/* <span className="text-danger">{game.displayText}</span> */}
+                      <span
+                        style={{
+                          color:
+                            game.displayText == "Closed For Today"
+                              ? "red"
+                              : "green",
+                        }}
+                      >
+                        {game.displayText}
                       </span>
                     </div>
                   </div>
@@ -66,7 +73,7 @@ const GameCard = ({ index, game }) => {
                         class="play_icon_class "
                         transform="translate(0.098 0)"
                         fill={
-                          game.gameDetails[0]?.message === "Close for today"
+                          game.displayText == "Closed For Today"
                             ? "red"
                             : "#237f8a"
                         }
@@ -77,7 +84,7 @@ const GameCard = ({ index, game }) => {
                         d="M31.179,256H0a15.589,15.589,0,1,0,31.179,0Z"
                         transform="translate(0 -239.882)"
                         fill={
-                          game.gameDetails[0]?.message === "Close for today"
+                          game.displayText == "Closed For Today"
                             ? "red"
                             : "#237f8a"
                         }
@@ -122,10 +129,10 @@ const GameCard = ({ index, game }) => {
                 <div className="verticle-line"> </div>
                 <div className="d-flex justify-content-between px-3 py-2 game-timing-font-size ">
                   <span>
-                    Open Bids : <b> {game.gameDetails[0]?.OBT}</b>
+                    Open Bids : <b> {game.OpenBidTime}</b>
                   </span>
                   <span>
-                    Close Bids : <b> {game.gameDetails[0]?.CBT}</b>
+                    Close Bids : <b> {game.CloseBidTime}</b>
                   </span>
                 </div>
               </div>
@@ -154,8 +161,7 @@ const GameCard = ({ index, game }) => {
                     class="play_icon_class "
                     transform="translate(0.098 0)"
                     fill={
-                      selectedGame?.gameDetails[0]?.message ===
-                      "Close for today"
+                      selectedGame?.displayText === "Close for today"
                         ? "red"
                         : "#237f8a"
                     }
@@ -166,8 +172,7 @@ const GameCard = ({ index, game }) => {
                     d="M31.179,256H0a15.589,15.589,0,1,0,31.179,0Z"
                     transform="translate(0 -239.882)"
                     fill={
-                      selectedGame?.gameDetails[0]?.message ===
-                      "Close for today"
+                      selectedGame?.displayText === "Close for today"
                         ? "red"
                         : "#237f8a"
                     }
@@ -210,18 +215,18 @@ const GameCard = ({ index, game }) => {
               </div>
               <span
                 className={`open-close py-1 ${
-                  selectedGame?.gameDetails[0]?.message === "Close for today"
+                  selectedGame?.displayText === "Close for today"
                     ? "close-for-today"
-                    : selectedGame?.gameDetails[0]?.message ===
+                    : selectedGame?.displayText ===
                       "Betting is running for close"
                     ? "forClose"
-                    : selectedGame?.gameDetails[0]?.message ===
+                    : selectedGame?.displayText ===
                       "Betting is running for open"
                     ? "forOpen"
                     : "forOpen"
                 }`}
               >
-                {selectedGame && selectedGame?.gameDetails[0]?.message}
+                {selectedGame && selectedGame?.displayText}
               </span>
               <h6 class="primary-color py-1 fw-bold">
                 {selectedGame && selectedGame?.providerName}
@@ -231,22 +236,21 @@ const GameCard = ({ index, game }) => {
             <div class="my-3">
               <p class="d-flex justify-content-between">
                 <span class="fw-bold">OPEN RESULT TIME</span>
-                <span>{selectedGame?.gameDetails[0]?.OBRT}</span>
+                <span>{selectedGame?.OpenBidTime}</span>
               </p>
               <p class="d-flex justify-content-between">
                 <span class="fw-bold">CLOSE RESULT TIME</span>
-                <span>{selectedGame?.gameDetails[0]?.CBRT}</span>
+                <span>{selectedGame?.CloseBidTime}</span>
               </p>
               <p class="d-flex justify-content-between">
                 <span class="fw-bold">OPEN BID LAST TIME</span>
-                <span>{selectedGame?.gameDetails[0]?.OBT}</span>
+                <span>{selectedGame?.OpenBidResultTime}</span>
               </p>
               <p class="d-flex justify-content-between">
                 <span class="fw-bold">CLOSE BID LAST TIME</span>
-                <span>{selectedGame?.gameDetails[0]?.CBT}</span>
+                <span>{selectedGame?.CloseBidResultTime}</span>
               </p>
             </div>
-            {console.log("selectedGame", selectedGame)}
             <button
               type="button"
               class="btn primary-button rounded-pill w-100 text-center"

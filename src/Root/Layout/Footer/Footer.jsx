@@ -57,14 +57,14 @@ const Footer = () => {
     <div className="footer-container">
       <ul className="bottom-menu">
         <li>
-          <Link to="bids" className="menu-item">
+          <Link to="/bids" className="menu-item">
             <i className="bottom-icons-font-size fa-regular fa-clipboard"></i>
             <h6>My Bids</h6>
           </Link>
         </li>
 
         <li className="active">
-          <Link to="passbook" className="menu-item ">
+          <Link to="/passbook" className="menu-item ">
             <i className="bottom-icons-font-size fa-solid fa-file-signature"></i>
             <h6>Passbook</h6>
           </Link>
@@ -72,7 +72,7 @@ const Footer = () => {
 
         {/* Active Center Button */}
         <li className="">
-          <Link to="home" className="menu-item active-item">
+          <Link to="/home" className="menu-item active-item">
             <div className="active-icon-bg">
               <i className="bottom-icons-font-size fa-solid fa-house"></i>
             </div>
@@ -81,14 +81,14 @@ const Footer = () => {
         </li>
 
         <li>
-          <Link to="funds" className="menu-item">
+          <Link to="/funds" className="menu-item">
             <i className="bottom-icons-font-size fa-solid fa-dollar-sign"></i>
             <h6>Fund</h6>
           </Link>
         </li>
 
         <li>
-          <Link to="support" className="menu-item">
+          <Link to="/support" className="menu-item">
             <i className="bottom-icons-font-size fa-regular fa-comment"></i>
             <h6>Support</h6>
           </Link>
