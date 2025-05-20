@@ -1182,9 +1182,46 @@
 // import * as Yup from "yup";
 // import ReusableForm from "./Formik_form";
 // import CenterModal from "./Reusable_modal";
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import { useFormik } from "formik";
+// import * as Yup from "yup";
+// import ReusableForm from "./Formik_form";
+// import CenterModal from "./Reusable_modal";
 
 // import Home_Container from "../Containers/Home_Container";
+// import Home_Container from "../Containers/Home_Container";
 
+// const Tessting = () => {
+//   const formFields = [
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "Old MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "New MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//     {
+//       type: "text",
+//       name: "username",
+//       label: "Confirm New MPIN",
+//       col_size: 6,
+//       label_size: 4,
+//       disable: false,
+//       showButton: false,
+//     },
+//   ];
 // const Tessting = () => {
 //   const formFields = [
 //     {
@@ -1221,7 +1258,21 @@
 //     password: "",
 //     gender: "",
 //   };
+//   const initialValues = {
+//     username: "",
+//     password: "",
+//     gender: "",
+//   };
 
+//   const formik = useFormik({
+//     initialValues,
+//     validationSchema: Yup.object({
+//       username: Yup.string().required("Username is required"),
+//     }),
+//     onSubmit: (values) => {
+//       console.log("Form values:", values);
+//     },
+//   });
 //   const formik = useFormik({
 //     initialValues,
 //     validationSchema: Yup.object({
@@ -1233,7 +1284,11 @@
 //   });
 
 //   const [selectedGame, setSelectedGame] = useState(false);
+//   const [selectedGame, setSelectedGame] = useState(false);
 
+//   const handleOpenModal = () => {
+//     setSelectedGame(!selectedGame);
+//   };
 //   const handleOpenModal = () => {
 //     setSelectedGame(!selectedGame);
 //   };

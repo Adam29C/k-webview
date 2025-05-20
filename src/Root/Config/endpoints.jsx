@@ -6,9 +6,12 @@ export const apiRoutes = {
 
   // --- Authentications  ----
 
-  VERIFY_NUMBER_FOR_REGISTER_USER: `${baseUrl}user/checkMobile`,
-  CHECK_NUMBER_FOR_REGISTER_USER: `${baseUrl}api/user/verifyMobile`,
-  VARIFY_OTP_FOR_REGISTER_USER: `${baseUrl}api/user/userExistOtpVerifyDevice`,
+  VERIFY_NUMBER_FOR_REGISTER_USER: `${baseUrl}/user/checkMobile`,
+  SEND_OTP_FOR_REGISTER_USER: `${baseUrl}/user/sendMobileOtp`,
+  VARIFY_OTP_FOR_REGISTER_USER: `${baseUrl}/user/existOtpVerify`,
+  CHECK_USERNAME_FOR_REGISTER_USER: `${baseUrl}/user/checkUsername`,
+  NEW_REGISTER_USER: `${baseUrl}/user/registerNew`,
+
 
   // --- Game Endpoints ---
   GET_ALL_GAMES: `${baseUrl}/api/web/games`,
@@ -52,9 +55,3 @@ export const apiRoutes = {
   POST_WITHDRAW_FUND_UPI: `${baseUrl}withdraw/withdrawFundUPI`,
   POST_ADD_FUND: `${baseUrl}addFund/paymentInitiate`,
 };
-
-// api/user/sendMobileOtpNew
-// api/user/verifyMobile
-//  "api/user/registerNew"
-// "api/user/userExistOtpVerifyDevice"
-// "api/user/checkUsernameNewOne"

@@ -2,35 +2,49 @@ import React, { useState, useEffect } from "react";
 import Authcontainer from "../../Containers/auth-container";
 import PageIndex from "../pageIndex";
 import toast from "react-hot-toast";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { DeviceID } from "../../Config/baseurl";
+import InformModal from "../../Components/InformModal";
+import { GetFirebseAndDeviceID } from "../../helpers/GetFirebseAndDeviceID";
 
 const VerifyUser = () => {
   let location = useLocation();
+  let navigate = useNavigate();
+  const { deviceId, firebaseId, deviceName } = GetFirebseAndDeviceID();
 
-  const [SubmitOTP, setSubmitOTP] = useState("");
+  const [first, setfirst] = useState("");
+
+  const [username, setUsername] = useState("");
+  const [modal, setmodal] = useState(false);
+  const [ShowMessage, setShowMessage] = useState("");
 
   const SubmitOTPFunction = async () => {
-    if (SubmitOTP.length === 0) {
-      toast.error("OTP Should Not Be Empty");
+    if (username.length === 0) {
+      toast.error("Username Not Be Empty");
       return;
     }
     let paylaod = {
-      mobileNumber: location.state.mobileNumber,
-      otp: SubmitOTP,
-      deviceId: "d01ef824cc4be6b0",
+      username: username,
     };
 
-    let Url = PageIndex.apiRoutes.VARIFY_OTP_FOR_REGISTER_USER;
+    let Url = PageIndex.apiRoutes.CHECK_USERNAME_FOR_REGISTER_USER;
     const response = await PageIndex.authServices.FOR_POST_REQUEST(
       Url,
       paylaod
     );
-    if (
-      response.status === 1 ||
-      response.status === "success" ||
-      response.status
-    ) {
-      // navigate("/verify", { replace: true });
+
+    if (response.status) {
+      navigate("/mpin", {
+        replace: true,
+        state: {
+          username: username,
+          mobileNumber: location.state.mobileNumber,
+          otp: location.state.otp,
+        },
+      });
+    } else {
+      setmodal(true);
+      setShowMessage(response.message);
     }
   };
 
@@ -52,7 +66,7 @@ const VerifyUser = () => {
               aria-describedby="basic-addon1"
               placeholder="Enter User Name "
               id="mobileNumber"
-              onChange={(e) => setSubmitOTP(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <button
@@ -61,7 +75,17 @@ const VerifyUser = () => {
           >
             Continue
           </button>
+          {/* device <br /> - {ids.deviceId}
+          device <br /> - {ids.deviceName} */}
           <PageIndex.Toast />
+          <InformModal
+            isOpen={modal}
+            onClose={() => setmodal(!modal)}
+            title={ShowMessage && ShowMessage}
+            icon={"fa fa-info-circle"}
+            buttontitle={"OK"}
+            Show_btn={true}
+          />
         </>
       }
     />

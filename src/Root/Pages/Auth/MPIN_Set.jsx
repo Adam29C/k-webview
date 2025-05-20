@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import Authcontainer from "../../Containers/auth-container";
+import { GetFirebseAndDeviceID } from "../../helpers/GetFirebseAndDeviceID";
+import { useLocation, useNavigate } from "react-router-dom";
+import PagesIndex from "../pageIndex";
 
 const MPINSet = () => {
+  const { deviceId, firebaseId, deviceName } = GetFirebseAndDeviceID();
+  let location = useLocation();
+  let navigate = useNavigate();
+
   const [mpin, setMpin] = useState("");
   const [confirmMpin, setConfirmMpin] = useState("");
   const [showMpin, setShowMpin] = useState(false);
@@ -11,14 +18,34 @@ const MPINSet = () => {
   // const toggleConfirmMpinVisibility = () =>
   //   setShowConfirmMpin(!showConfirmMpin);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (mpin === confirmMpin) {
-      alert("MPIN Set Successfully!");
+      const payload = {
+        username: location.state.username,
+        mobile: location.state.mobileNumber,
+        deviceId: deviceId,
+        firebaseId: firebaseId,
+        deviceVerifyOTP: location.state.otp,
+        deviceName: deviceName,
+        userMpin: mpin,
+        name: location.state.username,
+      };
+
+      let Url = PagesIndex.apiRoutes.NEW_REGISTER_USER;
+      const response = await PagesIndex.authServices.FOR_POST_REQUEST(
+        Url,
+        payload
+      );
+
+      if (response.status) {
+        navigate("/", { replace: true });
+      } else {
+      }
+
+      setShowMpin(JSON.stringify(response));
     } else {
-      toast.error("OTP Should Not Be Empty");
-
-
+      // toast.error("OTP Should Not Be Empty");
       // alert("MPINs do not match!");
     }
   };
@@ -47,7 +74,6 @@ const MPINSet = () => {
                 />
               </div>
             </div>
-
             <div className="mb-3">
               {/* <label className="form-label">MPIN</label> */}
 
@@ -63,7 +89,7 @@ const MPINSet = () => {
                 />
               </div>
             </div>
-
+            showMpin ={showMpin}
             <button className=" mt-5 primary-button w-100">Submit</button>
           </form>
         </>

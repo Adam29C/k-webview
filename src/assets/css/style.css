@@ -6298,15 +6298,14 @@ body.dark .main-header .header-panel a .icon-btn.back-arrow {
   font-size: 16px;
 }
 
+
+
 .header {
   padding: 20px 0 15px;
   display: flex;
   justify-content: space-between;
-  background: url("../img/bg_header_appbar.SVG") no-repeat center center;
-  /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6GddO-S2p3d352nwaemrAKmULVD8lPrHRCQ&s") no-repeat center center; */
-
+  background: url("../img/bg_header_appbar.SVG");
   /* opacity: 0.8; */
-  background-size: cover;
   z-index: 2;
   position: sticky;
   top: 0;
@@ -9398,7 +9397,7 @@ body.dark
 }
 
 .testimng {
-  width: 100.12vw;
+  width: 100vw
 }
 
 .secon-logo {
