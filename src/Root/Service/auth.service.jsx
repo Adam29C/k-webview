@@ -1,12 +1,12 @@
 import axios from "axios";
-const header = {
-  "Content-Type": "application/json",
-  "auth-token":
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJkMDFlZjgyNGNjNGJlNmIwIiwiaWF0IjoxNzQ0NzgzMzkyfQ.0BckhRvq3uqlxtbEtMoKhVcsKvzv6k8Dh9jeKKvfIfc",
-  "x-api-key":
-    "JDJhJDEwJGJDay9ZN25MMUlFT3l4ZHJNOXJybWV1bHM4SldUZ3NUblFXZ3RhLzlFc0REUXBLbWI5YUky",
-  Authorization: "d01ef824cc4be6b0",
-};
+// const header = {
+//   "Content-Type": "application/json",
+//   "auth-token":
+//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXkiOiJkMDFlZjgyNGNjNGJlNmIwIiwiaWF0IjoxNzQ0NzgzMzkyfQ.0BckhRvq3uqlxtbEtMoKhVcsKvzv6k8Dh9jeKKvfIfc",
+//   "x-api-key":
+//     "JDJhJDEwJGJDay9ZN25MMUlFT3l4ZHJNOXJybWV1bHM4SldUZ3NUblFXZ3RhLzlFc0REUXBLbWI5YUky",
+//   Authorization: "d01ef824cc4be6b0",
+// };
 
 export const FOR_GET_LIST = async (URL, sendData) => {
   try {
@@ -23,12 +23,13 @@ export const FOR_GET_LIST = async (URL, sendData) => {
 export const FOR_POST_REQUEST = async (URL, sendData) => {
   try {
     const response = await axios.post(`${URL}`, sendData, {
-      headers: header,
+      // headers: header,
     });
 
+    
     return response.data;
   } catch (error) {
-    return error.response;
+    return error;
   }
 };
 
