@@ -96,7 +96,6 @@ const Tabs = () => {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_STARLINE_GAMETYPE}`);
       if (res) {
         if (res.status == true) {
-          // console.log(res.data);
           setstarlinetype(res.data);
         }
       }
@@ -111,7 +110,6 @@ const Tabs = () => {
       );
       if (res) {
         if (res.status == true) {
-          // console.log(res.data);
           setstarlinegameresult(res.data);
         }
       }
@@ -124,7 +122,6 @@ const Tabs = () => {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_GAME_GAMERESULT}`);
       if (res) {
         if (res.status == true) {
-          // console.log(res.data);
           setgames(res.data);
         }
       }
@@ -137,7 +134,6 @@ const Tabs = () => {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_ANDARBAHARGAME_RESULT}`);
       if (res) {
         if (res.status == true) {
-          // console.log(res.data);
           setandarbahargameres(res.data);
         }
       }

@@ -2,15 +2,15 @@ import React from "react";
 
 const Main_Containers = ({ children }) => {
   return (
-    <div>
+    <>
       {/* <section className="section-b-space"> */}
-        <div className="custom-container">
-          <div className="row ">
-            <div className="col-12">{children}</div>
-          </div>
+      <div className="custom-container">
+        <div className="row ">
+          <div className="col-12 card">{children}</div>
         </div>
-      {/* </section> */}
-    </div>
+        {/* </section> */}
+      </div>
+    </>
   );
 };
 

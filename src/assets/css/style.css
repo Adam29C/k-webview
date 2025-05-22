@@ -4288,7 +4288,7 @@ a {
 
 .custom-container {
   width: 100%;
-  /* padding: 0 calc(15px + (20 - 15) * ((100vw - 320px) / (1920 - 320))); */
+  padding: 0 calc(15px + (20 - 15) * ((100vw - 320px) / (1920 - 320)));
 }
 
 section,

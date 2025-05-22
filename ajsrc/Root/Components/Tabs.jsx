@@ -83,11 +83,13 @@ import "react-tabs/style/react-tabs.css";
 import GameCard from "./GameCard";
 import JackpotCard from "./JackpotCard";
 const Tabs = () => {
+
   const data = {
     providerName: "providername",
     providerResult: "result",
     gameDetails: [{ message: "Close for today", OBT: "10:00", CBT: "10:00" }],
   };
+  
   return (
     <>
       {/* <StarlineGameCard/> */}
