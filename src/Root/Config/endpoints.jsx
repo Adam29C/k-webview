@@ -61,4 +61,9 @@ export const apiRoutes = {
   GET_WALLET_HISTORY: `${baseUrl}/wallet/history?`,
   POST_WITHDRAW_FUND_UPI: `${baseUrl}/withdraw/withdrawFundUPI`,
   POST_ADD_FUND: `${baseUrl}/addFund/paymentInitiate`,
+
+  // ----- add bank details -----
+
+  CHECK_BANK_ACCOUNT_AVAILABLTY: `${baseUrl}/profile/checkRequest`,
+  ADD_BANK_ACCOUNT: `${baseUrl}/profile/checkAccountNumber`,
 };

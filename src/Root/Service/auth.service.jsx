@@ -9,10 +9,15 @@ import axios from "axios";
 // };
 
 export const FOR_GET_LIST = async (URL, sendData) => {
+
+
+  
   try {
     const response = await axios.get(`${URL}`, {
       headers: header,
     });
+
+  console.log("response", response);
 
     return response.data;
   } catch (error) {

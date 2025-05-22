@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FOR_GET_LIST, FOR_POST_REQUEST } from "../../Service/commanservice";
-import { apiRoutes } from "../../Config/endpoints";
+import pageIndex from "../../Pages/pageIndex";
+import { setProfileDetails } from "../../Redux/slice/common.slice";
 
 const Header = () => {
-  const [data, setdata] = useState({});
   const [notifications, setnotifications] = useState([]);
+
+  const dispatch = pageIndex.useDispatch();
+
+  const { getProfile } = pageIndex.useSelector((state) => state.CommonSlice);
+
   const getbalance = async () => {
     try {
-      const res = await FOR_GET_LIST(`${apiRoutes.GET_USERBALANCE}`);
-      if (res) {
-        if (res.status == true) {
-          setdata(res.data);
-          // console.log(res.data);
-        }
+      const res = await pageIndex.commanservice.FOR_GET_LIST(
+        `${pageIndex.apiRoutes.GET_USERBALANCE}`
+      );
+
+      if (res.status) {
+        dispatch(setProfileDetails(res.data));
       }
     } catch (error) {
       console.log(error);
@@ -21,11 +25,12 @@ const Header = () => {
   };
   const getNotification = async () => {
     try {
-      const res = await FOR_GET_LIST(`${apiRoutes.GET_NOTIFICATION_UNREAD}`);
+      const res = await pageIndex.commanservice.FOR_GET_LIST(
+        `${pageIndex.apiRoutes.GET_NOTIFICATION_UNREAD}`
+      );
       if (res) {
         if (res.status == true) {
           setnotifications(res.data);
-          // console.log(res.data);
         }
       }
     } catch (error) {
@@ -61,7 +66,7 @@ const Header = () => {
               <div className="Wallet-div">
                 <span className="Wallet-main">
                   <i class="fa-solid fa-wallet mx-2"></i>
-                  <span className="t">{data?.wallet_balance || 0}</span>
+                  <span className="t">{getProfile?.wallet_balance || 0}</span>
                 </span>
               </div>
               {/* <span

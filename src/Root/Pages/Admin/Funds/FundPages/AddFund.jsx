@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { FOR_POST_REQUEST } from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
+import PagesIndex from "../../../pageIndex";
 // import ThirdContainer from "../Containers/New_container";
 // import CommonTopSvg from "../../assets/svgs/secondary-top.svg";
 
 const AddFund = () => {
+  const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
+
   const [amount, setAmount] = useState("");
 
   const handleAmountClick = (value) => {
@@ -21,7 +24,7 @@ const AddFund = () => {
       const res = await FOR_POST_REQUEST(`${apiRoutes.POST_ADD_FUND}`, data);
       if (res) {
         if (res.status == true) {
-          // setmyList(res.data.textMain);
+   
           console.log(res.data);
         }
       }
@@ -29,27 +32,22 @@ const AddFund = () => {
       console.log(error);
     }
   };
+
+
   return (
     <>
       <div>
-        {/* <div className="Image-Container position-relative">
-          <div className="d-flex align-items-center text-light w-100 p-3">
-            <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
-            <h2 className="mx-3 mb-0">Title</h2>
-          </div>
-        </div> */}
-
         <div className="container-fluid mt-2">
           <div className="row">
             <div className="col-12">
               <div className="d-flex justify-content-between align-items-center p-2 border rounded">
                 <div>
-                  <div className="fw-bold ">TESTEMULATOR</div>
-                  <div className="text-muted">+919876543210</div>
+                  <div className="fw-bold ">{getProfile?.username}</div>
+                  <div className="text-muted">+91{getProfile?.mobile}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-muted">Available Balance</div>
-                  <div className="fw-bold">₹ 69,000</div>
+                  <div className="fw-bold">₹ {getProfile?.wallet_balance || 0}</div>
                 </div>
               </div>
             </div>

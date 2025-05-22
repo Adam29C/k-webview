@@ -43,6 +43,9 @@
   justify-content: center;
   align-items: center;
 }
+.newdiv i{
+  font-size: 60px;
+}
 .title {
   display: flex;
   justify-content: center;

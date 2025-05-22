@@ -1,13 +1,12 @@
 import React from "react";
 import { Toaster } from "react-hot-toast";
 
-const Toast = () => {
+const Toast = ({ position }) => {
   return (
     <div>
       <Toaster
-        position="bottom-center"
+        position={position ? position : "bottom-center"}
         reverseOrder={false}
-    
       />
     </div>
   );

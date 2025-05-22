@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import ReusableForm from "../../../../Components/Formik_form";
-import InformModal from "../../../../Components/InformModal";
+import PagesIndex from "../../../pageIndex";
+import { GetIFSCCode } from "../../../../Config/baseurl";
+import axios from "axios";
+import toast from "react-hot-toast";
 const AddBankDetails = () => {
+  const navigate = PagesIndex.useNavigate();
+  const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
+
+  const [modal, setmodal] = useState(false);
+
   const formFields = [
     {
       type: "text",
@@ -29,7 +36,7 @@ const AddBankDetails = () => {
       label: "Bank Name",
       col_size: 6,
       label_size: 4,
-      disable: false,
+      disable: true,
       showButton: false,
     },
     {
@@ -41,8 +48,6 @@ const AddBankDetails = () => {
       disable: false,
       showButton: false,
     },
-
-    // Add more fields as needed
   ];
 
   const initialValues = {
@@ -58,40 +63,79 @@ const AddBankDetails = () => {
       accountnumber: Yup.string().required("Account Number is required"),
       ifsccode: Yup.string().required("IFSC Code is required"),
       bankname: Yup.string().required("Bank Name is required"),
-      accountholdername: Yup.string().required("Account Holder Name is required"),
+      accountholdername: Yup.string().required(
+        "Account Holder Name is required"
+      ),
 
       // Add more validation rules as needed
     }),
-    onSubmit: (values) => {
-      console.log("Form values:", values);
+    onSubmit: async (values) => {
+      const res = await PagesIndex.commanservice.FOR_GET_LIST(
+        PagesIndex.apiRoutes.CHECK_BANK_ACCOUNT_AVAILABLTY
+      );
+
+      if (res?.status) {
+        const payload = {
+          account_no: values.accountnumber,
+          bank_name: values.bankname,
+          ifsc_code: values.ifsccode,
+          account_holder_name: values.accountholdername,
+        };
+
+        const res = await PagesIndex.commanservice.FOR_POST_REQUEST(
+          PagesIndex.apiRoutes.ADD_BANK_ACCOUNT,
+          payload
+        );
+
+        if (res.status) {
+          toast.success(res.message);
+          navigate("/funds");
+        } else {
+          toast.error(res.message);
+        }
+      }
     },
   });
-const [modal,setmodal]=useState(true)
+
+  const getbalance = async () => {
+    try {
+      const res = await axios.get(
+        `${GetIFSCCode}${formik.values.ifsccode.toUpperCase()}`
+      );
+
+      if (res.status === 200) {
+        formik.setFieldValue("bankname", res.data.BANK);
+      }
+    } catch (error) {
+      formik.setFieldValue("bankname", "");
+    }
+  };
+
+  PagesIndex.useEffect(() => {
+    if (formik.values.ifsccode.length > 8) {
+      getbalance();
+    }
+  }, [formik.values.ifsccode]);
+
   return (
     <>
       <div>
-        {/* <div className="Image-Container position-relative">
-          <div className="d-flex align-items-center text-light w-100 p-3">
-            <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
-            <h2 className="mx-3 mb-0">Title</h2>
-          </div>
-        </div> */}
         <div className="container-fluid mt-2">
           <div className="row">
             <div className="col-12">
               <div className="d-flex justify-content-between align-items-center p-2 border rounded">
                 <div>
-                  <div className="fw-bold ">TESTEMULATOR</div>
-                  <div className="text-muted">+919876543210</div>
+                  <div className="fw-bold ">{getProfile?.username}</div>
+                  <div className="text-muted">+91{getProfile?.mobile}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-muted">Available Balance</div>
-                  <div className="fw-bold">₹ 69,000</div>
+                  <div className="fw-bold">₹ {getProfile?.wallet_balance}</div>
                 </div>
               </div>
             </div>
             <div className="mt-4">
-              <ReusableForm
+              <PagesIndex.ReusableForm
                 fromDate={new Date()}
                 fieldtype={formFields}
                 formik={formik}
@@ -112,12 +156,15 @@ const [modal,setmodal]=useState(true)
             </div>
           </div>
         </div>
+        <PagesIndex.Toast position="top - center" />
       </div>
-      <InformModal  isOpen={modal}
+      <PagesIndex.InformModal
+        isOpen={modal}
         onClose={() => setmodal(!modal)}
         title={"Please Add Bank Details"}
         icon={"fa fa-info-circle"}
-        buttontitle={"OK"}/>
+        buttontitle={"OK"}
+      />
     </>
   );
 };

@@ -5,8 +5,11 @@ import {
   FOR_POST_REQUEST,
 } from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
+import PagesIndex from "../../../pageIndex";
 
 function WithdrawFund() {
+  const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
+
   const [amount, setAmount] = useState("0");
   const handleInputChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -34,7 +37,10 @@ function WithdrawFund() {
   const handlesubmit = async () => {
     const data = { req_amount: amount };
     try {
-      const res = await FOR_POST_REQUEST(`${apiRoutes.POST_WITHDRAW_FUND_UPI}`,data);
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_WITHDRAW_FUND_UPI}`,
+        data
+      );
       if (res) {
         if (res.status == true) {
           // setmyList(res.data.textMain);
@@ -51,12 +57,12 @@ function WithdrawFund() {
         <div className="col-12">
           <div className="d-flex justify-content-between align-items-center p-2 border rounded">
             <div>
-              <div className="fw-bold ">TESTEMULATOR</div>
-              <div className="text-muted">+919876543210</div>
+              <div className="fw-bold ">{getProfile?.username}</div>
+              <div className="text-muted">+91{getProfile?.mobile}</div>
             </div>
             <div className="text-center">
               <div className="text-muted">Available Balance</div>
-              <div className="fw-bold">₹ 69,000</div>
+              <div className="fw-bold">₹ {getProfile?.wallet_balance || 0}</div>
             </div>
           </div>
         </div>
