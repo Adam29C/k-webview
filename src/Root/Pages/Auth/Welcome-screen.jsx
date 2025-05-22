@@ -29,7 +29,7 @@ const Welcome = () => {
   const getOTP = async () => {
     if (MobileNumber.length === 0) {
       toast.error("Input Number Only");
-    } else if (MobileNumber.length < 10) {
+    } else if (MobileNumber.length != 10) {
       toast.error("Enter Valid Mobile Number");
     } else {
       // localStorage.setItem("mobile", MobileNumber);
@@ -44,29 +44,59 @@ const Welcome = () => {
       );
 
       if (response.status) {
-        let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
-
-        const response1 = await PageIndex.authServices.FOR_POST_REQUEST(
-          Url,
-          paylaod
-        );
-
-        if (response1.status) {
-          // setShowModal(true);
+        if (response?.data?.type === "already") {
+          setShowModal(true);
+          setPreRegistedUser(response.data);
+        } else {
           navigate("/verify", {
             replace: true,
-            state: { mobileNumber: MobileNumber, otp: response1.otp },
+            state: { mobileNumber: MobileNumber, otp: response.otp },
           });
-        } else {
-          setShowModal(true);
-          setPreRegistedUser(response1.data);
         }
+
+        // navigate("/verify", {
+        //   replace: true,
+        //   state: { mobileNumber: MobileNumber, otp: response.otp },
+        // });
+
+        // let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
+
+        // const response1 = await PageIndex.authServices.FOR_POST_REQUEST(
+        //   Url,
+        //   paylaod
+        // );
+
+        // if (response1.status) {
+        //   // setShowModal(true);
+        //   navigate("/verify", {
+        //     replace: true,
+        // state: { mobileNumber: MobileNumber, otp: response1.otp },
+        //   });
+        // } else {
+        //   setShowModal(true);
+        //   setPreRegistedUser(response1.data);
+        // }
+      } else {
+        setShowModal(true);
+        setPreRegistedUser(response.data);
       }
     }
   };
 
-  const handleConfirm = () => {
-    console.log("Confirmed!");
+  const handleConfirm = async () => {
+    let paylaod = { mobile: MPIN, deviceId: deviceId };
+    let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
+    const response12 = await PageIndex.authServices.FOR_POST_REQUEST(
+      Url,
+      paylaod
+    );
+
+    if (response12.status) {
+      navigate("/verify", {
+        replace: true,
+        state: { mobileNumber: MobileNumber, otp: response12.otp },
+      });
+    }
   };
 
   const handleCancel = () => {

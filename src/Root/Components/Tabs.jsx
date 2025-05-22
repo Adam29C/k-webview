@@ -90,6 +90,7 @@ const Tabs = () => {
   const [games, setgames] = useState([]);
   const [andarbahargameres, setandarbahargameres] = useState([]);
   const [andarbahargametype, setandarbahargametype] = useState([]);
+
   const getstartlinegametype = async () => {
     try {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_STARLINE_GAMETYPE}`);
@@ -100,7 +101,7 @@ const Tabs = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   const getstarlinegameresult = async () => {

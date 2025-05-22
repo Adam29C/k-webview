@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Authcontainer from "../../Containers/auth-container";
 import InformModal from "../../Components/InformModal";
 
-import OTPInput from "./text";
+import OTPInput from "./LoginMPIN";
 import PageIndex from "../pageIndex";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -33,16 +33,18 @@ const VerifyUser = () => {
       Url,
       paylaod
     );
+
+    console.log("response", response);
+
     if (response.status) {
-      // navigate("/userverify", { replace: true });
-    } else {
       navigate("/userverify", {
         replace: true,
         state: { mobileNumber: location.state.mobileNumber, otp: SubmitOTP },
       });
-
+      // navigate("/userverify", { replace: true });
+    } else {
+      toast.error(response.message);
       setShowMessage(response.message);
-      // setmodal(true);
     }
   };
 
@@ -54,7 +56,7 @@ const VerifyUser = () => {
       children={
         <>
           <div class="input-group mb-3  mt-4">
-            {/* <label htmlFor="basic-addon1">Phone Number</label> */}
+           
             <span class="input-group-text" id="basic-addon1">
               <i class="fa-solid fa-user icon-color"></i>
             </span>

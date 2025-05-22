@@ -6301,10 +6301,10 @@ body.dark .main-header .header-panel a .icon-btn.back-arrow {
 
 
 .header {
-  padding: 20px 0 15px;
+  padding: 5px 0 5px;
   display: flex;
   justify-content: space-between;
-  background: url("../img/bg_header_appbar.SVG");
+  background: url("../img/New2Wave.svg");
   /* opacity: 0.8; */
   z-index: 2;
   position: sticky;

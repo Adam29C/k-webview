@@ -6,6 +6,7 @@ import SplashScreen from "../Pages/Auth/SplashScreen";
 import WelcomeScreen from "../Pages/Auth/Welcome-screen";
 import OtpVerify from "../Pages/Auth/OtpVerify";
 import MPIN_Set from "../Pages/Auth/MPIN_Set";
+import LoginMPIN from "../Pages/Auth/LoginMPIN";
 import Funddepositehistory from "../Components/Funddepositehistory";
 import Fundwithdrowhistory from "../Components/Fundwithdrowhistory";
 import Tessting from "../Components/Tessting";
@@ -51,10 +52,10 @@ const router = createBrowserRouter([
     path: "userverify",
     element: <VerifyUser />,
   },
-  // {
-  //   path: "test",
-  //   element: <Tessting />,
-  // },
+  {
+    path: "loginmpin",
+    element: <LoginMPIN />,
+  },
 ]);
 
 export default router;
