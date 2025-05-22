@@ -6,11 +6,9 @@ import { apiRoutes } from "../../../../Config/endpoints";
 
 const AddFund = () => {
   const [amount, setAmount] = useState("");
-
   const handleAmountClick = (value) => {
     setAmount(value);
   };
-
   const handleInputChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     setAmount(value === "" ? 0 : parseInt(value));
@@ -53,8 +51,7 @@ const AddFund = () => {
                 </div>
               </div>
             </div>
-
-            <div className="col-12 mt-2 ">
+            <div className="col-12 mt-2">
               <div className="d-flex flex-column justify-content-between align-items-center p-2 border rounded">
                 <div class="container my-5">
                   <div class="row justify-content-center">
@@ -72,7 +69,6 @@ const AddFund = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="row g-2 my-5">
                   {[100, 500, 1000, 2000, 5000, 10000].map((value) => (
                     <div className="col-4" key={value}>
@@ -85,7 +81,6 @@ const AddFund = () => {
                     </div>
                   ))}
                 </div>
-
                 <button
                   onClick={handlesubmit}
                   className="btn btn-teal w-100 my-5 text-white fw-bold py-2"

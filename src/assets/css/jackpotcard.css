@@ -9,7 +9,7 @@
 .icon-card {
   background-color: white;
   border-radius: 20px;
-  padding: 30px 10px;
+  /* padding: 20px 5px; */
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   display: flex;
@@ -32,8 +32,8 @@
   color: green !important;
 }
 .icon-label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13px !important;
+  font-weight: 300;
 }
 .playbuttonjackpot {
   background-color: whitesmoke;

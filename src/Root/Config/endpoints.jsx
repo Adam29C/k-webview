@@ -51,6 +51,10 @@ export const apiRoutes = {
   GET_WALLET_HISTORY: `${baseUrl}wallet/history?`,
   POST_WITHDRAW_FUND_UPI: `${baseUrl}withdraw/withdrawFundUPI`,
   POST_ADD_FUND: `${baseUrl}addFund/paymentInitiate`,
+  // 22may
+  // GET_FUND_HISTORY: `${baseUrl}resultHistory/fund?`,
+  // GET_DEBIT_HISTORY: `${baseUrl}resultHistory/debit?`,
+  // GET_CREDIT_HISTORY: `${baseUrl}resultHistory/credit?`,
 };
 
 // api/user/sendMobileOtpNew

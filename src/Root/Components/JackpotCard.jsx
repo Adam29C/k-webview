@@ -6,7 +6,14 @@ const JackpotCard = ({ games, index }) => {
   return (
     <div className="icon-grid-container">
       {games.map((game, index) => (
-        <div className="icon-card" key={index}>
+        <div
+          className="icon-card"
+          key={index}
+          style={{
+            border:
+              game.displayText == "Betting Is Running Now" && "2px solid blue",
+          }}
+        >
           <div className="icon-label">{game.providerName}</div>
           <div className="numberincard">{game.providerResult}</div>
           <div

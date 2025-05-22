@@ -30,14 +30,15 @@ function WithdrawFund() {
   useEffect(() => {
     getdata();
   }, []);
-
   const handlesubmit = async () => {
     const data = { req_amount: amount };
     try {
-      const res = await FOR_POST_REQUEST(`${apiRoutes.POST_WITHDRAW_FUND_UPI}`,data);
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_WITHDRAW_FUND_UPI}`,
+        data
+      );
       if (res) {
         if (res.status == true) {
-          // setmyList(res.data.textMain);
           console.log(res.data);
         }
       }

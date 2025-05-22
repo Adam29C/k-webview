@@ -82,8 +82,10 @@ import { Tab, Tabs as Tabs1, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import GameCard from "./GameCard";
 import JackpotCard from "./JackpotCard";
-import { FOR_GET_LIST } from "../Service/commanservice";
+import { FOR_GET_LIST, FOR_POST_REQUEST } from "../Service/commanservice";
 import { apiRoutes } from "../Config/endpoints";
+import "../../assets/css/settings.css";
+
 const Tabs = () => {
   const [starlinetype, setstarlinetype] = useState([]);
   const [starlinegameresult, setstarlinegameresult] = useState([]);
@@ -149,7 +151,6 @@ const Tabs = () => {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_ANDARBAHAR_GAMETYPE}`);
       if (res) {
         if (res.status == true) {
-          console.log(res.data);
           setandarbahargametype(res.data);
         }
       }
@@ -157,13 +158,53 @@ const Tabs = () => {
       console.log(error);
     }
   };
-  // console.log(andarbahargametype);
+  const [data, setdata] = useState({
+    mainNotification: false,
+    gameNotification: false,
+    starLineNotification: false,
+    andarBaharNotification: false,
+  });
+  const getdata = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_NOTIFICATION_STATUS}`);
+      if (res) {
+        if (res.status == true) {
+          setdata(res.data);
+          // console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleToggle = async (key) => {
+    const updatedSettings = {
+      type: key,
+      statusNotification: !data[key],
+    };
+    try {
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_NOTIFICATIONCHANGE_STATUS}`,
+        updatedSettings
+      );
+      if (res) {
+        if (res.status == true) {
+          getdata();
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getstartlinegametype();
     getstarlinegameresult();
     getgameresult();
     getandarbahargameresult();
     getandarbahargametype();
+    getdata();
   }, []);
   const dataArrayofstarlinegames = Object.values(starlinegameresult);
   const gamearrayofgames = Object.values(games);
@@ -173,31 +214,69 @@ const Tabs = () => {
       {/* <StarlineGameCard/> */}
       <div style={{ marginTop: "0px" }}>
         <Tabs1>
-          <TabList style={{ display: "flex", justifyContent: "space-evenly" }}>
+          <TabList
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              position: "sticky",
+              top: 80,
+              left: 0,
+              zIndex: "1",
+              backgroundColor: "#e0fff8",
+              borderRadius: "30px",
+            }}
+          >
             <Tab style={{ fontSize: "12px" }}>Games</Tab>
             <Tab style={{ fontSize: "12px" }}>Starline</Tab>
             <Tab style={{ fontSize: "12px" }}>Jackpot</Tab>
           </TabList>
           <TabPanel style={{ padding: "2px" }}>
+            <div className="tabstickyhome">
+              <div className="contact-card-container">
+                <div className="contact-box">
+                  <i className="fab fa-whatsapp homeicon"></i>
+                  <p className="contact-number">9999999999</p>
+                </div>
+                <div className="contact-box">
+                  <i className="fas fa-phone homeicon1"></i>
+                  <p className="contact-number">9999999999</p>
+                </div>
+              </div>
+            </div>
             {gamearrayofgames?.map((data, i) => (
               <GameCard game={data} index={i} />
             ))}
           </TabPanel>
           <TabPanel style={{ padding: "2px" }}>
             {/* <p>Cards for Starline</p> */}
-            <div className="box321">
-              <div className="grid321">
-                {starlinetype?.map((item, i) => (
-                  <div className="grid-item321">
-                    <div className="newdiv321">
-                      <span>{item.gameName}</span>
-                      <span className="gameprice">{item.gamePrice}</span>
+            <div className="tabstickyhome">
+              <div className="box321">
+                <div className="grid321">
+                  {starlinetype?.map((item, i) => (
+                    <div className="grid-item321">
+                      <div className="newdiv321">
+                        <span>{item.gameName}</span>
+                        <span className="gameprice">{item.gamePrice}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+              <div class="settinglist-item" style={{ marginTop: "10px" }}>
+                <div className="gametabs">
+                  <span className="newzyx">Notification</span>
+                  <label class="android-toggle">
+                    <input
+                      type="checkbox"
+                      checked={data.starLineNotification}
+                      onChange={() => handleToggle("starLineNotification")}
+                    />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div className="tabsright">View history</div>
               </div>
             </div>
-
             <div className="custom-container my-3">
               <div className="row gy-3 gx-0">
                 <div className="col-12 ">
@@ -218,6 +297,7 @@ const Tabs = () => {
                         style={{
                           display: "flex",
                           justifyContent: "space-between",
+                          alignItems: "center",
                         }}
                       >
                         <span className="maintitle text-dark">
@@ -307,7 +387,7 @@ const Tabs = () => {
                       </div>
                       {/* <span className="maintitle text-dark">Provider Name</span> */}
 
-                      <div className="digit">{game?.providerResult}</div>
+                      <div className="maintitle">{game?.providerResult}</div>
                       {/* <div className="digit">Result</div> */}
 
                       <div
@@ -350,14 +430,30 @@ const Tabs = () => {
           </TabPanel>
           <TabPanel style={{ padding: "2px" }}>
             {/* <p>Cards for Jackpot</p> */}
-            <div className="">
-              <div className="andarbaharconatiner">
-                <div className="andarbahartext">
-                  {andarbahargametype[0]?.gameName}:
-                  {andarbahargametype[0]?.gamePrice}
+            <div className="tabstickyhome">
+              <div className="">
+                <div className="andarbaharconatiner">
+                  <div className="andarbahartext">
+                    {andarbahargametype[0]?.gameName}:
+                    {andarbahargametype[0]?.gamePrice}
+                  </div>
                 </div>
+                <div className="andarbahardivider" />
               </div>
-              <div className="andarbahardivider" />
+              <li class="settinglist-item">
+                <div className="gametabs">
+                  <span className="newzyx">Notification</span>
+                  <label class="android-toggle">
+                    <input
+                      type="checkbox"
+                      checked={data.andarBaharNotification}
+                      onChange={() => handleToggle("andarBaharNotification")}
+                    />
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div className="tabsright">View history</div>
+              </li>
             </div>
             <JackpotCard games={andarbahargames} />
           </TabPanel>

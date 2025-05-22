@@ -152,3 +152,15 @@ input:checked + .slider:before {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
+.newzyx{
+  font-size: 14px;
+  color: var(--Root-color);
+}
+.gametabs{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tabsright{
+  margin-right: 10px;
+}

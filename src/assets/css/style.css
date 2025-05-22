@@ -9350,7 +9350,7 @@ body.dark
 
 .maintitle {
   /* color: var(--Root-color) !important;/ */
-  color: #000;
+  color: var(--Root-color);
   font-weight: bold;
   font-size: 1rem;
 }
@@ -9946,13 +9946,14 @@ body.dark
 }
 .newdiv321 {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 10px;
 }
-.gameprice{
+.gameprice {
   color: var(--Root-color);
+  text-align: center;
 }
 .icon-grid-containerjackpot {
   display: grid;
@@ -9977,4 +9978,66 @@ body.dark
 }
 .andarbahardivider {
   border-bottom: 2px solid black;
+}
+.tabstickyhome {
+  position: sticky;
+  top: 130px;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+}
+.contact-card-container {
+  margin-top: 5px;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  padding: 10px;
+  gap: 20px;
+  border: 1px solid #ccc;
+}
+
+.contact-box {
+  border-radius: 40px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  justify-content: center;
+}
+
+.contact-number {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: 500;
+  /* font-weight: bold; */
+  /* font-size: 1px; */
+}
+.homeicon {
+  /* font-size: 24px; */
+  color: #25d366;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 40px;               
+  height: 40px; */
+  background-color: white;
+  border-radius: 50%;
+}
+.homeicon1 {
+  /* font-size: 24px; */
+  color: #000;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 40px;               
+  height: 40px; */
+  background-color: white;
+  border-radius: 50%;
 }

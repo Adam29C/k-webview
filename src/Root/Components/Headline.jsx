@@ -26,7 +26,7 @@ const Headline = () => {
     //     animate={{ x: "-100%" }}
     //     transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
     //   >
-    //    {headline}
+    //  {headline}
     //   </motion.h6>
     // </div>
     <div className="marquee-container">
