@@ -30,7 +30,6 @@ import router from "./Root/Routes/Routes";
 import { AuthProvider } from "./Root/Auth/AuthContext";
 // import "react-toastify/dist/ReactToastify.css";
 // import "react-datepicker/dist/react-datepicker.css";
-
 const App = () => {
   return (
     <AuthProvider>

@@ -13,13 +13,17 @@ export const apiRoutes = {
   NEW_REGISTER_USER: `${baseUrl}/user/registerNew`,
   LOGIN_USER_WITH_MPIN: `${baseUrl}/user/login`,
 
-
-
-
   // --- Game Endpoints ---
   GET_ALL_GAMES: `${baseUrl}/api/web/games`,
   GET_ALL_STARLINE_GAMES: `${baseUrl}/api/web/startline`,
   GET_ALL_JACKPOT_GAMES: `${baseUrl}/api/web/AbList`,
+
+  // game providers
+
+  GET_ALL_GAMES_PROVIDERS: `${baseUrl}/gameBids/main-game-provider`,
+  GET_ALL_STARLINE_GAMES_PROVIDERS: `${baseUrl}/starlineBids/starline-game-provider`,
+  GET_ALL_JACKPOT_GAMES_PROVIDERS: `${baseUrl}/andarBharBids/GameProvider`,
+
   // start from....14may
   GET_HEADLINE: `${baseUrl}/appSetting/getHeadLine`,
   GET_GAMEBID_HISTORY: `${baseUrl}/gameBids/history?`,
