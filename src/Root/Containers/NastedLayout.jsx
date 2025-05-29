@@ -10,12 +10,12 @@ const NastedLayout = ({ title, route, showhide, children }) => {
   return (
     <>
       <div className="Image-Container position-relative">
-        <div className="d-flex align-items-center text-light w-100 p-3">
-          <Link to={route} className="text-white me-3">
+        <div className="d-flex align-items-center text-light w-100 py-3 ps-3 ">
+          <Link to={route} className="text-white me-2">
             <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
           </Link>
           <div className="d-flex flex-column align-items-center">
-            <h4 className="mx-3 mb-0">{title}</h4>
+            <h6 className=" mb-0">{title}</h6>
           </div>
         </div>
       </div>

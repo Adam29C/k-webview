@@ -45,8 +45,6 @@ const MyBids = () => {
   ];
 
   return (
-
-    
     <div class="profile-wrapper">
       <div className="row">
         <div className="col-12">

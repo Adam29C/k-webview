@@ -43,7 +43,7 @@ const InformModal = ({
           </div>
         </h2>
         {/* <p className="delete-modal-message">{message}</p> */}
-        <div className="title my-3 ">{title}</div>
+        <div className="title my-3 fw-bold mt-3">{title}</div>
 
         {Show_btn && (
           <div className="delete-modal-buttons2 text-center ">

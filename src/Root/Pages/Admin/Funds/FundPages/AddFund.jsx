@@ -3,6 +3,7 @@ import { FOR_POST_REQUEST } from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
 import PagesIndex from "../../../pageIndex";
 import NastedLayout from "../../../../Containers/NastedLayout";
+import toast from "react-hot-toast";
 // import ThirdContainer from "../Containers/New_container";
 // import CommonTopSvg from "../../assets/svgs/secondary-top.svg";
 
@@ -10,6 +11,7 @@ const AddFund = () => {
   const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
 
   const [amount, setAmount] = useState("");
+  const [modal, setmodal] = useState(false);
 
   const handleAmountClick = (value) => {
     setAmount(value);
@@ -20,33 +22,40 @@ const AddFund = () => {
     setAmount(value === "" ? 0 : parseInt(value));
   };
   const handlesubmit = async () => {
+    if (amount <= 0) {
+      setmodal(true);
+    }
+
     const data = { amount: amount };
     try {
       const res = await FOR_POST_REQUEST(`${apiRoutes.POST_ADD_FUND}`, data);
-      if (res) {
-        if (res.status == true) {
-          console.log(res.data);
-        }
+
+      if (res.status) {
+        console.log(res.data);
+      } else {
+        console.log("dasdsad", res.data.error);
+
+        toast.error(res.data.error.message);
       }
     } catch (error) {
-      console.log(error);
+      console.log("dasdsad", res.data.error);
+
+      toast.error(error.error.message);
     }
   };
 
   return (
     <NastedLayout title={"Add Fund"} route={"/funds"}>
-    
-        <div className="d-flex justify-content-between align-items-center p-2 border rounded">
-          <div>
-            <div className="fw-bold ">{getProfile?.username}</div>
-            <div className="text-muted">+91{getProfile?.mobile}</div>
-          </div>
-          <div className="text-center">
-            <div className="text-muted">Available Balance</div>
-            <div className="fw-bold">₹ {getProfile?.wallet_balance || 0}</div>
-          </div>
+      <div className="d-flex justify-content-between align-items-center p-2 border rounded">
+        <div>
+          <div className="fw-bold ">{getProfile?.username}</div>
+          <div className="text-muted">+91{getProfile?.mobile}</div>
         </div>
-
+        <div className="text-center">
+          <div className="text-muted">Available Balance</div>
+          <div className="fw-bold">₹ {getProfile?.wallet_balance || 0}</div>
+        </div>
+      </div>
 
       <div className="col-12 mt-2 ">
         <div className="d-flex flex-column justify-content-between align-items-center p-2 border rounded">
@@ -89,6 +98,14 @@ const AddFund = () => {
           </button>
         </div>
       </div>
+      <PagesIndex.InformModal
+        isOpen={modal}
+        onClose={() => setmodal(!modal)}
+        title={"Please  Enter Valid Amount Of at Least 100"}
+        icon={"fa fa-info-circle"}
+        buttontitle={"OK"}
+      />
+      <PagesIndex.Toast />
     </NastedLayout>
   );
 };

@@ -24,7 +24,7 @@ export const FOR_POST_REQUEST = async (URL, sendData) => {
 
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    return error.response
   }
 };
 export const FOR_DELETE_REQUEST = async (URL, sendData) => {

@@ -48,7 +48,7 @@ function RichstarlineResultHistory() {
     getdata();
   }, [selectedDate]);
   return (
-    <NastedLayout title={"Add Fund"} route={"/bids"}>
+    <NastedLayout title={""} route={"/bids"}>
       <div className="game-result-card rounded-pill mb-2 d-flex">
         <div className="col-6 p-2  game-result-left">
           <span className="date-picker-container">
