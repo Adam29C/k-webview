@@ -8,11 +8,11 @@ import ConfirmModal from "../../../../Components/ConfirmModal";
 import { useNavigate } from "react-router-dom";
 import InformModal from "../../../../Components/InformModal";
 import { apiRoutes } from "../../../../Config/endpoints";
+import FilterBottomSheet from "../../../../Components/FilterBottomSheet";
 
 function RichstarlineBidHistory() {
   const [data, setdata] = useState([]);
   const [modal, setmodal] = useState(false);
-  const navigate = useNavigate();
   const getdata = async () => {
     try {
       // const data = { userId: "67b41598ce6ebe00c0d6a1c5", skipValue: "1" };
@@ -22,7 +22,7 @@ function RichstarlineBidHistory() {
       if (res) {
         if (res.status == true) {
           setdata(res.data);
-          console.log(res.data);
+          // console.log(res.data);
         }
 
         if (res.status == false) {
@@ -33,12 +33,85 @@ function RichstarlineBidHistory() {
       console.log(error);
     }
   };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState({
+    general: [],
+    status: [],
+    games: [],
+  });
+  const [gameprovider, setprovider] = useState([]);
+  const getgameprovider = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_STARLINE_PROVIDER}`);
+      if (res) {
+        if (res.status == true) {
+          setprovider(res.data);
+          // console.log(res.data);
+        }
+        if (res.status == false) {
+          setmodal(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getdata();
+    getgameprovider();
   }, []);
+  const handleSubmit = (filters) => {
+    console.log("Submitted Filters:", filters);
+    postFilter(filters);
+  };
+  const postFilter = async (filters) => {
+    const data = {
+      providerId: filters.games,
+      status: filters.status,
+    };
+    try {
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_STARLINE_BIDFILTER}limit=10&skipValue=1`,
+        data
+      );
+      if (res) {
+        if (res.status == true) {
+          // setprovider(res.data);
+          console.log(res.records);
+        }
+        if (res.status == false) {
+          // setmodal(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handlecancel = () => {
+    setIsOpen(false);
+    setSelectedFilters({
+      general: [],
+      status: [],
+      games: [],
+    });
+  };
+  const goback = () => {
+    navigate(-1);
+  };
 
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div onClick={goback}>{"<-"}BID HISTORY</div>
+        <button
+          onClick={() => setIsOpen(true)}
+          style={{ border: "none", backgroundColor: "white" }}
+        >
+          Filter Type
+          <i className="fas fa-filter" style={{ marginRight: "6px" }}></i>
+        </button>
+      </div>
       {data?.length > 0 ? (
         <>
           {data?.map((item, i) => (
@@ -87,6 +160,15 @@ function RichstarlineBidHistory() {
       ) : (
         <p className="nodatafoundtext">No Bid History Found</p>
       )}
+      <FilterBottomSheet
+        isOpen={isOpen}
+        onClose={() => handlecancel()}
+        onSubmit={handleSubmit}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+        gamelist={gameprovider}
+        gametype={false}
+      />
       <InformModal
         isOpen={modal}
         onClose={() => setmodal(!modal)}

@@ -15,13 +15,11 @@ export const apiRoutes = {
   GET_ALL_STARLINE_GAMES: `${baseUrl}/api/web/startline`,
   GET_ALL_JACKPOT_GAMES: `${baseUrl}/api/web/AbList`,
   // start from....14may
-  GET_HEADLINE: `${baseUrl}appSetting/getHeadLine`,
   GET_GAMEBID_HISTORY: `${baseUrl}gameBids/history?`,
   GET_GAMERESULT_HISTORY: `${baseUrl}gameBids/result-history?date=`,
   GET_STARLINEBID_HISTORY: `${baseUrl}starlineBids/history?`,
   GET_STARLINERESULT_HISTORY: `${baseUrl}starlineBids/result-history?date=`,
   // 15may
-  GET_ANDARBAHARBID_HISTORY: `${baseUrl}andarBharBids/history?`,
   GET_ANDARBAHARRESULT_HISTORY: `${baseUrl}andarBharBids/result-history?date=`,
   GET_USERBALANCE: `${baseUrl}profile/getBal`,
   GET_NOTIFICATION_STATUS: `${baseUrl}appSetting/userNotificationStatus`,
@@ -51,10 +49,22 @@ export const apiRoutes = {
   GET_WALLET_HISTORY: `${baseUrl}wallet/history?`,
   POST_WITHDRAW_FUND_UPI: `${baseUrl}withdraw/withdrawFundUPI`,
   POST_ADD_FUND: `${baseUrl}addFund/paymentInitiate`,
-  // 22may
-  // GET_FUND_HISTORY: `${baseUrl}resultHistory/fund?`,
-  // GET_DEBIT_HISTORY: `${baseUrl}resultHistory/debit?`,
-  // GET_CREDIT_HISTORY: `${baseUrl}resultHistory/credit?`,
+  //23 may
+  GET_APP_BANNER: `${baseUrl}appSetting/appBanner`,
+  GET_SOCIAL_ACCOUNT_DETAILS: `${baseUrl}appSetting/socialAccountDetails`,
+  GET_HEADLINE: `${baseUrl}appSetting/getHeadLine`,
+  POST_TRANSACTION_CHARGE: `${baseUrl}withdraw/transectionCharges`,
+  GET_ANDARBAHARBID_HISTORY: `${baseUrl}andarBharBids/history?`,
+  GET_ADD_FUND_IDsUPI: `${baseUrl}addFund/idsUpi`,
+  // 26may
+  GET_MAIN_GAME_PROVIDER: `${baseUrl}gameBids/main-game-provider`,
+  GET_STARLINE_PROVIDER: `${baseUrl}starlineBids/starline-game-provider`,
+  GET_ANDARBAHAR_PROVIDER: `${baseUrl}andarBharBids/GameProvider`,
+
+  POST_GAMEBID_BIDFILTER: `${baseUrl}gameBids/bidsFilter?`,
+  POST_STARLINE_BIDFILTER: `${baseUrl}starlineBids/bidsFilter?`,
+  POST_ANDARBAHAR_BIDFILTER: `${baseUrl}andarBharBids/bidsFilter?`,
+  // 27 may net nahi chlra
 };
 
 // api/user/sendMobileOtpNew

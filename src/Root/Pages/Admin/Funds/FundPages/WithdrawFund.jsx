@@ -30,6 +30,28 @@ function WithdrawFund() {
   useEffect(() => {
     getdata();
   }, []);
+
+  const transactionCharge = async () => {
+    const data = { req_amount: 500 };
+    try {
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_TRANSACTION_CHARGE}`,
+        data
+      );
+      if (res) {
+        if (res.status == true) {
+          console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    transactionCharge();
+  }, []);
+
   const handlesubmit = async () => {
     const data = { req_amount: amount };
     try {

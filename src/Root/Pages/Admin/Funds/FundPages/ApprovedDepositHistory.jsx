@@ -52,7 +52,7 @@ function ApprovedDepositHistory() {
         );
         if (res) {
           if (res.status == true) {
-            console.log(res);
+            // console.log(res);
             setItems((prev) => [...prev, ...res.data]);
             setPages(res.pages);
             setLoading(false);

@@ -60,7 +60,7 @@ const Passbook = () => {
             setItems((prev) => [...prev, ...res.data]);
             setPages(res.pages);
             setLoading(false);
-            console.log(res.data);
+            // console.log(res.data);
           }
         }
       } catch (error) {

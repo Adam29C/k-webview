@@ -33,7 +33,7 @@ function FundRequestHistory() {
         );
         if (res) {
           if (res.status == true) {
-            console.log(res);
+            // console.log(res);
             setItems((prev) => [...prev, ...res.data]);
             setPages(res.totalPages);
             setLoading(false);

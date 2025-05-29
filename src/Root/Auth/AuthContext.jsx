@@ -15,8 +15,7 @@ export const AuthProvider = ({ children }) => {
     setToken("abcdddd");
     localStorage.setItem(
       "token",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VJZCI6ImFiYzEyMzEiLCJ1c2VySWQiOiI2ODFkZjIzYWM2OTEyNzFiZmJkZTMzODUiLCJpYXQiOjE3NDc4OTQwNzYsImV4cCI6MTc0Nzg5NzY3Nn0.IUs2cQfrGHhHg3PIq-taUSL6Z8V2gtlI3HfridBIoOA"
-    );
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VJZCI6ImFiYzEyMzEiLCJ1c2VySWQiOiI2ODFkZjIzYWM2OTEyNzFiZmJkZTMzODUiLCJpYXQiOjE3NDg0MzQyMjF9.52LE8Sj3p8iLuuLUuX9GFMmYz6nIGyWYCuahqQ-Rd_U"    );
     // try {
     //   const res = await LOGIN_API(data);
     //   setloading(false);

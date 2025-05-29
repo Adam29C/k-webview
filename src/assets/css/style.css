@@ -6369,7 +6369,7 @@ body.dark .main-header .header-panel a .icon-btn.back-arrow {
 .header .head-content a {
   width: calc(36px + (48 - 36) * ((100vw - 320px) / (1920 - 320)));
   height: calc(36px + (48 - 36) * ((100vw - 320px) / (1920 - 320)));
-  background-color: rgba(var(--box-bg), 1);
+  /* background-color: rgba(var(--box-bg), 1); */
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -10041,3 +10041,17 @@ body.dark
   background-color: white;
   border-radius: 50%;
 }
+.linkstyle {
+  text-decoration: none;
+  margin-top: 10px;
+  color: inherit;
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  display: inline;
+}
+
+
+
+

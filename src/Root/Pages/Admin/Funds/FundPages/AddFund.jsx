@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { FOR_POST_REQUEST } from "../../../../Service/commanservice";
+import React, { useEffect, useState } from "react";
+import {
+  FOR_GET_LIST,
+  FOR_POST_REQUEST,
+} from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
 // import ThirdContainer from "../Containers/New_container";
 // import CommonTopSvg from "../../assets/svgs/secondary-top.svg";
@@ -27,6 +30,23 @@ const AddFund = () => {
       console.log(error);
     }
   };
+  const GetUPIids = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_ADD_FUND_IDsUPI}`);
+      if (res) {
+        if (res.status == true) {
+          // setmyList(res.data.textMain);
+          // console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    GetUPIids();
+  }, []);
+
   return (
     <>
       <div>
