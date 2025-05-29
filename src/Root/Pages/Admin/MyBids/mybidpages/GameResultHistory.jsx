@@ -4,6 +4,7 @@ import {
   FOR_POST_REQUEST,
 } from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
+import NastedLayout from "../../../../Containers/NastedLayout";
 function GameResultHistory() {
   const [data, setdata] = useState([]);
   const getTodayDate = () => {
@@ -45,7 +46,7 @@ function GameResultHistory() {
     getdata();
   }, [selectedDate]);
   return (
-    <div>
+    <NastedLayout title={"Bid History"} route={"/bids"}>
       <div className="game-result-card   rounded-pill mb-2 d-flex">
         <div className="col-6 p-2  game-result-left">
           <span className="date-picker-container">
@@ -90,7 +91,7 @@ function GameResultHistory() {
       ) : (
         <p className="nodatafoundtext">No Game Result Found</p>
       )}
-    </div>
+    </NastedLayout>
   );
 }
 

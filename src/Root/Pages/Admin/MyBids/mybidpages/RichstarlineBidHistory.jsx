@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NewContainer from "../../../../Containers/New_container";
+import NewContainer from "../../../../Containers/NastedLayout";
 import {
   FOR_GET_LIST,
   FOR_POST_REQUEST,
@@ -8,6 +8,7 @@ import ConfirmModal from "../../../../Components/ConfirmModal";
 import { useNavigate } from "react-router-dom";
 import InformModal from "../../../../Components/InformModal";
 import { apiRoutes } from "../../../../Config/endpoints";
+import NastedLayout from "../../../../Containers/NastedLayout";
 
 function RichstarlineBidHistory() {
   const [data, setdata] = useState([]);
@@ -38,7 +39,7 @@ function RichstarlineBidHistory() {
   }, []);
 
   return (
-    <div>
+    <NastedLayout title={"STARLINE BID HISTORY"} route={"/bids"}>
       {data?.length > 0 ? (
         <>
           {data?.map((item, i) => (
@@ -94,7 +95,7 @@ function RichstarlineBidHistory() {
         icon={"fa fa-info-circle"}
         buttontitle={"OK"}
       />
-    </div>
+    </NastedLayout>
   );
 }
 

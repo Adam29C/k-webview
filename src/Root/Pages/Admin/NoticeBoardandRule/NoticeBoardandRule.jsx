@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../assets/css/noticeboard.css";
 import { FOR_GET_LIST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 
 function NoticeBoardandRule() {
   const [data, setdata] = useState([]);
@@ -22,12 +23,12 @@ function NoticeBoardandRule() {
     getdata();
   }, []);
   // console.log(data);
-  const desc1 = data.description1.replace(/\n/g, "<br />");
-  const desc2 = data.description2.replace(/\n/g, "<br />");
-  const desc3 = data.description3.replace(/\n/g, "<br />");
+  const desc1 = data.description1;
+  const desc2 = data.description2;
+  const desc3 = data.description3;
   return (
-    <>
-      <div class="noticecontainer">
+    <NastedLayout title={"GAMTRATES"} route={"/home"}>
+      {/* <div class="noticecontainer"> */}
         <h1 class="noticeheading">{data.title1}</h1>
         <ul class="noticelist">
           <li
@@ -105,8 +106,8 @@ function NoticeBoardandRule() {
             dangerouslySetInnerHTML={{ __html: desc3 }}
           ></li>
         </ul>
-      </div>
-    </>
+      {/* </div> */}
+    </NastedLayout>
   );
 }
 export default NoticeBoardandRule;

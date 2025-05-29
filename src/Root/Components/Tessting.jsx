@@ -585,52 +585,52 @@
 
 // //   -------------  FUND REQUEST HISTORY  -------------
 
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import NewContainer from "../Containers/New_container";
 
-// const Tessting = () => {
-//   return (
-//     <>
-//       <NewContainer title="jackpot bid History">
-//         <div className="fund-request-card p-2  rounded-4 mb-2">
-//           <div className="d-flex justify-content-between align-items-center ">
-//             <div className="flex-column d-flex  ">
-//               <span className="bold-font">order id</span>
-//               <span className="">dfgfdg34534</span>
-//             </div>
-//             <h1 className=" text-muted">₹ 500</h1>
-//           </div>
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import NewContainer from "../Containers/NastedLayout";
 
-//           <div className="d-flex  mt-2 flex-column ">
-//             <div className=" d-flex text-left ">
-//               <span className="bold-font">
-//                 Request Type &nbsp; : &nbsp;&nbsp;
-//               </span>
-//               <span className="">Credit</span>
-//             </div>
-//             <div className="d-flex text-center ">
-//               <span className="bold-font">
-//                 Withdraw Mode &nbsp; : &nbsp;&nbsp;
-//               </span>
-//               <span className="">UPI/Bank</span>
-//             </div>
-//             <div className="d-flex text-center ">
-//               <span className="bold-font">Status &nbsp; : &nbsp;&nbsp;</span>
-//               <span className="">Decliend</span>
-//             </div>
-//             <div className="d-flex text-center ">
-//               <span className="bold-font">Date &nbsp; : &nbsp;&nbsp;</span>
-//               <span className="">25/02/2025 </span>
-//             </div>
-//           </div>
-//         </div>
-//       </NewContainer>
-//     </>
-//   );
-// };
+const Tessting = () => {
+  return (
+    <>
+      <NewContainer title="jackpot bid History">
+        <div className="fund-request-card p-2  rounded-4 mb-2">
+          <div className="d-flex justify-content-between align-items-center ">
+            <div className="flex-column d-flex  ">
+              <span className="bold-font">order id</span>
+              <span className="">dfgfdg34534</span>
+            </div>
+            <h1 className=" text-muted">₹ 500</h1>
+          </div>
+          <div className="d-flex  mt-2 flex-column ">
+            <div className=" d-flex text-left ">
+              <span className="bold-font">
+                Request Type &nbsp; : &nbsp;&nbsp;
+              </span>
+              <span className="">Credit</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">
+                Withdraw Mode &nbsp; : &nbsp;&nbsp;
+              </span>
+              <span className="">UPI/Bank</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">Status &nbsp; : &nbsp;&nbsp;</span>
+              <span className="">Decliend</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">Date &nbsp; : &nbsp;&nbsp;</span>
+              <span className="">25/02/2025 </span>
+            </div>
+          </div>
+        </div>
+      </NewContainer>
+    </>
+  );
+};
 
-// export default Tessting;
+export default Tessting;
 
 //---------------------- GAME TYPE DASHBOARD  -------------
 
@@ -1313,10 +1313,11 @@
 // };
 
 // export default Tessting;
-import React from "react";
 
-function Tessting() {
-  return <div>Tessting</div>;
-}
+// import React from "react";
 
-export default Tessting;
+// function Tessting() {
+//   return <div>Tessting</div>;
+// }
+
+// export default Tessting;

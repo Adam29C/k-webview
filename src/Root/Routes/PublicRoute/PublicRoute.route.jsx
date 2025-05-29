@@ -14,11 +14,10 @@ import RichstarlineBidHistory from "../../Pages/Admin/MyBids/mybidpages/Richstar
 import RichstarlineResultHistory from "../../Pages/Admin/MyBids/mybidpages/RichstarlineResultHistory";
 import RichjackpotBidHistory from "../../Pages/Admin/MyBids/mybidpages/RichjackpotBidHistory";
 import RichjackpotResultHistory from "../../Pages/Admin/MyBids/mybidpages/RichjackpotResultHistory";
-import AddFund from "../../Pages/Admin/Funds/FundPages/AddFund";
 import WithdrawFund from "../../Pages/Admin/Funds/FundPages/WithdrawFund";
 import ApprovedDepositHistory from "../../Pages/Admin/Funds/FundPages/ApprovedDepositHistory";
 import ApprovedWithdrawalHistory from "../../Pages/Admin/Funds/FundPages/ApprovedWithdrawalHistory";
-import FundRequestHistory from "../../Pages/Admin/Funds/FundPages/FundRequestHistory";
+// import FundRequestHistory from "../../Pages/Admin/Funds/FundPages/FundRequestHistory";
 import AddBankDetails from "../../Pages/Admin/Funds/FundPages/AddBankDetails";
 import Testing123 from "../../Components/Testing123";
 import Settings from "../../Pages/Admin/Settings/Settings";
@@ -63,28 +62,18 @@ const isAuthenticated = "";
 
 const publicRoutes = [
   {
-    path: "/", // Login route (no layout)
-    element: (
-      <RedirectIfAuthenticated>
-        {/* <LoginPage /> */}
-        <Welcome />
-      </RedirectIfAuthenticated>
-    ),
-  },
-
-  {
     path: "/",
     element: <PublicRoute element={Wraper} />,
+
     // errorElement: <Wraper />,
     children: [
       {
-        element: <ProtectedRoute />,
+        // element: <ProtectedRoute />,
         children: [
           // {
           //   path: "test",
           //   element: <Tessting />,
           // },
-
           {
             path: "maingame",
             element: <MainGamePage />,
@@ -211,172 +200,172 @@ const publicRoutes = [
             path: "bids",
             element: <PublicRoute element={MyBids} />,
           },
-          {
-            path: "bids/gamebidhistory",
-            element: <PublicRoute element={GameBidHistory} />,
-          },
-          {
-            path: "bids/gameresulthistory",
-            element: <PublicRoute element={GameResultHistory} />,
-          },
-          {
-            path: "bids/richstarlinebidhistory",
-            element: <PublicRoute element={RichstarlineBidHistory} />,
-          },
-          {
-            path: "bids/richstarlineresulthistory",
-            element: <PublicRoute element={RichstarlineResultHistory} />,
-          },
-          {
-            path: "bids/richjackpotbidhistory",
-            element: <PublicRoute element={RichjackpotBidHistory} />,
-          },
-          {
-            path: "bids/richjackpotresulthistory",
-            element: <PublicRoute element={RichjackpotResultHistory} />,
-          },
-          {
-            path: "passbook",
-            element: <PublicRoute element={Passbook} />,
-          },
+          // {
+          //   path: "bids/gamebidhistory",
+          //   element: <PublicRoute element={GameBidHistory} />,
+          // },
+          // {
+          //   path: "bids/gameresulthistory",
+          //   element: <PublicRoute element={GameResultHistory} />,
+          // },
+          // {
+          //   path: "bids/richstarlinebidhistory",
+          //   element: <PublicRoute element={RichstarlineBidHistory} />,
+          // },
+          // {
+          //   path: "bids/richstarlineresulthistory",
+          //   element: <PublicRoute element={RichstarlineResultHistory} />,
+          // },
+          // {
+          //   path: "bids/richjackpotbidhistory",
+          //   element: <PublicRoute element={RichjackpotBidHistory} />,
+          // },
+          // {
+          //   path: "bids/richjackpotresulthistory",
+          //   element: <PublicRoute element={RichjackpotResultHistory} />,
+          // },
+          // {
+          //   path: "passbook",
+          //   element: <PublicRoute element={Passbook} />,
+          // },
           {
             path: "funds",
             element: (
               <PublicRoute element={Funds} isAuthenticated={isAuthenticated} />
             ),
           },
-          {
-            path: "/funds/addfunds",
-            element: (
-              <PublicRoute
-                element={AddFund}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "/funds/withdrawfund",
-            element: (
-              <PublicRoute
-                element={WithdrawFund}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "/funds/approveddeposithistory",
-            element: (
-              <PublicRoute
-                element={ApprovedDepositHistory}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "/funds/approvedwithdrawalhistory",
-            element: (
-              <PublicRoute
-                element={ApprovedWithdrawalHistory}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "/funds/fundrequesthistory",
-            element: (
-              <PublicRoute
-                element={FundRequestHistory}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "/funds/addbankdetails",
-            element: (
-              <PublicRoute
-                element={AddBankDetails}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
+          // {
+          //   path: "/funds/addfunds",
+          //   element: (
+          //     <PublicRoute
+          //       element={AddFund}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "/funds/withdrawfund",
+          //   element: (
+          //     <PublicRoute
+          //       element={WithdrawFund}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "/funds/approveddeposithistory",
+          //   element: (
+          //     <PublicRoute
+          //       element={ApprovedDepositHistory}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "/funds/approvedwithdrawalhistory",
+          //   element: (
+          //     <PublicRoute
+          //       element={ApprovedWithdrawalHistory}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "/funds/fundrequesthistory",
+          //   element: (
+          //     <PublicRoute
+          //       element={FundRequestHistory}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "/funds/addbankdetails",
+          //   element: (
+          //     <PublicRoute
+          //       element={AddBankDetails}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
           {
             path: "charts",
             element: (
               <PublicRoute element={Charts} isAuthenticated={isAuthenticated} />
             ),
           },
-          {
-            path: "support",
-            element: (
-              <PublicRoute
-                element={Support}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "setting",
-            element: (
-              <PublicRoute
-                element={Settings}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "noticeboard",
-            element: (
-              <PublicRoute
-                element={NoticeBoardandRule}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "gamerates",
-            element: (
-              <PublicRoute
-                element={GameRates}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "genratempin",
-            element: (
-              <PublicRoute
-                element={GenerateMPin}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "submityouridea",
-            element: (
-              <PublicRoute
-                element={SubmitYourIdea}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "howtoplay",
-            element: (
-              <PublicRoute
-                element={HowToPlay}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
-          {
-            path: "notification",
-            element: (
-              <PublicRoute
-                element={Notification}
-                isAuthenticated={isAuthenticated}
-              />
-            ),
-          },
+          // {
+          //   path: "support",
+          //   element: (
+          //     <PublicRoute
+          //       element={Support}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "setting",
+          //   element: (
+          //     <PublicRoute
+          //       element={Settings}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "noticeboard",
+          //   element: (
+          //     <PublicRoute
+          //       element={NoticeBoardandRule}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "gamerates",
+          //   element: (
+          //     <PublicRoute
+          //       element={GameRates}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "genratempin",
+          //   element: (
+          //     <PublicRoute
+          //       element={GenerateMPin}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "submityouridea",
+          //   element: (
+          //     <PublicRoute
+          //       element={SubmitYourIdea}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "howtoplay",
+          //   element: (
+          //     <PublicRoute
+          //       element={HowToPlay}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
+          // {
+          //   path: "notification",
+          //   element: (
+          //     <PublicRoute
+          //       element={Notification}
+          //       isAuthenticated={isAuthenticated}
+          //     />
+          //   ),
+          // },
           {
             path: "*",
             element: (
@@ -389,6 +378,10 @@ const publicRoutes = [
         ],
       },
     ],
+
+    // path: "/test",
+    // element: <PublicRoute element={Wraper} />,
   },
 ];
+
 export default publicRoutes;

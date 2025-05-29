@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../assets/css/notification.css";
 import { apiRoutes } from "../../../Config/endpoints";
 import { FOR_GET_LIST, FOR_POST_REQUEST } from "../../../Service/commanservice";
+import NastedLayout from "../../../Containers/NastedLayout";
 function Notification() {
   // const notifications = [
   //   { id: 1, message: "You have a new message!" },
@@ -51,21 +52,23 @@ function Notification() {
   }, []);
 
   return (
-    <div className="notification-list">
-      {allnotification.length > 0 && (
-        <h2 className="notificationheading">Notifications</h2>
-      )}
-      {allnotification.length === 0 ? (
-        <div className="no-notifications">No Notifications</div>
-      ) : (
-        allnotification.map((notification) => (
-          <div key={notification.id} className="notification">
-            <h6>{notification.title}</h6>
-            {notification.message}
-          </div>
-        ))
-      )}
-    </div>
+    <NastedLayout title={"NOTIFICATIONS"} route={"/home"}>
+      <div className="notification-list">
+        {allnotification.length > 0 && (
+          <h2 className="notificationheading">Notifications</h2>
+        )}
+        {allnotification.length === 0 ? (
+          <div className="no-notifications">No Notifications</div>
+        ) : (
+          allnotification.map((notification) => (
+            <div key={notification.id} className="notification">
+              <h6>{notification.title}</h6>
+              {notification.message}
+            </div>
+          ))
+        )}
+      </div>
+    </NastedLayout>
   );
 }
 

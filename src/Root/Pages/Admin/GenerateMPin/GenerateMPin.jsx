@@ -7,6 +7,7 @@ import ReusableForm from "../../../Components/Formik_form";
 import CenterModal from "../../../Components/Reusable_modal";
 import { FOR_POST_REQUEST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 
 // import Home_Container from "../Containers/Home_Container";
 
@@ -98,8 +99,7 @@ const GenerateMPin = () => {
   };
   //   console.log(selectedGame);
   return (
-    <>
-      {/* <Home_Container title="MADHUR DAY - Single Digit Board"> */}
+    <NastedLayout title={"GAMERATES"} route={"/home"}>
       <div className=" py-3 px-3 my-2 rounded">
         <div className="container-fluid">
           <div className="row">
@@ -162,8 +162,7 @@ const GenerateMPin = () => {
           }
         />
       </div>
-      {/* </Home_Container> */}
-    </>
+    </NastedLayout>
   );
 };
 

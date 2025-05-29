@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../assets/css/settings.css";
 import { FOR_GET_LIST, FOR_POST_REQUEST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 
 function Settings() {
   const [data, setdata] = useState({
@@ -48,7 +49,7 @@ function Settings() {
     }
   };
   return (
-    <div>
+    <NastedLayout title={"SETTINGS"} route={"/home"}>
       <div class="settingcontainer">
         <h1 class="settingheading">Login Settings</h1>
         <label
@@ -109,7 +110,7 @@ function Settings() {
           </li>
         </ul>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

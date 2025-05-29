@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../assets/css/gamerates.css";
 import { FOR_GET_LIST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 function GameRates() {
   const [data, setdata] = useState({});
   const getdata = async () => {
@@ -22,7 +23,7 @@ function GameRates() {
   }, []);
 
   return (
-    <>
+    <NastedLayout title={"GAMTRATES"} route={"/home"}>
       <div class="gameratecontainer">
         <h1 class="gamerateheading">Game Win Ratio For All Bids(game rates)</h1>
         <ul class="gameratelist">
@@ -51,7 +52,7 @@ function GameRates() {
           ))}
         </ul>
       </div>
-    </>
+    </NastedLayout>
   );
 }
 

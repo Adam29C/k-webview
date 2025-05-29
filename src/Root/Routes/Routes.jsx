@@ -11,14 +11,18 @@ import Funddepositehistory from "../Components/Funddepositehistory";
 import Fundwithdrowhistory from "../Components/Fundwithdrowhistory";
 import Tessting from "../Components/Tessting";
 import VerifyUser from "../Pages/Auth/VarifyUsername";
-import Testing123 from "../Components/Testing123";
+import Testing123 from "../Components/Tessting";
 import RedBracket from "../Gamepages/RedBracket/RedBracket";
 import DigitBasedjodi from "../Gamepages/DigitBasedJodi/DigitBasedjodi";
+import ApprovedDepositHistory from "../Pages/Admin/Funds/FundPages/ApprovedDepositHistory";
 // import ErrorPage from "../Pages/Auth/NotFound";
 
+import NastedRoute from "./NastedRoute/NastedRoute";
 const router = createBrowserRouter([
   ...publicRoutes,
   ...adminRoutes,
+  ...NastedRoute,
+
   // {
   //   path: "*",
   //   element: <ErrorPage />,
@@ -56,6 +60,16 @@ const router = createBrowserRouter([
     path: "loginmpin",
     element: <LoginMPIN />,
   },
+  {
+    path: "/funds/approveddeposithistory",
+    element: <ApprovedDepositHistory />,
+  },
+  {
+    path: "test",
+    element: <Testing123 />,
+  },
 ]);
+
+3;
 
 export default router;

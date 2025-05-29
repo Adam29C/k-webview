@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../../../assets/css/howtoplay.css";
 import { FOR_GET_LIST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 function HowToPlay() {
   const [data, setdata] = useState([]);
   const getdata = async () => {
@@ -21,8 +22,9 @@ function HowToPlay() {
     getdata();
   }, []);
   return (
-    <div>
-      <div className="how-to-play-container">
+       <NastedLayout title={"How To Play"} route={"/home"}>
+
+      {/* <div className="how-to-play-container"> */}
         <h2 className="how-to-play-instructions-title">{data[0]?.title}</h2>
         <div className="how-to-play-instructions">
           <ol className="how-to-play-list">
@@ -32,8 +34,8 @@ function HowToPlay() {
             </li> */}
           </ol>
         </div>
-      </div>
-    </div>
+      {/* </div> */}
+    </NastedLayout>
   );
 }
 

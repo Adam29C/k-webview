@@ -13,8 +13,7 @@ const NewContainer = ({ title, route, showhide, children }) => {
             <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
           </Link>
           <div className="d-flex flex-column align-items-center">
-            <h2 className="mx-3 mb-0">{title}</h2>
-            <span className="">online</span>
+            <h4 className="mx-3 mb-0">{title}</h4>
           </div>
         </div>
       </div>

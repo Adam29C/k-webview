@@ -5,6 +5,7 @@ import PagesIndex from "../../../pageIndex";
 import { GetIFSCCode } from "../../../../Config/baseurl";
 import axios from "axios";
 import toast from "react-hot-toast";
+import NastedLayout from "../../../../Containers/NastedLayout";
 const AddBankDetails = () => {
   const navigate = PagesIndex.useNavigate();
   const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
@@ -118,46 +119,40 @@ const AddBankDetails = () => {
   }, [formik.values.ifsccode]);
 
   return (
-    <>
-      <div>
-        <div className="container-fluid mt-2">
-          <div className="row">
-            <div className="col-12">
-              <div className="d-flex justify-content-between align-items-center p-2 border rounded">
-                <div>
-                  <div className="fw-bold ">{getProfile?.username}</div>
-                  <div className="text-muted">+91{getProfile?.mobile}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-muted">Available Balance</div>
-                  <div className="fw-bold">₹ {getProfile?.wallet_balance}</div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-4">
-              <PagesIndex.ReusableForm
-                fromDate={new Date()}
-                fieldtype={formFields}
-                formik={formik}
-                btn_name="Add Bank"
-                title="Bank Details"
-                VerifyMobileN={() => console.log("Verify Mobile Number")}
-                button_Size="lg"
-                Disable_Button={false}
-                btn_design="btn-primary"
-                disabledSubmit={false}
-                isLoading={false}
-                show_submit={true}
-                label_size={4}
-                show_preview={true}
-                show_clear={true}
-                setUnable={() => console.log("Set Unable")}
-              />
-            </div>
+    <NastedLayout title={"Add Bank Details"} route={"/funds"}>
+      <div className="col-12">
+        <div className="d-flex justify-content-between align-items-center p-2 border rounded">
+          <div>
+            <div className="fw-bold ">{getProfile?.username}</div>
+            <div className="text-muted">+91{getProfile?.mobile}</div>
+          </div>
+          <div className="text-center">
+            <div className="text-muted">Available Balance</div>
+            <div className="fw-bold">₹ {getProfile?.wallet_balance}</div>
           </div>
         </div>
-        <PagesIndex.Toast position="top - center" />
       </div>
+      <div className="mt-4">
+        <PagesIndex.ReusableForm
+          fromDate={new Date()}
+          fieldtype={formFields}
+          formik={formik}
+          btn_name="Add Bank"
+          title="Bank Details"
+          VerifyMobileN={() => console.log("Verify Mobile Number")}
+          button_Size="lg"
+          Disable_Button={false}
+          btn_design="btn-primary"
+          disabledSubmit={false}
+          isLoading={false}
+          show_submit={true}
+          label_size={4}
+          show_preview={true}
+          show_clear={true}
+          setUnable={() => console.log("Set Unable")}
+        />
+      </div>
+      <PagesIndex.Toast position="top - center" />
       <PagesIndex.InformModal
         isOpen={modal}
         onClose={() => setmodal(!modal)}
@@ -165,7 +160,7 @@ const AddBankDetails = () => {
         icon={"fa fa-info-circle"}
         buttontitle={"OK"}
       />
-    </>
+    </NastedLayout>
   );
 };
 

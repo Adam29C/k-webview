@@ -27,6 +27,8 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import router from "./Root/Routes/Routes";
+// import router from "./App/Routes/Route.config";
+
 import { AuthProvider } from "./Root/Auth/AuthContext";
 // import "react-toastify/dist/ReactToastify.css";
 // import "react-datepicker/dist/react-datepicker.css";

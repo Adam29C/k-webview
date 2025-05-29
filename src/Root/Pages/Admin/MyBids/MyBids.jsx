@@ -45,14 +45,8 @@ const MyBids = () => {
   ];
 
   return (
-    // <div>
-    //   {/* <Header /> */}
-    //   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel, commodi?
-    //   Omnis recusandae perspiciatis nostrum, nulla, assumenda voluptate mollitia
-    //   vitae adipisci, velit ratione aliquid veniam commodi atque aut.
-    //   Reprehenderit, voluptas provident. lorem*400
-    //   {/* <Footer /> */}
-    // </div>
+
+    
     <div class="profile-wrapper">
       <div className="row">
         <div className="col-12">

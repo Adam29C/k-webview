@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiRoutes } from "../../../../Config/endpoints";
 import { FOR_GET_LIST } from "../../../../Service/commanservice";
+import NastedLayout from "../../../../Containers/NastedLayout";
 
 function ApprovedDepositHistory() {
   const [data, setdata] = useState([]);
@@ -12,7 +13,6 @@ function ApprovedDepositHistory() {
       if (res) {
         if (res.status == true) {
           setdata(res.data);
-          // console.log(res.data);
         }
       }
     } catch (error) {
@@ -23,9 +23,42 @@ function ApprovedDepositHistory() {
     getdata();
   }, []);
   return (
-    <div>
-      {" "}
-      <div className="container-fluid mt-2">
+    <>
+      <NastedLayout title={"Approved Credit History"} route={"/funds"}>
+        <div className="fund-request-card p-2  rounded-4 mb-2">
+          <div className="d-flex justify-content-between align-items-center ">
+            <div className="flex-column d-flex  ">
+              <span className="bold-font">order id</span>
+              <span className="">dfgfdg34534</span>
+            </div>
+            <h1 className=" text-muted">₹ 500</h1>
+          </div>
+
+          <div className="d-flex  mt-2 flex-column ">
+            <div className=" d-flex text-left ">
+              <span className="bold-font">
+                Request Type &nbsp; : &nbsp;&nbsp;
+              </span>
+              <span className="">Credit</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">
+                Withdraw Mode &nbsp; : &nbsp;&nbsp;
+              </span>
+              <span className="">UPI/Bank</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">Status &nbsp; : &nbsp;&nbsp;</span>
+              <span className="">Decliend</span>
+            </div>
+            <div className="d-flex text-center ">
+              <span className="bold-font">Date &nbsp; : &nbsp;&nbsp;</span>
+              <span className="">25/02/2025 </span>
+            </div>
+          </div>
+        </div>
+      </NastedLayout>
+      {/* <div className="container-fluid mt-2">
         <div className="row">
           {data.map((item, i) => (
             <div className="col-12">
@@ -71,8 +104,8 @@ function ApprovedDepositHistory() {
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </div> */}
+    </>
   );
 }
 

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import ReusableForm from "../../../Components/Formik_form";
-import NewContainer from "../../../Containers/New_container";
+import NewContainer from "../../../Containers/NastedLayout";
 import { FOR_POST_REQUEST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 // import ReusableForm from "./Formik_form";
 
 // import NewContainer from "../Containers/New_container";
@@ -55,8 +56,7 @@ const SubmitYourIdea = () => {
   });
 
   return (
-    <>
-      {/* <NewContainer title="MADHUR DAY - Single Digit Board"> */}
+    <NastedLayout title={"SUBMIT YOUR IDEAS"} route={"/home"}>
       <div className="my-2">
         <div className="d-flex primary-color fw-bold justify-content-around align-items-center">
           <div className="">
@@ -87,7 +87,7 @@ const SubmitYourIdea = () => {
         </div>
       </div>
       {/* </NewContainer> */}
-    </>
+    </NastedLayout>
   );
 };
 

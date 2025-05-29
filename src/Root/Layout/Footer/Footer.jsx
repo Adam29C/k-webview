@@ -56,17 +56,16 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <ul className="bottom-menu">
-        <li>
-          <Link to="/bids" className="menu-item">
-            <i className="bottom-icons-font-size fa-regular fa-clipboard"></i>
-            <h6>My Bids</h6>
-          </Link>
-        </li>
-
         <li className="active">
           <Link to="/passbook" className="menu-item ">
             <i className="bottom-icons-font-size fa-solid fa-file-signature"></i>
             <h6>Passbook</h6>
+          </Link>
+        </li>
+        <li>
+          <Link to="/bids" className="menu-item">
+            <i className="bottom-icons-font-size fa-regular fa-clipboard"></i>
+            <h6>My Bids</h6>
           </Link>
         </li>
 
@@ -99,17 +98,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

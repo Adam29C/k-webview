@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NewContainer from "../../../Containers/New_container";
+import NewContainer from "../../../Containers/NastedLayout";
 import { FOR_GET_LIST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
+import NastedLayout from "../../../Containers/NastedLayout";
 
 const Passbook = () => {
   const [data, setdata] = useState([]);
@@ -25,9 +26,7 @@ const Passbook = () => {
     getdata();
   }, []);
   return (
-    <div style={{ padding: "5px" }}>
-      {/* <NewContainer title="Passbook"> */}
-
+    <NastedLayout title={"PASSBOOKS"} route={"/home"}>
       {data.map((item, i) => (
         <div
           className="test p-3 border rounded mb-2 "
@@ -97,7 +96,7 @@ const Passbook = () => {
         </div>
       </div> */}
       {/* </NewContainer> */}
-    </div>
+    </NastedLayout>
   );
 };
 
