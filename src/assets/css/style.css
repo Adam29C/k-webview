@@ -6366,7 +6366,7 @@ body.dark .main-header .header-panel a .icon-btn.back-arrow {
 .header .head-content a {
   width: calc(36px + (48 - 36) * ((100vw - 320px) / (1920 - 320)));
   height: calc(36px + (48 - 36) * ((100vw - 320px) / (1920 - 320)));
-  background-color: rgba(var(--box-bg), 1);
+  /* background-color: rgba(var(--box-bg), 1); */
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -9347,7 +9347,7 @@ body.dark
 
 .maintitle {
   /* color: var(--Root-color) !important;/ */
-  color: #000;
+  color: var(--Root-color);
   font-weight: bold;
   font-size: 1rem;
 }
@@ -9943,13 +9943,14 @@ body.dark
 }
 .newdiv321 {
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 10px;
 }
 .gameprice {
   color: var(--Root-color);
+  text-align: center;
 }
 .icon-grid-containerjackpot {
   display: grid;

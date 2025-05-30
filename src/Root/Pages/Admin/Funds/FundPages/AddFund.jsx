@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import { FOR_POST_REQUEST } from "../../../../Service/commanservice";
+import React, { useEffect, useState } from "react";
+import {
+  FOR_GET_LIST,
+  FOR_POST_REQUEST,
+} from "../../../../Service/commanservice";
 import { apiRoutes } from "../../../../Config/endpoints";
 import PagesIndex from "../../../pageIndex";
 import NastedLayout from "../../../../Containers/NastedLayout";
@@ -16,7 +19,6 @@ const AddFund = () => {
   const handleAmountClick = (value) => {
     setAmount(value);
   };
-
   const handleInputChange = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     setAmount(value === "" ? 0 : parseInt(value));

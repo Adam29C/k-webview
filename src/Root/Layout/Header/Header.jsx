@@ -37,9 +37,22 @@ const Header = () => {
       console.log(error);
     }
   };
+  const getbanner = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_APP_BANNER}`);
+      if (res) {
+        if (res.status == true) {
+          // console.log(res.data);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getNotification();
     getbalance();
+    getbanner();
   }, []);
 
   return (
@@ -69,25 +82,7 @@ const Header = () => {
                   <span className="t">{getProfile?.wallet_balance || 0}</span>
                 </span>
               </div>
-              {/* <span
-                className="text-decoration-none"
-                style={{ marginRight: "5px" }}
-              >
-                <i class="fa-solid fa-bell icons-font-size"></i>
-              </span> */}
-              <Link
-                to={"/notification"}
-                style={{
-                  textDecoration: "none",
-                  marginTop: "10px",
-                  color: "inherit",
-                  background: "none",
-                  padding: 0,
-                  border: "none",
-                  borderRadius: 0,
-                  display: "inline",
-                }}
-              >
+              <Link to={"/notification"} className="linkstyle">
                 <div class="notify-bell-wrapper">
                   <i class="fa-solid fa-bell notify-bell-icon"></i>
                   <span class="notify-bell-badge">

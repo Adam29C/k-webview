@@ -5,10 +5,12 @@ import {
   FOR_POST_REQUEST,
 } from "../../../../Service/commanservice";
 import ConfirmModal from "../../../../Components/ConfirmModal";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import InformModal from "../../../../Components/InformModal";
 import { apiRoutes } from "../../../../Config/endpoints";
 import NastedLayout from "../../../../Containers/NastedLayout";
+// import BottomSheetFilter from "../../../../Components/BottomSheetFilter";
+import FilterBottomSheet from "../../../../Components/FilterBottomSheet";
 
 function GameBidHistory() {
   const [data, setdata] = useState([]);
@@ -32,9 +34,73 @@ function GameBidHistory() {
       console.log(error);
     }
   };
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState({
+    general: [],
+    status: [],
+    games: [],
+  });
+  const handleSubmit = (filters) => {
+    console.log("Submitted Filters:", filters);
+    postFilter(filters);
+  };
+  const [gameprovider, setprovider] = useState([]);
+  const getgameprovider = async () => {
+    try {
+      const res = await FOR_GET_LIST(`${apiRoutes.GET_MAIN_GAME_PROVIDER}`);
+      if (res) {
+        if (res.status == true) {
+          setprovider(res.data);
+          // console.log(res.data);
+        }
+        if (res.status == false) {
+          setmodal(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postFilter = async (filters) => {
+    const data = {
+      providerId: filters.games,
+      session: filters.general,
+      status: filters.status,
+    };
+    try {
+      const res = await FOR_POST_REQUEST(
+        `${apiRoutes.POST_GAMEBID_BIDFILTER}limit=10&skipValue=1`,
+        data
+      );
+      if (res) {
+        if (res.status == true) {
+          // setprovider(res.data);
+          console.log(res.data);
+        }
+        if (res.status == false) {
+          // setmodal(true);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getdata();
+    getgameprovider();
   }, []);
+  const handlecancel = () => {
+    setIsOpen(false);
+    setSelectedFilters({
+      general: [],
+      status: [],
+      games: [],
+    });
+  };
+  const goback = () => {
+    navigate(-1);
+  };
+
   return (
     <NastedLayout title={"Bid History"} route={"/bids"}>
       {data?.length > 0 ? (
@@ -52,7 +118,7 @@ function GameBidHistory() {
                   <span>{item._id}</span>
                 </div>
                 <div className="d-flex flex-column ">
-                  <span className="passbook-title">Digit </span>
+                  <span className="passbook-title">Digit</span>
                   <span>{item.bidDigit}</span>
                 </div>
                 <div className="d-flex flex-column ">
@@ -87,6 +153,17 @@ function GameBidHistory() {
       ) : (
         <p className="nodatafoundtext">No Bid History Found</p>
       )}
+
+      <FilterBottomSheet
+        isOpen={isOpen}
+        onClose={() => handlecancel()}
+        onSubmit={handleSubmit}
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+        gamelist={gameprovider}
+        gametype={true}
+      />
+
       <InformModal
         isOpen={modal}
         onClose={() => setmodal(!modal)}
