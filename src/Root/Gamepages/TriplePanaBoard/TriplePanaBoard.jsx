@@ -1,8 +1,15 @@
-import React from 'react'
-import "./triplepanaboard.css"
+import React from "react";
+import "./triplepanaboard.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function TriplePanaBoard() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="container10">
         <div className="form-box10">
           <div className="form-group10">
@@ -48,8 +55,8 @@ function TriplePanaBoard() {
           <button className="submit-button10">Submit</button>{" "}
         </div>
       </div>
-    </>
-)
+    </NastedLayout>
+  );
 }
 
-export default TriplePanaBoard
+export default TriplePanaBoard;

@@ -11,8 +11,6 @@ const AllGames = createSlice({
   initialState: initialState,
   reducers: {
     setMainGames: (state, action) => {
-      
-      console.log("maingames" ,action.payload);
       state.maingames = action.payload;
     },
     setStarlineGames: (state, action) => {
@@ -24,9 +22,7 @@ const AllGames = createSlice({
   },
 });
 
-
-
 export const { setMainGames, setStarlineGames, setJackpotGames } =
-AllGames.actions;
+  AllGames.actions;
 
 export default AllGames.reducer;

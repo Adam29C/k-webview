@@ -1,11 +1,17 @@
-import React from 'react'
-import "./dpmotor.css"
+import React from "react";
+import "./dpmotor.css";
+import PagesIndex from "../../Pages/pageIndex";
 function DpMotor() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-       <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd7">
-      <div className="date-header7">
-       <span className="date-text7">
+        <div className="date-header7">
+          <span className="date-text7">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
             >
@@ -18,8 +24,8 @@ function DpMotor() {
               />
             </div>
           </span>
-        <div className="day-label7">MAYA DAY Open</div>
-      </div>
+          <div className="day-label7">MAYA DAY Open</div>
+        </div>
       </div>
       <div className="form-box7">
         <div className="form-group7">
@@ -56,14 +62,11 @@ function DpMotor() {
 
         {/* Submit Button */}
         <div className="headerpadd7">
-
-        <button className="submit-button7">Submit</button>
-
+          <button className="submit-button7">Submit</button>
         </div>
       </div>
-    </div>
-
-  )
+    </NastedLayout>
+  );
 }
 
-export default DpMotor
+export default DpMotor;

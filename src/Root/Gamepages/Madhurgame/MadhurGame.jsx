@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./madhurgame.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function MadhurGame() {
+    const { state } = PagesIndex.useLocation();
+
   const [selectedGame, setSelectedGame] = useState("MADHUR NIGHT Open");
   const [points, setPoints] = useState("");
   const [bids, setBids] = useState(0);
@@ -16,7 +20,10 @@ function MadhurGame() {
   };
 
   return (
-    <>
+     <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="container18">
         <div className="form-box18">
           {/* <div className="form-group18">
@@ -74,7 +81,7 @@ function MadhurGame() {
           </button>
         </div>
       </div>
-    </>
+      </NastedLayout>
   );
 }
 

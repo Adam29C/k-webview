@@ -1,12 +1,19 @@
-import React from "react";
 import "./spdptp.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
+
 function SpDpTp() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd3">
         <div className="date-header3">
           {/* <div className="date-text3">09/05/2025</div> */}
-           <span className="date-text3">
+          <span className="date-text3">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
             >
@@ -77,7 +84,7 @@ function SpDpTp() {
           <button className="submit-button3">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

@@ -1,8 +1,15 @@
 import React from "react";
 import "./halfsangam.css";
+import PagesIndex from "../../Pages/pageIndex";
+import NastedLayout from "../../Containers/NastedLayout";
 function HalfSangam() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd21">
         <div className="date-header21">
           <span className="date-text21">
@@ -64,7 +71,7 @@ function HalfSangam() {
           <button className="submit-button21">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

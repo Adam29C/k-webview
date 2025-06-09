@@ -1,11 +1,18 @@
 import React from "react";
 import "./redbracket.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
+
 function RedBracket() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd1">
         <div className="date-header1">
-          {/* <div className="date-text1">09/05/2025</div> */}
           <span className="date-text1">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
@@ -65,7 +72,7 @@ function RedBracket() {
           <button className="submit-button1 ">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

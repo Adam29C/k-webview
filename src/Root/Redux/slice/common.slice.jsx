@@ -4,6 +4,7 @@ const initialState = {
   getProfile: [],
   starlinegames: [],
   jackpotgames: [],
+  selectedProvider: {},
 };
 
 const CommonSlice = createSlice({
@@ -12,6 +13,9 @@ const CommonSlice = createSlice({
   reducers: {
     setProfileDetails: (state, action) => {
       state.getProfile = action.payload;
+    },
+    setSelectedProvider: (state, action) => {
+      state.selectedProvider = action.payload;
     },
     // setStarlineGames: (state, action) => {
     //   state.starlinegames = action.payload;
@@ -22,6 +26,6 @@ const CommonSlice = createSlice({
   },
 });
 
-export const { setProfileDetails } = CommonSlice.actions;
+export const { setProfileDetails, setSelectedProvider } = CommonSlice.actions;
 
 export default CommonSlice.reducer;

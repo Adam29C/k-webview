@@ -8,11 +8,12 @@ const CenterModal = ({
   onClose,
   showBtn,
   size,
+  ShowModal,
 }) => {
   return (
     <>
       <div
-        className="modal fade"
+        className={`modal fade ${ShowModal ? "show" : ""}`}
         id={id}
         tabIndex="-1"
         aria-labelledby={`${id}Label`}

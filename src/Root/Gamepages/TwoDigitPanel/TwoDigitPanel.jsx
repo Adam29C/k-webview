@@ -1,12 +1,48 @@
-import React from 'react'
-import "./twodigitpanel.css"
+import React from "react";
+import "./twodigitpanel.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
+
 function TwoDigitPanel() {
+  const { state } = PagesIndex.useLocation();
+
+  const PlaceBid = () => {
+    //   {
+    //     "bidAmount": 1,
+    //     "providerId": "67eebea9a361832d96e38f33",
+    //     "gameDate": "05-14-2025",
+    //     "gameSession": "Open",
+    //     "bidData": [
+    //         {
+    //             "userId": "67974c7eb81801947f2d26ef",
+    //             "providerId": "67eebea9a361832d96e38f33",
+    //             "gameTypeId": "6690701918732c8c3c427b09",
+    //             "providerName": "DHARM DAY",
+    //             "gameTypeName": "Single Digit",
+    //             "gameTypePrice": "10.0",
+    //             "userName": "codeit02",
+    //             "mobileNumber": "+919987654321",
+    //             "bidDigit": "1",
+    //             "biddingPoints": "1",
+    //             "gameSession": "Open",
+    //             "winStatus": 0,
+    //             "gameWinPoints": "0",
+    //             "gameDate": "05-14-2025",
+    //             "dateStamp": 1747161000
+    //         }
+    //     ]
+    // }
+  };
+
   return (
-       <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd4">
         <div className="date-header4">
           {/* <div className="date-text4">09/05/2025</div> */}
-              <span className="date-text4">
+          <span className="date-text4">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
             >
@@ -60,12 +96,13 @@ function TwoDigitPanel() {
 
         {/* Submit Button */}
         <div className="headerpadd4">
-          <button className="submit-button4">Submit</button>
+          <button className="submit-button4" onClick={(e) => PlaceBid(e)}>
+            Submit
+          </button>
         </div>
       </div>
-    </div>
-
-  )
+    </NastedLayout>
+  );
 }
 
-export default TwoDigitPanel
+export default TwoDigitPanel;

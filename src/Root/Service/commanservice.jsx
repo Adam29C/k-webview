@@ -66,3 +66,19 @@ export const GET_UPLOAD_DOCUMENT_LINK = async (URL, sendData) => {
     throw new Error(error);
   }
 };
+
+
+
+// export const FOR_GET_LIST = async (URL, sendData) => {
+//   try {
+//     const response = await dataservice.get(`${URL}`, sendData, {
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+
+//     return response.data;
+//   } catch (error) {
+//     throw new Error(error);
+//   }
+// };

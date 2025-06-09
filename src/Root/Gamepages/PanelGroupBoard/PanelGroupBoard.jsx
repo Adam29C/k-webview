@@ -1,8 +1,15 @@
 import React from "react";
 import "./panelgroupboard.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function PanelGroupBoard() {
+    const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd20">
         <div className="date-header20">
           <span className="date-text20">
@@ -60,7 +67,7 @@ function PanelGroupBoard() {
           <button className="submit-button20">Submit</button>
         </div>
       </div>
-    </div>
+       </NastedLayout>
   );
 }
 

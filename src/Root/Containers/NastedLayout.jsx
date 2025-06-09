@@ -15,7 +15,10 @@ const NastedLayout = ({ title, route, showhide, children }) => {
             <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
           </Link>
           <div className="d-flex flex-column align-items-center">
-            <h6 className=" mb-0">{title}</h6>
+            <h6 className=" mb-0 ">{title.toUpperCase()}</h6>
+          </div>
+          <div className="d-flex flex-column align-items-center">
+            <h6 className=" mb-0"></h6>
           </div>
         </div>
       </div>

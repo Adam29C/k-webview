@@ -6,12 +6,14 @@ import { apiRoutes } from "../Config/endpoints";
 import * as gameSlice from "../Redux/slice/game.slice";
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "../Components/Toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReusableForm from "../Components/Formik_form";
 import InformModal from "../Components/InformModal";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const PagesIndex = {
   baseUrl,
+  useState,
   allServices,
   authServices,
   apiRoutes,
@@ -23,7 +25,8 @@ const PagesIndex = {
   commanservice,
   ReusableForm,
   InformModal,
-  useNavigate
+  useNavigate,
+  useLocation,
 };
 
 export default PagesIndex;

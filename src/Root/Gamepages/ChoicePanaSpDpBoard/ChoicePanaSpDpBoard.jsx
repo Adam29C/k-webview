@@ -1,8 +1,15 @@
 import React from "react";
 import "./choicepanaspdpboard.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function ChoicePanaSpDpBoard() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd19">
         <div className="date-header19">
           <span className="date-text19">
@@ -86,7 +93,7 @@ function ChoicePanaSpDpBoard() {
           <button className="submit-button19">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

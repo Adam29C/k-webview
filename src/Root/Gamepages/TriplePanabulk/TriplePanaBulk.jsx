@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "./triplepanabulk.css";
+import PagesIndex from "../../Pages/pageIndex";
 
 export default function TriplePanaBulk() {
+    const { state } = PagesIndex.useLocation();
+
   const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   return (
-    <>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="container9">
         <div className="form-box9">
           <div className="form-group9">
@@ -49,6 +55,7 @@ export default function TriplePanaBulk() {
           <button className="submit-button9">Submit</button>{" "}
         </div>
       </div>
-    </>
+        </NastedLayout>
+
   );
 }

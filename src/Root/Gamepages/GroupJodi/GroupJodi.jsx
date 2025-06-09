@@ -1,12 +1,19 @@
-import React from 'react'
-import "./groupjodi.css"
+import React from "react";
+import "./groupjodi.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function GroupJodi() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-       <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd6">
         <div className="date-header6">
           {/* <div className="date-text6">09/05/2025</div> */}
-              <span className="date-text6">
+          <span className="date-text6">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
             >
@@ -60,9 +67,8 @@ function GroupJodi() {
           <button className="submit-button6">Submit</button>
         </div>
       </div>
-    </div>
-
-  )
+    </NastedLayout>
+  );
 }
 
-export default GroupJodi
+export default GroupJodi;

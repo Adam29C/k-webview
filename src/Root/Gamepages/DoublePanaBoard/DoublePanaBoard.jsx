@@ -1,8 +1,15 @@
 import React from "react";
 import "./doublepanaboard.css";
+import PagesIndex from "../../Pages/pageIndex";
+import NastedLayout from "../../Containers/NastedLayout";
 function DoublePanaBoard() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="container12">
         <div className="form-box12">
           <div className="form-group12">
@@ -48,7 +55,7 @@ function DoublePanaBoard() {
           <button className="submit-button12">Submit</button>{" "}
         </div>
       </div>
-    </>
+    </NastedLayout>
   );
 }
 

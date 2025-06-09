@@ -1,12 +1,20 @@
 import React from "react";
 import "./evenodd.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
+
 function EvenOdd() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd5">
         <div className="date-header5">
           {/* <div className="date-text5">09/05/2025</div> */}
-             <span className="date-text5">
+          <span className="date-text5">
             <div
               onClick={() => document.getElementById("dateInput").showPicker()}
             >
@@ -69,7 +77,7 @@ function EvenOdd() {
           <button className="submit-button5">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

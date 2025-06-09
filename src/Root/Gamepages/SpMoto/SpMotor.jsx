@@ -1,8 +1,14 @@
 import React from "react";
 import "./spmotor.css";
+import PagesIndex from "../../Pages/pageIndex";
 function SpMotor() {
+    const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+   <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd8">
         <div className="date-header8">
           <span className="date-text8">
@@ -58,7 +64,8 @@ function SpMotor() {
           <button className="submit-button8">Submit</button>
         </div>
       </div>
-    </div>
+        </NastedLayout>
+
   );
 }
 

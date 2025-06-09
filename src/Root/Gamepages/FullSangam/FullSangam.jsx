@@ -1,8 +1,14 @@
-import React from "react";
 import "./fullsangam.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function FullSangam() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="headerpadd22">
         <div className="date-header22">
           {/* <div className="date-text22">09/05/2025</div> */}
@@ -66,7 +72,7 @@ function FullSangam() {
           <button className="submit-button22">Submit</button>
         </div>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

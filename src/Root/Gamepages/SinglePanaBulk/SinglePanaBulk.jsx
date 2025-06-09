@@ -1,10 +1,15 @@
-import React from "react";
 import "./singlepanabulk.css";
+import PagesIndex from "../../Pages/pageIndex";
+import NastedLayout from "../../Containers/NastedLayout";
 function SinglePanaBulk() {
   const keys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const { state } = PagesIndex.useLocation();
 
   return (
-    <>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="container13">
         <div className="form-box13">
           <div className="form-group13">
@@ -49,7 +54,7 @@ function SinglePanaBulk() {
           <button className="submit-button13">Submit</button>{" "}
         </div>
       </div>
-    </>
+    </NastedLayout>
   );
 }
 

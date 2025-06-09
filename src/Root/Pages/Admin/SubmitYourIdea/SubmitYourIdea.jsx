@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import ReusableForm from "../../../Components/Formik_form";
-import NewContainer from "../../../Containers/NastedLayout";
-import { FOR_POST_REQUEST } from "../../../Service/commanservice";
-import { apiRoutes } from "../../../Config/endpoints";
 import NastedLayout from "../../../Containers/NastedLayout";
-// import ReusableForm from "./Formik_form";
-
-// import NewContainer from "../Containers/New_container";
+import PagesIndex from "../../pageIndex";
+import toast from "react-hot-toast";
 
 const SubmitYourIdea = () => {
   const formFields = [
@@ -34,22 +27,24 @@ const SubmitYourIdea = () => {
       msg: Yup.string().required("Message is required"),
     }),
     onSubmit: async (values, { resetForm }) => {
-      // console.log("Form values:", values);
-      // Reset the form after submission
       const data = { idea: values.msg };
       try {
-        const res = await FOR_POST_REQUEST(
-          `${apiRoutes.POST_USER_IDEAS}`,
+        const res = await PagesIndex.commanservice.FOR_POST_REQUEST(
+          `${PagesIndex.apiRoutes.POST_USER_IDEAS}`,
           data
         );
+
         if (res) {
-          if (res.status == true) {
-            // setdata(res?.data[0]);
+          if (res.status) {
+            toast.success(res.message);
+
             console.log(res.data);
             resetForm();
           }
         }
       } catch (error) {
+        toast.success(error.message);
+
         console.log(error);
       }
     },
@@ -60,7 +55,7 @@ const SubmitYourIdea = () => {
       <div className="my-2">
         <div className="d-flex primary-color fw-bold justify-content-around align-items-center">
           <div className="">
-            <ReusableForm
+            <PagesIndex.ReusableForm
               fromDate={new Date()}
               fieldtype={formFields}
               formik={formik}
@@ -87,6 +82,7 @@ const SubmitYourIdea = () => {
         </div>
       </div>
       {/* </NewContainer> */}
+      <PagesIndex.Toast position={"top-center"} />
     </NastedLayout>
   );
 };

@@ -1,83 +1,4 @@
-// import { useEffect } from "react";
-// import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-// import GameCard from "./GameCard";
-
-// import ContactDetails from "./Contact-Details";
-// import {
-//   allServices,
-//   apiRoutes,
-//   gameSlice,
-//   useDispatch,
-//   useSelector,
-// } from "../Pages/pageIndex";
-// import StarlineGameCard from "./StarlineGameCard";
-
-// const Home = () => {
-//   const dispatch = useDispatch();
-//   const { maingames, jackpotgames, starlinegames } = useSelector(
-//     (state) => state.AllGames
-//   );
-
-//   const GetGamesList = async () => {
-//     try {
-//       const response = await allServices.FOR_GET_LIST(apiRoutes.GET_ALL_GAMES);
-//       const response1 = await allServices.FOR_GET_LIST(
-//         apiRoutes.GET_ALL_STARLINE_GAMES
-//       );
-//       const response2 = await allServices.FOR_GET_LIST(
-//         apiRoutes.GET_ALL_JACKPOT_GAMES
-//       );
-
-//       if (response.status) {
-//         dispatch(gameSlice.setMainGames(response.data));
-//         dispatch(gameSlice.setStarlineGames(response1.data));
-//         dispatch(gameSlice.setJackpotGames(response2.data));
-//       }
-//     } catch (error) {
-//       console.error("Error fetching game list:", error);
-//     }
-//   };
-
-//   useEffect(() => {
-
-//     GetGamesList();
-//   }, []);
-
-//   return (
-//     <Tabs>
-//       <div className="tab-container ">
-//         <TabList>
-//           <Tab>Games</Tab>
-//           <Tab>Starline</Tab>
-//           <Tab>Jackpot</Tab>
-//         </TabList>
-//       </div>
-
-//       <ContactDetails />
-//       <TabPanel>
-//         {maingames &&
-//           maingames?.map((game, index) => <GameCard key={index} game={game} />)}
-//       </TabPanel>
-//       <TabPanel>
-//         {starlinegames &&
-//           starlinegames?.map((game, index) => (
-//             <StarlineGameCard key={index} game={game} />
-//           ))}
-//       </TabPanel>
-//       <TabPanel>
-//         {jackpotgames &&
-//           jackpotgames?.map((game, index) => (
-//             <StarlineGameCard key={index} game={game} />
-//           ))}
-//       </TabPanel>
-//     </Tabs>
-//   );
-// };
-
-// export default Home;
-
 import React, { useEffect, useState } from "react";
-import StarlineGameCard from "./StarlineGameCard";
 import { Tab, Tabs as Tabs1, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import GameCard from "./GameCard";
@@ -208,45 +129,33 @@ const Tabs = () => {
   const andarbahargames = Object.values(andarbahargameres);
   return (
     <>
-      {/* <StarlineGameCard/> */}
-      <div style={{ marginTop: "0px" }}>
+      <div>
         <Tabs1>
-          <TabList
-            style={{
-              display: "flex",
-              justifyContent: "space-evenly",
-              position: "sticky",
-              top: 80,
-              left: 0,
-              zIndex: "1",
-              backgroundColor: "#e0fff8",
-              borderRadius: "30px",
-            }}
-          >
-            <Tab style={{ fontSize: "12px" }}>Games</Tab>
-            <Tab style={{ fontSize: "12px" }}>Starline</Tab>
-            <Tab style={{ fontSize: "12px" }}>Jackpot</Tab>
+          <TabList className="tab-list-card">
+            <Tab>Games</Tab>
+            <Tab>Starline</Tab>
+            <Tab>Jackpot</Tab>
           </TabList>
-          <TabPanel style={{ padding: "2px" }}>
-            <div className="tabstickyhome">
-              <div className="contact-card-container">
-                <div className="contact-box">
-                  <i className="fab fa-whatsapp homeicon"></i>
-                  <p className="contact-number">9999999999</p>
+          <TabPanel>
+            <div className="mx-3 tab-list-card rounded-5 mt-3">
+              <div className="contact-card-container ">
+                <div className="  homeicon-div  ">
+                  <i className="fab fa-whatsapp homeicon me-2"></i>
+                  <span className="contact-number">9999999999</span>
                 </div>
-                <div className="contact-box">
-                  <i className="fas fa-phone homeicon1"></i>
-                  <p className="contact-number">9999999999</p>
+                <div className="contact-box  homeicon-div   ">
+                  <i className="fas fa-phone homeicon1 me-2"></i>
+                  <span className="contact-number">9999999999</span>
                 </div>
               </div>
             </div>
+
             {gamearrayofgames?.map((data, i) => (
               <GameCard game={data} index={i} />
             ))}
           </TabPanel>
-          <TabPanel style={{ padding: "2px" }}>
-            {/* <p>Cards for Starline</p> */}
-            <div className="tabstickyhome">
+          <TabPanel>
+            <div className="tabstickyhome mt-2 mx-3">
               <div className="box321">
                 <div className="grid321">
                   {starlinetype?.map((item, i) => (
@@ -425,9 +334,9 @@ const Tabs = () => {
               </div>
             </div>
           </TabPanel>
-          <TabPanel style={{ padding: "2px" }}>
+          <TabPanel>
             {/* <p>Cards for Jackpot</p> */}
-            <div className="tabstickyhome">
+            <div className="tabstickyhome mt-2">
               <div className="">
                 <div className="andarbaharconatiner">
                   <div className="andarbahartext">

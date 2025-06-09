@@ -1,17 +1,89 @@
 import React, { useEffect, useState } from "react";
 import CenterModal from "./Reusable_modal";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { setSelectedProvider } from "../Redux/slice/common.slice";
+import PagesIndex from "../Pages/pageIndex";
 
 const GameCard = ({ index, game }) => {
+  const dispatch = PagesIndex.useDispatch();
   const [selectedGame, setSelectedGame] = useState(null);
+  const navigate = useNavigate();
+  const handleOpenModal = (game11) => {
+    if (game11?.displayText !== "Closed For Today") {
+      navigate("/maingame", {
+        state: { title: game11.providerName },
+      });
 
-  const handleOpenModal = (game) => {
-    setSelectedGame(game);
+      dispatch(setSelectedProvider(game11));
+    } else {
+      setSelectedGame(game11);
+    }
   };
 
-  useEffect(() => {
-    // console.log("Selected game updated:", selectedGame); // Check karein ki state update ho rahi hai ya nahi
-  }, [selectedGame]);
+  const GameOpenClose = () => {
+    return (
+      <div class="zoom-in-zoom-out me-2 ">
+        <svg
+          id="video"
+          xmlns="http://www.w3.org/2000/svg"
+          width="50"
+          height="50"
+          viewBox="0 0 31.277 31.708"
+        >
+          <path
+            id="Path_593"
+            data-name="Path 593"
+            d="M15.589,0A15.589,15.589,0,1,1,0,15.589,15.589,15.589,0,0,1,15.589,0Z"
+            class="play_icon_class "
+            transform="translate(0.098 0)"
+            fill={game?.displayText == "Closed For Today" ? "red" : "#237f8a"}
+          ></path>
+          <path
+            id="Path_590"
+            data-name="Path 590"
+            d="M31.179,256H0a15.589,15.589,0,1,0,31.179,0Z"
+            transform="translate(0 -239.882)"
+            fill={game?.displayText == "Closed For Today" ? "red" : "#237f8a"}
+          ></path>
+          <g
+            id="Group_1840"
+            data-name="Group 1840"
+            transform="translate(11.884 8.643)"
+          >
+            <g
+              id="Group_1786"
+              data-name="Group 1786"
+              transform="translate(0 0)"
+            >
+              <g id="Group_1785" data-name="Group 1785">
+                <path
+                  id="Path_591"
+                  data-name="Path 591"
+                  d="M171.741,125.324a.741.741,0,0,1-.741-.741V111.741a.741.741,0,0,1,1.175-.6l8.89,6.421a.741.741,0,0,1,0,1.2l-8.89,6.421A.74.74,0,0,1,171.741,125.324Z"
+                  transform="translate(-171 -111)"
+                  fill="#fff"
+                ></path>
+              </g>
+            </g>
+            <g
+              id="Group_1787"
+              data-name="Group 1787"
+              transform="translate(0 7.162)"
+            >
+              <path
+                id="Path_592"
+                data-name="Path 592"
+                d="M171,256v6.421a.741.741,0,0,0,1.175.6l8.89-6.421a.741.741,0,0,0,.307-.6Z"
+                transform="translate(-171 -256)"
+                fill="#fff"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </div>
+    );
+  };
+
   return (
     <>
       <div key={index}>
@@ -21,7 +93,11 @@ const GameCard = ({ index, game }) => {
               <div
                 className=" card rounded-4 mb-2"
                 data-bs-toggle="modal"
-                data-bs-target={`#timinig-${index}`}
+                data-bs-target={
+                  game?.displayText === "Closed For Today"
+                    ? `#timinig-${index}`
+                    : ""
+                }
                 onClick={() => handleOpenModal(game)}
               >
                 <div className="d-flex justify-content-between align-items-center  px-3 py-2">
@@ -33,18 +109,7 @@ const GameCard = ({ index, game }) => {
                     <div className="digit">
                       <span> {game?.providerResult}</span>
                     </div>
-                    <div
-                    // className={`open-close ${
-                    //   game.displayText == "Closed for today"
-                    //     ? "close-for-today"
-                    //     : game.displayText == "running for close"
-                    //     ? "forClose"
-                    //     : game.displayText == "running for open"
-                    //     ? "forOpen"
-                    //     : "forOpen"
-                    // }`}
-                    >
-                      {/* <span className="text-danger">{game.displayText}</span> */}
+                    <div>
                       <span
                         style={{
                           color:
@@ -57,74 +122,7 @@ const GameCard = ({ index, game }) => {
                       </span>
                     </div>
                   </div>
-
-                  <div class="zoom-in-zoom-out me-2 ">
-                    <svg
-                      id="video"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="50"
-                      height="50"
-                      viewBox="0 0 31.277 31.708"
-                    >
-                      <path
-                        id="Path_593"
-                        data-name="Path 593"
-                        d="M15.589,0A15.589,15.589,0,1,1,0,15.589,15.589,15.589,0,0,1,15.589,0Z"
-                        class="play_icon_class "
-                        transform="translate(0.098 0)"
-                        fill={
-                          game.displayText == "Closed For Today"
-                            ? "red"
-                            : "#237f8a"
-                        }
-                      ></path>
-                      <path
-                        id="Path_590"
-                        data-name="Path 590"
-                        d="M31.179,256H0a15.589,15.589,0,1,0,31.179,0Z"
-                        transform="translate(0 -239.882)"
-                        fill={
-                          game.displayText == "Closed For Today"
-                            ? "red"
-                            : "#237f8a"
-                        }
-                      ></path>
-                      <g
-                        id="Group_1840"
-                        data-name="Group 1840"
-                        transform="translate(11.884 8.643)"
-                      >
-                        <g
-                          id="Group_1786"
-                          data-name="Group 1786"
-                          transform="translate(0 0)"
-                        >
-                          <g id="Group_1785" data-name="Group 1785">
-                            <path
-                              id="Path_591"
-                              data-name="Path 591"
-                              d="M171.741,125.324a.741.741,0,0,1-.741-.741V111.741a.741.741,0,0,1,1.175-.6l8.89,6.421a.741.741,0,0,1,0,1.2l-8.89,6.421A.74.74,0,0,1,171.741,125.324Z"
-                              transform="translate(-171 -111)"
-                              fill="#fff"
-                            ></path>
-                          </g>
-                        </g>
-                        <g
-                          id="Group_1787"
-                          data-name="Group 1787"
-                          transform="translate(0 7.162)"
-                        >
-                          <path
-                            id="Path_592"
-                            data-name="Path 592"
-                            d="M171,256v6.421a.741.741,0,0,0,1.175.6l8.89-6.421a.741.741,0,0,0,.307-.6Z"
-                            transform="translate(-171 -256)"
-                            fill="#fff"
-                          ></path>
-                        </g>
-                      </g>
-                    </svg>
-                  </div>
+                  {GameOpenClose()}
                 </div>
                 <div className="verticle-line"> </div>
                 <div className="d-flex justify-content-between px-3 py-2 game-timing-font-size ">
@@ -141,78 +139,16 @@ const GameCard = ({ index, game }) => {
         </div>
       </div>
       <CenterModal
-        id={`timinig-${index}`}
+        id={
+          selectedGame?.displayText === "Closed For Today"
+            ? `timinig-${index}`
+            : ""
+        }
         showBtn={false}
         children={
           <>
             <div class="mb-3 d-flex justify-content-between align-items-center flex-column ">
-              <div class=" mx-auto ">
-                <svg
-                  id="video"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="50"
-                  height="50"
-                  viewBox="0 0 31.277 31.708"
-                >
-                  <path
-                    id="Path_593"
-                    data-name="Path 593"
-                    d="M15.589,0A15.589,15.589,0,1,1,0,15.589,15.589,15.589,0,0,1,15.589,0Z"
-                    class="play_icon_class "
-                    transform="translate(0.098 0)"
-                    fill={
-                      selectedGame?.displayText === "Close for today"
-                        ? "red"
-                        : "#237f8a"
-                    }
-                  ></path>
-                  <path
-                    id="Path_590"
-                    data-name="Path 590"
-                    d="M31.179,256H0a15.589,15.589,0,1,0,31.179,0Z"
-                    transform="translate(0 -239.882)"
-                    fill={
-                      selectedGame?.displayText === "Close for today"
-                        ? "red"
-                        : "#237f8a"
-                    }
-                  ></path>
-                  <g
-                    id="Group_1840"
-                    data-name="Group 1840"
-                    transform="translate(11.884 8.643)"
-                  >
-                    <g
-                      id="Group_1786"
-                      data-name="Group 1786"
-                      transform="translate(0 0)"
-                    >
-                      <g id="Group_1785" data-name="Group 1785">
-                        <path
-                          id="Path_591"
-                          data-name="Path 591"
-                          d="M171.741,125.324a.741.741,0,0,1-.741-.741V111.741a.741.741,0,0,1,1.175-.6l8.89,6.421a.741.741,0,0,1,0,1.2l-8.89,6.421A.74.74,0,0,1,171.741,125.324Z"
-                          transform="translate(-171 -111)"
-                          fill="#fff"
-                        ></path>
-                      </g>
-                    </g>
-                    <g
-                      id="Group_1787"
-                      data-name="Group 1787"
-                      transform="translate(0 7.162)"
-                    >
-                      <path
-                        id="Path_592"
-                        data-name="Path 592"
-                        d="M171,256v6.421a.741.741,0,0,0,1.175.6l8.89-6.421a.741.741,0,0,0,.307-.6Z"
-                        transform="translate(-171 -256)"
-                        fill="#fff"
-                      ></path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
+              <div class=" mx-auto ">{GameOpenClose()}</div>
               <span
                 className={`open-close py-1 ${
                   selectedGame?.displayText === "Close for today"

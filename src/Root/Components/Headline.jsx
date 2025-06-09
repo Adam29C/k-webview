@@ -3,13 +3,16 @@ import { motion } from "motion/react";
 import { FOR_GET_LIST } from "../Service/commanservice";
 import { apiRoutes } from "../Config/endpoints";
 import "../../assets/css/marque.css";
+import PagesIndex from "../Pages/pageIndex";
+
 const Headline = () => {
   const [headline, setheadline] = useState("");
   const getdata = async () => {
     try {
-      const res = await FOR_GET_LIST(apiRoutes.GET_HEADLINE);
+      const res = await PagesIndex.commanservice.FOR_GET_LIST(
+        PagesIndex.apiRoutes.GET_HEADLINE
+      );
       setheadline(res.data.headline);
-      // console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +29,7 @@ const Headline = () => {
     //     animate={{ x: "-100%" }}
     //     transition={{ repeat: Infinity, duration: 18, ease: "linear" }}
     //   >
-    //  {headline}
+    //     {headline}
     //   </motion.h6>
     // </div>
     <div className="marquee-container">

@@ -1,8 +1,15 @@
 import React from "react";
 import "./jodidigitbulk.css";
+import PagesIndex from "../../Pages/pageIndex";
+import NastedLayout from "../../Containers/NastedLayout";
 function JodiDigitBulk() {
+  const { state } = PagesIndex.useLocation();
+
   return (
-    <div>
+    <NastedLayout
+      title={`${state.title.toUpperCase()} dashboard `}
+      route={"/maingame"}
+    >
       <div className="form-box17">
         <div className="form-group17">
           <label>Enter&nbsp;Points</label>
@@ -32,7 +39,7 @@ function JodiDigitBulk() {
         </span>
         <button className="submit-button17">Submit</button>
       </div>
-    </div>
+    </NastedLayout>
   );
 }
 

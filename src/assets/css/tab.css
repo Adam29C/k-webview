@@ -1,11 +1,22 @@
+.container {
+  margin-top: 20px;
+}
+.tablist {
+  display: flex;
+  justify-content: space-evenly;
+}
+.tabfont {
+  font-size: 12px;
+}
 
-.container{
-    margin-top: 20px;
+.tablisthome {
+  display: flex;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 80px;
+  left: 0;
+  z-index: 1;
+  background-color: #e0fff8;
+  border-radius: 30px;
 }
-.tablist{
-display: flex;
- justify-content: space-evenly;
-}
-.tabfont{
-font-size: 12px
-}
+

@@ -55,32 +55,35 @@ export const apiRoutes = {
   GET_GAME_RATES: `${baseUrl}/sidebar/gameRates`,
   GET_HOW_TO_PLAY: `${baseUrl}/sidebar/howToPlay`,
   // 20 may
-  GET_NOTICE_BOARD: `${baseUrl}sidebar/noticeBoard`,
-  POST_USER_IDEAS: `${baseUrl}sidebar/userIdeas`,
-  POST_CHANGE_MPIN: `${baseUrl}sidebar/changeMpin`,
-  GET_WALLET_HISTORY: `${baseUrl}wallet/history?`,
-  POST_WITHDRAW_FUND_UPI: `${baseUrl}withdraw/withdrawFundUPI`,
-  POST_ADD_FUND: `${baseUrl}addFund/paymentInitiate`,
+  GET_NOTICE_BOARD: `${baseUrl}/sidebar/noticeBoard`,
+  POST_USER_IDEAS: `${baseUrl}/sidebar/userIdeas`,
+  POST_CHANGE_MPIN: `${baseUrl}/sidebar/changeMpin`,
+  GET_WALLET_HISTORY: `${baseUrl}/wallet/history?`,
+  POST_WITHDRAW_FUND_UPI: `${baseUrl}/withdraw/withdrawFundUPI`,
+  POST_ADD_FUND: `${baseUrl}/addFund/paymentInitiate`,
   //23 may
-  GET_APP_BANNER: `${baseUrl}appSetting/appBanner`,
-  GET_SOCIAL_ACCOUNT_DETAILS: `${baseUrl}appSetting/socialAccountDetails`,
-  GET_HEADLINE: `${baseUrl}appSetting/getHeadLine`,
+  GET_APP_BANNER: `${baseUrl}/appSetting/appBanner`,
+  GET_SOCIAL_ACCOUNT_DETAILS: `${baseUrl}/appSetting/socialAccountDetails`,
+  GET_HEADLINE: `${baseUrl}/appSetting/getHeadLine`,
   POST_TRANSACTION_CHARGE: `${baseUrl}withdraw/transectionCharges`,
   GET_ANDARBAHARBID_HISTORY: `${baseUrl}andarBharBids/history?`,
   GET_ADD_FUND_IDsUPI: `${baseUrl}addFund/idsUpi`,
   // 26may
-  GET_MAIN_GAME_PROVIDER: `${baseUrl}gameBids/main-game-provider`,
-  GET_STARLINE_PROVIDER: `${baseUrl}starlineBids/starline-game-provider`,
-  GET_ANDARBAHAR_PROVIDER: `${baseUrl}andarBharBids/GameProvider`,
+  GET_MAIN_GAME_PROVIDER: `${baseUrl}/gameBids/main-game-provider`,
+  GET_STARLINE_PROVIDER: `${baseUrl}/starlineBids/starline-game-provider`,
+  GET_ANDARBAHAR_PROVIDER: `${baseUrl}/andarBharBids/GameProvider`,
 
-  POST_GAMEBID_BIDFILTER: `${baseUrl}gameBids/bidsFilter?`,
-  POST_STARLINE_BIDFILTER: `${baseUrl}starlineBids/bidsFilter?`,
-  POST_ANDARBAHAR_BIDFILTER: `${baseUrl}andarBharBids/bidsFilter?`,
+  POST_GAMEBID_BIDFILTER: `${baseUrl}/gameBids/bidsFilter?`,
+  POST_STARLINE_BIDFILTER: `${baseUrl}/starlineBids/bidsFilter?`,
+  POST_ANDARBAHAR_BIDFILTER: `${baseUrl}/andarBharBids/bidsFilter?`,
   // 27 may net nahi chlra
-
 
   // ----- add bank details -----
 
   CHECK_BANK_ACCOUNT_AVAILABLTY: `${baseUrl}/profile/checkRequest`,
   ADD_BANK_ACCOUNT: `${baseUrl}/profile/checkAccountNumber`,
+
+  GET_GAME_TYPE_LIST: `${baseUrl}/gameBids/gameType`,
+  GET_DAYS_GAME_BIDS_LIST: `${baseUrl}/gameBids/daysGameBids`,
+
 };
