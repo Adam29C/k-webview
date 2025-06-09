@@ -8,10 +8,14 @@ import CenterModal from "../../../Components/Reusable_modal";
 import { FOR_POST_REQUEST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
 import NastedLayout from "../../../Containers/NastedLayout";
+import toast from "react-hot-toast";
+import PagesIndex from "../../pageIndex";
 
 // import Home_Container from "../Containers/Home_Container";
 
 const GenerateMPin = () => {
+  const [selectedGame, setSelectedGame] = useState(false);
+
   const formFields = [
     {
       type: "text",
@@ -78,12 +82,19 @@ const GenerateMPin = () => {
           `${apiRoutes.POST_CHANGE_MPIN}`,
           data
         );
-        if (res) {
-          if (res.status == true) {
-            // setdata(res?.data[0]);
-            console.log(res);
-            resetForm();
-          }
+
+        console.log("Sadsadsad", res);
+
+        if (res.status) {
+          console.log("Sadsadsad");
+        toast.success(res.message)
+
+          setSelectedGame(!selectedGame);
+
+          resetForm();
+        }else{
+        toast.error(res.message)
+
         }
       } catch (error) {
         console.log(error);
@@ -92,14 +103,12 @@ const GenerateMPin = () => {
     },
   });
 
-  const [selectedGame, setSelectedGame] = useState(false);
-
   const handleOpenModal = () => {
     setSelectedGame(!selectedGame);
   };
   //   console.log(selectedGame);
   return (
-    <NastedLayout title={"GAMERATES"} route={"/home"}>
+    <NastedLayout title={"GENERATE PIN"} route={"/home"}>
       <div className=" py-3 px-3 my-2 rounded">
         <div className="container-fluid">
           <div className="row">
@@ -133,7 +142,7 @@ const GenerateMPin = () => {
             </div>
           </div>
         </div>
-
+<PagesIndex.Toast position={'top-center'}/>
         <CenterModal
           id={`timinig-test`}
           showBtn={false}
