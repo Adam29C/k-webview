@@ -15,6 +15,7 @@ import PagesIndex from "../../pageIndex";
 
 const GenerateMPin = () => {
   const [selectedGame, setSelectedGame] = useState(false);
+  const [showModal, setshowModal] = useState(false);
 
   const formFields = [
     {
@@ -87,14 +88,15 @@ const GenerateMPin = () => {
 
         if (res.status) {
           console.log("Sadsadsad");
-        toast.success(res.message)
+          toast.success(res.message);
 
           setSelectedGame(!selectedGame);
 
-          resetForm();
-        }else{
-        toast.error(res.message)
+          setshowModal(false);
 
+          resetForm();
+        } else {
+          toast.error(res.message);
         }
       } catch (error) {
         console.log(error);
@@ -104,7 +106,9 @@ const GenerateMPin = () => {
   });
 
   const handleOpenModal = () => {
-    setSelectedGame(!selectedGame);
+    
+    setshowModal(true);
+    // setSelectedGame(!selectedGame);
   };
   //   console.log(selectedGame);
   return (
@@ -116,8 +120,8 @@ const GenerateMPin = () => {
               <div className="w-75 mb-3">
                 <button
                   className="secondary-button d-flex justify-content-around align-items-center fs-13"
-                  data-bs-target={`#timinig-test`}
-                  data-bs-toggle="modal"
+                  // data-bs-target={`#timinig-test`}
+                  // data-bs-toggle="modal"
                   onClick={() => handleOpenModal()}
                 >
                   <span class="icon-box  me-3">
@@ -128,26 +132,32 @@ const GenerateMPin = () => {
                 </button>
               </div>
               <div className="w-75">
-                <button
+                {/* <button
                   className="secondary-button d-flex justify-content-around align-items-center fs-13"
-                  onClick={() => handleOpenModal()}
+                  // onClick={() => handleOpenModal()}
+                > */}
+                <Link
+                  to={"/forgetopt"}
+                  className="text-decoration-none text-light secondary-button d-flex justify-content-around align-items-center fs-13"
                 >
                   <span class="icon-box  me-3">
                     <i class="fas fa-lock"></i>
-                  </span>
+                  </span>{" "}
                   Forget MPIN
                   <i class="fas fa-chevron-right ms-3"></i>
-                </button>
+                  {/* </button> */}
+                </Link>
               </div>
             </div>
           </div>
         </div>
-<PagesIndex.Toast position={'top-center'}/>
+        <PagesIndex.Toast position={"top-center"} />
         <CenterModal
           id={`timinig-test`}
           showBtn={false}
           title="MPIN"
           size={"sm"}
+          ShowModal={showModal}
           children={
             <>
               <ReusableForm

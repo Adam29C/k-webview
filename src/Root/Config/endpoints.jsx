@@ -12,6 +12,8 @@ export const apiRoutes = {
   CHECK_USERNAME_FOR_REGISTER_USER: `${baseUrl}/user/checkUsername`,
   NEW_REGISTER_USER: `${baseUrl}/user/registerNew`,
   LOGIN_USER_WITH_MPIN: `${baseUrl}/user/login`,
+  FORGET_OTP_SEND: `${baseUrl}/user/forgotOtpSend`,
+  VERIFY_OTP_SEND: `${baseUrl}/user/forgotOtpVerify`,
 
   // --- Game Endpoints ---
   GET_ALL_GAMES: `${baseUrl}/api/web/games`,
@@ -85,5 +87,4 @@ export const apiRoutes = {
 
   GET_GAME_TYPE_LIST: `${baseUrl}/gameBids/gameType`,
   GET_DAYS_GAME_BIDS_LIST: `${baseUrl}/gameBids/daysGameBids`,
-
 };

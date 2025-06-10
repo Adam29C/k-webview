@@ -16,7 +16,7 @@ import RedBracket from "../Gamepages/RedBracket/RedBracket";
 import DigitBasedjodi from "../Gamepages/DigitBasedJodi/DigitBasedjodi";
 import ApprovedDepositHistory from "../Pages/Admin/Funds/FundPages/ApprovedDepositHistory";
 // import ErrorPage from "../Pages/Auth/NotFound";
-
+import ForgetOTP from "../Pages/Auth/forgetOTP";
 import NastedRoute from "./NastedRoute/NastedRoute";
 const router = createBrowserRouter([
   ...publicRoutes,
@@ -67,6 +67,10 @@ const router = createBrowserRouter([
   {
     path: "test",
     element: <Testing123 />,
+  },
+  {
+    path: "forgetopt",
+    element: <ForgetOTP />,
   },
 ]);
 

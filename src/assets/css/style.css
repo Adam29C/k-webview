@@ -9415,6 +9415,8 @@ body.dark
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-radius: 20px;
+  border: 1px solid var(--Root-color);
 }
 
 .Resend-btn {
@@ -9459,7 +9461,7 @@ body.dark
   font-weight: 600;
 }
 .description1 {
-  font-size: 1rem;
+  font-size: .8rem;
   /* margin-left: 26px; */
   /* font-weight: bold; */
   margin-left: 2%;
@@ -9472,7 +9474,7 @@ body.dark
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 2%;
+  margin-left: 6%;
 }
 
 .card-inside {
