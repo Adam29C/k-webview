@@ -99,10 +99,10 @@ const CenterModal = ({
           role="document"
         >
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id={`${id}Label`}>
+            <div className="modal-header center-modal">
+              <h6 className="modal-title " id={`${id}Label`}>
                 {title}
-              </h5>
+              </h6>
               {showBtn && (
                 <button
                   type="button"
@@ -116,20 +116,20 @@ const CenterModal = ({
             <div className="modal-body">{children}</div>
 
             {showBtn && (
-              <div className="modal-footer">
+              <div className="modal-footer d-flex">
                 <button
                   type="button"
-                  className="btn btn-secondary"
-                  onClick={onClose}
+                  className="primary-button w-50"
+                  onClick={onSave}
                 >
-                  Close
+                  Submit
                 </button>
                 <button
                   type="button"
-                  className="btn btn-primary"
-                  onClick={onSave}
+                  className="empty-color-button w-50"
+                  onClick={onClose}
                 >
-                  Save
+                  Cancel
                 </button>
               </div>
             )}

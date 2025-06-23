@@ -55,8 +55,9 @@ const MainGamePage = () => {
 
         {GetGameType.map((item, index) => (
           <Link
-            to={"singledigitcode"}
+            to={"singlepanabulk"}
             style={{ textDecoration: "none", color: "inherit" }}
+            state={{ gametype: item }}
           >
             <div className="icon-card" key={index}>
               <div className={`icon ${"single-digit"}`}></div>

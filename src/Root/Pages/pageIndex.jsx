@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import ReusableForm from "../Components/Formik_form";
 import InformModal from "../Components/InformModal";
 import { useLocation, useNavigate } from "react-router-dom";
+import CenterModal from "../Components/Reusable_modal";
 
 const PagesIndex = {
   baseUrl,
@@ -27,6 +28,7 @@ const PagesIndex = {
   InformModal,
   useNavigate,
   useLocation,
+  CenterModal
 };
 
 export default PagesIndex;

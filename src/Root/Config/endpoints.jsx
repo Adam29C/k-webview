@@ -87,4 +87,5 @@ export const apiRoutes = {
 
   GET_GAME_TYPE_LIST: `${baseUrl}/gameBids/gameType`,
   GET_DAYS_GAME_BIDS_LIST: `${baseUrl}/gameBids/daysGameBids`,
+  PLACE_BID: `${baseUrl}/gameBids/place-bid`,
 };

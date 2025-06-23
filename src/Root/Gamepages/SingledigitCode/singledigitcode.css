@@ -7,7 +7,7 @@
 .form-group16 {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   align-items: center;
   gap: 20px;
 }
@@ -20,10 +20,10 @@
 }
 
 .form-group16 select {
-  width: 70%;
-  padding: 10px 15px;
+  width: 50%;
+  padding: 14px 15px;
   border-radius: 50px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   color: #333;
   border: none;
@@ -39,7 +39,9 @@
 }
 
 .divider16 {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--Root-color);
+  width: 350px;
+  
 }
 
 .input-grid16 {
@@ -85,8 +87,8 @@
 
 .info16 {
   position: fixed;
-  bottom: 90px;
-  left: 0;
+  bottom: 16px;
+  left: 28px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -112,7 +114,7 @@
   padding-left: 40px;
   padding-right: 40px;
   font-size: 14px;
-  background-color:var(--Root-color);
+  background-color: var(--Root-color);
   color: white;
   border: none;
   border-radius: 50px;

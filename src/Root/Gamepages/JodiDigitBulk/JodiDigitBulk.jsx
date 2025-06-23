@@ -7,7 +7,7 @@ function JodiDigitBulk() {
 
   return (
     <NastedLayout
-      title={`${state.title.toUpperCase()} dashboard `}
+      title={` dashboard `}
       route={"/maingame"}
     >
       <div className="form-box17">

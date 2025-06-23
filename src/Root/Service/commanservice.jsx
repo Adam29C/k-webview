@@ -69,16 +69,16 @@ export const GET_UPLOAD_DOCUMENT_LINK = async (URL, sendData) => {
 
 
 
-// export const FOR_GET_LIST = async (URL, sendData) => {
-//   try {
-//     const response = await dataservice.get(`${URL}`, sendData, {
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
+export const FOR_GET_QUERY_LIST = async (URL, sendData) => {
+  try {
+    const response = await dataservice.get(`${URL}`, sendData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-//     return response.data;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// };
+    return response.data;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
