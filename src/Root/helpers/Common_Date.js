@@ -5,7 +5,7 @@ import { format, formatDistanceToNow } from "date-fns";
 // ----------------------------------------------------------------------
 
 export const show = (cell) => {
-  return moment(cell).format("DD MMM YYYY hh:mm A");
+  return moment(cell).format("DD/MM/YYYY hh:mm A");
 };
 
 export function Get_Year_Only(date) {
@@ -91,7 +91,7 @@ export const getActualDateWithFormat = (d) => {
     day = `0${day}`;
   }
 
-  return `${month}/${day}/${year}`;
+  return `${day}/${month}/${year}`;
 };
 
 export const today = (d) => {
@@ -206,4 +206,16 @@ export const convertTo12HourFormat123 = (timeStr) => {
 
   return `${hours}:${minutes} ${period}`;
 };
-
+export function getWeekDates(inputDateStr) {
+  return (
+    [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ][new Date(inputDateStr).getDay()] || "Invalid Date"
+  );
+}

@@ -5,6 +5,7 @@ import NastedLayout from "../../Containers/NastedLayout";
 import { getActualDateFormate } from "../../helpers/Common_Date";
 import BidsSectionModal from "../SingledigitCode/BidsSectionModal";
 import { BidNastedPayload, PlaceMainGameBid } from "../../helpers/PlaceBid";
+import toast from "react-hot-toast";
 
 function SinglePanaBulk() {
   // Keypad layout. Using strings for keys to be consistent.
