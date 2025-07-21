@@ -4,10 +4,12 @@ import NastedLayout from "../../Containers/NastedLayout";
 import PagesIndex from "../../Pages/pageIndex";
 function GroupJodi() {
   const { state } = PagesIndex.useLocation();
-
+  const { selectedProvider, getProfile } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
   return (
     <NastedLayout
-      title={`${state.title.toUpperCase()} dashboard `}
+      title={`${selectedProvider?.providerName} single digit board `}
       route={"/maingame"}
     >
       <div className="headerpadd6">

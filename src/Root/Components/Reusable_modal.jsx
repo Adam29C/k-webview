@@ -100,7 +100,7 @@ const CenterModal = ({
         >
           <div className="modal-content">
             <div className="modal-header center-modal">
-              <h6 className="modal-title " id={`${id}Label`}>
+              <h6 className="modal-title ms-auto" id={`${id}Label`}>
                 {title}
               </h6>
               {showBtn && (

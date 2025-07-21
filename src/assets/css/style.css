@@ -10025,7 +10025,7 @@ body.dark
 
 .buttom-title {
   color: var(--Root-color);
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
   font-weight: bold;
   margin-top: 15px;
@@ -10043,4 +10043,8 @@ body.dark
 .bid-table tr {
   font-size: 10px;
   text-align: center;
+}
+
+.fa-coins{
+  color:  #FFD700;
 }

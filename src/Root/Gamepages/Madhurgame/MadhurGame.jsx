@@ -3,7 +3,11 @@ import "./madhurgame.css";
 import NastedLayout from "../../Containers/NastedLayout";
 import PagesIndex from "../../Pages/pageIndex";
 function MadhurGame() {
-    const { state } = PagesIndex.useLocation();
+  const { state } = PagesIndex.useLocation();
+  const { selectedProvider, getProfile } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+  console.log("State from location:", state);
 
   const [selectedGame, setSelectedGame] = useState("MADHUR NIGHT Open");
   const [points, setPoints] = useState("");
@@ -20,12 +24,12 @@ function MadhurGame() {
   };
 
   return (
-     <NastedLayout
-      title={`${state.title.toUpperCase()} dashboard `}
+    <NastedLayout
+      title={`${selectedProvider?.providerName} single digit board `}
       route={"/maingame"}
     >
-      <div className="container18">
-        <div className="form-box18">
+      {/* <div className="container18">
+        <div className="form-box18"> */}
           {/* <div className="form-group18">
             <label>Select&nbsp;Game&nbsp;Type</label>
             <select
@@ -37,7 +41,7 @@ function MadhurGame() {
               <option value="MADHUR DAY Open">MADHUR DAY Open</option>
             </select>
           </div> */}
-           <div className="form-group18">
+          <div className="form-group18">
             <label>Select&nbsp;Game&nbsp;Type</label>
             <select>
               <option value="MADHUR NIGHT Open">MADHUR NIGHT Open</option>
@@ -64,8 +68,8 @@ function MadhurGame() {
               <button onClick={() => handleNumberClick("0")}>0</button>
             </div>
           </div>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
       <div>
         <div className="info18">
           <span className="infosum18">
@@ -81,7 +85,7 @@ function MadhurGame() {
           </button>
         </div>
       </div>
-      </NastedLayout>
+    </NastedLayout>
   );
 }
 

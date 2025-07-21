@@ -4,6 +4,8 @@ import NewContainer from "../../../Containers/NastedLayout";
 import { FOR_GET_LIST } from "../../../Service/commanservice";
 import { apiRoutes } from "../../../Config/endpoints";
 import NastedLayout from "../../../Containers/NastedLayout";
+import useInfiniteScroll from "../../../Components/InfiniteScroll";
+import Loader from "../../../Components/Loader";
 
 const Passbook = () => {
   const [items, setItems] = useState([]);
@@ -11,23 +13,11 @@ const Passbook = () => {
   const [pages, setPages] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  const observer = useRef();
-
-  const lastItemRef = useCallback(
-    (node) => {
-      if (loading) return;
-      if (observer.current) observer.current.disconnect();
-
-      observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && currentPage < pages) {
-          setCurrentPage((prev) => prev + 1);
-        }
-      });
-
-      if (node) observer.current.observe(node);
-    },
-    [loading, currentPage, pages]
-  );
+  const lastItemRef = useInfiniteScroll({
+    loading,
+    hasMore: currentPage < pages,
+    onLoadMore: () => setCurrentPage((prev) => prev + 1),
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,8 +47,11 @@ const Passbook = () => {
       <div style={{ padding: "5px" }}>
         {items?.length > 0 ? (
           <>
-            {items.map((item) => (
-              <div key={item._id}>
+            {items.map((item, index) => (
+              <div
+                key={item._id}
+                ref={index === items.length - 1 ? lastItemRef : null}
+              >
                 <div
                   className="test p-3 border rounded mb-2"
                   style={{ marginTop: "10px" }}
@@ -102,7 +95,10 @@ const Passbook = () => {
                 </div>
               </div>
             ))}
+            {loading && <Loader />}
           </>
+        ) : loading ? (
+          <Loader />
         ) : (
           <p className="nodatafoundtext">No History Found</p>
         )}

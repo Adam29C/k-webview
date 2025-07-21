@@ -55,7 +55,7 @@ const MainGamePage = () => {
 
         {GetGameType.map((item, index) => (
           <Link
-            to={"singlepanabulk"}
+            to={"singledigitbulk"}
             style={{ textDecoration: "none", color: "inherit" }}
             state={{ gametype: item }}
           >

@@ -21,7 +21,6 @@ export const apiRoutes = {
   GET_ALL_JACKPOT_GAMES: `${baseUrl}/api/web/AbList`,
 
   // game providers
-
   GET_ALL_GAMES_PROVIDERS: `${baseUrl}/gameBids/main-game-provider`,
   GET_ALL_STARLINE_GAMES_PROVIDERS: `${baseUrl}/starlineBids/starline-game-provider`,
   GET_ALL_JACKPOT_GAMES_PROVIDERS: `${baseUrl}/andarBharBids/GameProvider`,
@@ -67,6 +66,7 @@ export const apiRoutes = {
   GET_APP_BANNER: `${baseUrl}/appSetting/appBanner`,
   GET_SOCIAL_ACCOUNT_DETAILS: `${baseUrl}/appSetting/socialAccountDetails`,
   GET_HEADLINE: `${baseUrl}/appSetting/getHeadLine`,
+  GET_CONTACT: `${baseUrl}/appSetting/walletContact`,
   POST_TRANSACTION_CHARGE: `${baseUrl}withdraw/transectionCharges`,
   GET_ANDARBAHARBID_HISTORY: `${baseUrl}andarBharBids/history?`,
   GET_ADD_FUND_IDsUPI: `${baseUrl}addFund/idsUpi`,

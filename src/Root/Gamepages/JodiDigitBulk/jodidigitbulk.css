@@ -48,7 +48,7 @@
 
 .info17 {
   position: fixed;
-  bottom: 90px;
+  bottom: 20px;
   left: 0;
   width: 100%;
   display: flex;
@@ -86,4 +86,22 @@
 
 .submit-button17:hover {
   background-color: #146060;
+}
+
+.fixed-header-table {
+  max-height: 300px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.fixed-header-table thead th {
+  position: sticky;
+  top: 0;
+  background: #212529; /* match .table-dark */
+  color: white;
+  z-index: 1;
+}
+
+.fixed-header-table table {
+  margin-bottom: 0;
 }

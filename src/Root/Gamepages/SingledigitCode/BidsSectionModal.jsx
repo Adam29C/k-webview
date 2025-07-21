@@ -1,7 +1,13 @@
 import React from "react";
 
-const BidsSectionModal = ({ BidArray, totalBids, totalPoints, getProfile }) => {
-  console.log("BidArray", getProfile?.wallet_balance);
+const BidsSectionModal = ({ BidArray,   getProfile }) => {
+  console.log("BidArray", BidArray);
+
+  const totalBids = BidArray.length;
+  const totalPoints = BidArray.reduce(
+    (total, val) => total + (Number(val.biddingPoints) || 0),
+    0
+  );
 
   return (
     <div>
@@ -18,7 +24,7 @@ const BidsSectionModal = ({ BidArray, totalBids, totalPoints, getProfile }) => {
             BidArray?.map((items) => {
               return (
                 <tr>
-                  <td>{items?.bidDigit}</td>
+                  <td>{items?.bidDigit || items.jodi}</td>
                   <td>{items?.biddingPoints}</td>
                   <td>{items?.gameSession}</td>
                 </tr>

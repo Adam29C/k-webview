@@ -6,13 +6,16 @@ import JackpotCard from "./JackpotCard";
 import { FOR_GET_LIST, FOR_POST_REQUEST } from "../Service/commanservice";
 import { apiRoutes } from "../Config/endpoints";
 import "../../assets/css/settings.css";
+import { useDispatch } from "react-redux";
 
 const Tabs = () => {
+  const dispatch = useDispatch();
   const [starlinetype, setstarlinetype] = useState([]);
   const [starlinegameresult, setstarlinegameresult] = useState([]);
   const [games, setgames] = useState([]);
   const [andarbahargameres, setandarbahargameres] = useState([]);
   const [andarbahargametype, setandarbahargametype] = useState([]);
+  const [GetContact, setGetContact] = useState([]);
 
   const getstartlinegametype = async () => {
     try {
@@ -82,13 +85,16 @@ const Tabs = () => {
     starLineNotification: false,
     andarBaharNotification: false,
   });
+
   const getdata = async () => {
     try {
       const res = await FOR_GET_LIST(`${apiRoutes.GET_NOTIFICATION_STATUS}`);
+      const res1 = await FOR_GET_LIST(`${apiRoutes.GET_CONTACT}`);
+
+      setGetContact(res1.data[0]);
       if (res) {
-        if (res.status == true) {
+        if (res.status) {
           setdata(res.data);
-          // console.log(res.data);
         }
       }
     } catch (error) {
@@ -141,11 +147,11 @@ const Tabs = () => {
               <div className="contact-card-container ">
                 <div className="  homeicon-div  ">
                   <i className="fab fa-whatsapp homeicon me-2"></i>
-                  <span className="contact-number">9999999999</span>
+                  <span className="contact-number">{GetContact?.number}</span>
                 </div>
                 <div className="contact-box  homeicon-div   ">
                   <i className="fas fa-phone homeicon1 me-2"></i>
-                  <span className="contact-number">9999999999</span>
+                  <span className="contact-number">{GetContact?.number}</span>
                 </div>
               </div>
             </div>
