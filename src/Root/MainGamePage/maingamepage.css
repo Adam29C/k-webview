@@ -1,92 +1,59 @@
-.icon-grid-container {
+/* Grid container */
+.icon-grid-container11 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
   background-color: #f6f7f9;
 }
 
+/* Icon card box */
 .icon-card {
   background-color: white;
   border-radius: 20px;
-  padding: 30px 10px;
+  padding: 21px 10px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Unified icon container */
 .icon {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   margin: 0 auto 10px;
 }
-.single-digit {
-  background: url("/icons/single-digit.png") center/contain no-repeat;
-}
 
-.single-digit-bulk {
-  background: url("/icons/single-digit-bulk.png") center/contain no-repeat;
+/* Just background-image definitions */
+.single-digit         { background-image: url("../../assets/svgs/gaming/singledigit.svg"); }
+.single-digit-bulk    { background-image: url("../../assets/svgs/gaming/singledigitbuk.svg"); }
+.single-pana          { background-image: url("../../assets/svgs/gaming/singlepana.svg"); }
+.single-pana-bulk     { background-image: url("../../assets/svgs/gaming/singlepanabulk.svg"); }
+.double-pana          { background-image: url("../../assets/svgs/gaming/doublepana.svg"); }
+.double-pana-bulk     { background-image: url("../../assets/svgs/gaming/doublepanabulk.svg"); }
+.triple-pana          { background-image: url("../../assets/svgs/gaming/triplepana.svg"); }
+.triple-pana-bulk     { background-image: url("../../assets/svgs/gaming/triplepanabulk.svg"); }
+.sp-motor             { background-image: url("../../assets/svgs/gaming/spmotor.svg"); }
+.dp-motor             { background-image: url("../../assets/svgs/gaming/dpmotor.svg"); }
+.odd-even             { background-image: url("../../assets/svgs/gaming/odd_even.svg"); }
+.two-digit-panel      { background-image: url("../../assets/svgs/gaming/twodigitpanel.svg"); }
+.sp-dp-tp             { background-image: url("../../assets/svgs/gaming/spdptp.svg"); }
+.red-bracket          { background-image: url("../../assets/svgs/gaming/redbracket.svg"); }
+.digit-based-jodi     { background-image: url("../../assets/svgs/gaming/digitbasedjackpot.svg"); 
 }
+.choice-pana          { background-image: url("../../assets/svgs/gaming/choicepana.svg"); }
+.panel-group          { background-image: url("../../assets/svgs/gaming/panelgroup.svg"); }
+.half-sangam          { background-image: url("../../assets/svgs/gaming/halfsangam.svg"); }
+.full-sangam          { background-image: url("../../assets/svgs/gaming/fullsangam.svg"); }
+.jodi-group           { background-image: url("../../assets/svgs/gaming/groupjodi.svg"); }
+.jodi-digit           { background-image: url("../../assets/svgs/gaming/jodidigit.svg"); }
+.jodi-digit-bulk           { background-image: url("../../assets/svgs/gaming/jodidigitbulk.svg"); }
 
-.single-pana {
-  background: url("/icons/single-pana.png") center/contain no-repeat;
-}
 
-.single-pana-bulk {
-  background: url("/icons/single-pana-bulk.png") center/contain no-repeat;
-}
-
-.double-pana {
-  background: url("/icons/double-pana.png") center/contain no-repeat;
-}
-
-.double-pana-bulk {
-  background: url("/icons/double-pana-bulk.png") center/contain no-repeat;
-}
-
-.triple-pana {
-  background: url("/icons/triple-pana.png") center/contain no-repeat;
-}
-
-.triple-pana-bulk {
-  background: url("/icons/triple-pana-bulk.png") center/contain no-repeat;
-}
-
-.sp-motor {
-  background: url("/icons/sp-motor.png") center/contain no-repeat;
-}
-
-.dp-motor {
-  background: url("/icons/dp-motor.png") center/contain no-repeat;
-}
-
-.odd-even {
-  background: url("/icons/odd-even.png") center/contain no-repeat;
-  margin: 0 auto 10px !important;
-  width: 60px !important;
-  height: 60px !important;
-}
-
-.two-digit-panel {
-  background: url("/icons/two-digit-panel.png") center/contain no-repeat;
-}
-
-.sp-dp-tp {
-  background: url("/icons/sp-dp-tp.png") center/contain no-repeat;
-}
-
-.choice-pana {
-  background: url("/icons/choice-pana.png") center/contain no-repeat;
-}
-
-.panel-group {
-  background: url("/icons/panel-group.png") center/contain no-repeat;
-}
-
-.icon-label {
-  font-size: 14px;
+/* Label text */
+.icon-label-main {
+  font-size: 11px;
   font-weight: 500;
   color: #333;
 }

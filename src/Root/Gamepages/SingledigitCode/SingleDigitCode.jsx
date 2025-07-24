@@ -141,8 +141,8 @@ function SingleDigitCode() {
           children={
             <BidsSectionModal
               BidArray={BidArray}
-              totalBids={totalBids}
-              totalPoints={totalPoints}
+              // totalBids={totalBids}
+              // totalPoints={totalPoints}
               getProfile={getProfile}
             />
           }

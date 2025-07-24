@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import Authcontainer from "../../Containers/auth-container";
 import SplashScreen from "./SplashScreen";
 import CustomDialog from "../../Components/Custom-modal";
@@ -31,8 +30,7 @@ const Welcome = () => {
         mpin: MPIN,
         firebaseId: firebaseId,
       };
-      let Url = PageIndex.apiRoutes.LOGIN_USER_WITH_MPIN
-      ;
+      let Url = PageIndex.apiRoutes.LOGIN_USER_WITH_MPIN;
 
       const response = await PageIndex.authServices.FOR_POST_REQUEST(
         Url,
@@ -81,6 +79,7 @@ const Welcome = () => {
         icon={false}
         children={
           <>
+          
             <img src={secoLogo} alt="" className=" ms-2" />
 
             <div class="input-group mb-3  mt-4">

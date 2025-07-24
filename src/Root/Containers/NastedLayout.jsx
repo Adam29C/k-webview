@@ -9,25 +9,27 @@ const NastedLayout = ({ title, route, showhide, children }) => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="Image-Container position-relative">
-        <div className="d-flex align-items-center text-light w-100 py-3 ps-3 ">
-          <Link to={route} className="text-white me-2">
-            <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
-          </Link>
-          <div className="d-flex flex-column align-items-center">
-            <h6 className=" mb-0 ">{title.toUpperCase()}</h6>
-          </div>
-          <div className="d-flex flex-column align-items-center">
-            <h6 className=" mb-0"></h6>
+      <div className="bg-light">
+        <div className="Image-Container position-relative  ">
+          <div className="d-flex align-items-center text-light w-100 py-3 ps-3 ">
+            <Link to={route} className="text-white me-2">
+              <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
+            </Link>
+            <div className="d-flex flex-column align-items-center">
+              <h6 className=" mb-0 ">{title.toUpperCase()}</h6>
+            </div>
+            <div className="d-flex flex-column align-items-center">
+              <h6 className=" mb-0"></h6>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="container-fluid mt-2">
-        <div className="row">
-          <div className="col-12">
-            {children}
-            {/* <Outlet />  */}
+        <div className="container-fluid   mt-2  bg-light">
+          <div className="row">
+            <div className="col-12  overflow-scroll" style={{ height: "80vh" }}>
+              {children}
+              {/* <Outlet />  */}
+            </div>
           </div>
         </div>
       </div>

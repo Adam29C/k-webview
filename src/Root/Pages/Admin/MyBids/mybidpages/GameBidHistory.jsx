@@ -120,9 +120,9 @@ function GameBidHistory() {
                 </span>
               </div>
               <div className="d-flex justify-content-around align-items-center">
-                <div className="d-flex flex-column ">
+                <div className="d-flex flex-column align-items-center ">
                   <span className="passbook-title">Bid ID</span>
-                  <span>{item._id}</span>
+                  <span className="manage-id">{item._id}</span>
                 </div>
                 <div className="d-flex flex-column ">
                   <span className="passbook-title">Digit</span>

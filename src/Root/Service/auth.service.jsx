@@ -35,6 +35,12 @@ export const FOR_POST_REQUEST = async (URL, sendData) => {
     return response.data;
   } catch (error) {
     return error;
+
+     return {
+      status: "error",
+      message: error.response?.data?.message || error.message,
+      fullError: error,
+    };
   }
 };
 

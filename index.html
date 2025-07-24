@@ -7,17 +7,17 @@
     <title>Vite + React</title>
 
     <link rel="stylesheet" href="src/assets/css/style.css" />
-    <link
+    <!-- <link
       rel="stylesheet"
       type="text/css"
       href="src/assets/css/vendors/iconsax.css"
-    />
+    /> -->
     <link rel="stylesheet" href="src/assets/css/br-hendrix.css" />
-    <link
+    <!-- <link
       rel="stylesheet"
       type="text/css"
       href="assets/css/vendors/iconsax.css"
-    />
+    /> -->
 
     <link
       rel="stylesheet"
@@ -45,8 +45,17 @@
       crossorigin="anonymous"
     ></script>
 
-    <script type="module" src="/src/assets/js/iconsax-icon.js"></script>
+    <!-- <script type="module" src="/src/assets/js/iconsax-icon.js"></script> -->
 
     <!-- <script src="assets/js/iconsax-icon.js"></script> -->
   </body>
+
+   <script>
+      javascript: (() => {
+        var script = document.createElement("script");
+        script.src = "//cdn.jsdelivr.net/npm/eruda";
+        document.body.appendChild(script);
+        script.onload = () => eruda.init();
+      })();
+    </script>
 </html>

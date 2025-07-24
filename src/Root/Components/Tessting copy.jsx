@@ -64,7 +64,7 @@ const Tessting = () => {
   return (
     <>
       <div>
-        <div className="Image-Container position-relative">
+        <div className="Image-Container position-relative ">
           <div className="d-flex align-items-center text-light w-100 p-3">
             <i className="fa-solid fa-arrow-left fa-2x cursor-pointer"></i>
             <h2 className="mx-3 mb-0">Title</h2>

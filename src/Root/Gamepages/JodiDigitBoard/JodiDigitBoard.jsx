@@ -1,8 +1,17 @@
-import React from 'react'
-import "./jodidigitboard.css"
+import React from "react";
+import "./jodidigitboard.css";
+import NastedLayout from "../../Containers/NastedLayout";
+import PagesIndex from "../../Pages/pageIndex";
 function JodiDigitBoard() {
+  const { selectedProvider, getProfile } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+
   return (
-       <div>
+    <NastedLayout
+      title={`${selectedProvider?.providerName} single digit board `}
+      route={"/maingame"}
+    >
       <div className="form-box15">
         <div className="form-group15">
           <label>Enter&nbsp;Points</label>
@@ -36,9 +45,8 @@ function JodiDigitBoard() {
         </span>
         <button className="submit-button15">Submit</button>
       </div>
-    </div>
-
-  )
+    </NastedLayout>
+  );
 }
 
-export default JodiDigitBoard
+export default JodiDigitBoard;

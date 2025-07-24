@@ -207,6 +207,11 @@ const NastedRoutes = [
     element: <SinglePanaBulk />,
     // 13
   },
+   {
+    path: "maingame/jodidigitboard",
+    element: <JodiDigitBoard />,
+    // 15
+  },
   {
     path: "maingame/singledigitcode",
     element: <SingleDigitCode />,
@@ -242,6 +247,7 @@ const NastedRoutes = [
     element: <FullSangam />,
     // 22
   },
+ 
 ];
 
 export default NastedRoutes;

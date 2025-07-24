@@ -9,6 +9,9 @@
   padding-left: 100%;
   animation: scroll-left 20s linear infinite;
   color: red;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 @keyframes scroll-left {

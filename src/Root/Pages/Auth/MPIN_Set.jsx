@@ -14,10 +14,12 @@ const MPINSet = () => {
   const [confirmMpin, setConfirmMpin] = useState("");
   const [showMpin, setShowMpin] = useState(false);
   const [showConfirmMpin, setShowConfirmMpin] = useState(false);
+  const [printConsole, setprintConsole] = useState(false);
 
-  // const toggleMpinVisibility = () => setShowMpin(!showMpin);
-  // const toggleConfirmMpinVisibility = () =>
-  //   setShowConfirmMpin(!showConfirmMpin);
+
+  const toggleMpinVisibility = () => setShowMpin(!showMpin);
+  const toggleConfirmMpinVisibility = () =>
+    setShowConfirmMpin(!showConfirmMpin);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -58,15 +60,18 @@ const MPINSet = () => {
         payload
       );
 
+      setprintConsole(response.toString())
       if (response?.status) {
         localStorage.setItem("token", response.data.token);
-        navigate(" home", { replace: true });
+        navigate("/home", { replace: true });
       } else {
         toast.error("Something went wrong during registration");
       }
 
       setShowMpin(JSON.stringify(response));
     } catch (error) {
+      setprintConsole(error.toString())
+
       console.error("Submission error:", error);
       toast.error("An error occurred. Please try again.");
     }
@@ -111,7 +116,7 @@ const MPINSet = () => {
                 />
               </div>
             </div>
-            showMpin ={showMpin}
+            showMpin ={printConsole && printConsole.toString()}
             <button className=" mt-5 primary-button w-100">Submit</button>
           </form>
           <PagesIndex.Toast />

@@ -43,8 +43,8 @@ const Passbook = () => {
   }, [currentPage]);
 
   return (
-    <NastedLayout title={"PASSBOOKS"} route={"/home"}>
-      <div style={{ padding: "5px" }}>
+    <NastedLayout title={"PASSBOOKS"} route={"/home"} className="h-100 overflow-scroll" >
+      <div   > 
         {items?.length > 0 ? (
           <>
             {items.map((item, index) => (
@@ -53,43 +53,50 @@ const Passbook = () => {
                 ref={index === items.length - 1 ? lastItemRef : null}
               >
                 <div
-                  className="test p-3 border rounded mb-2"
+                  className="test p-2 border rounded mb-2"
                   style={{ marginTop: "10px" }}
                 >
-                  <div className="d-flex justify-content-between align-items-center mb-2">
+                  <div className="d-flex justify-content-left align-items-center ">
                     <span
                       style={{ textTransform: "capitalize" }}
                       className={`${
                         item.reqType === "Credit"
-                          ? "text-success fs-14 fw-bold"
-                          : "text-danger fs-14 fw-bold"
+                          ? "text-success fs-14 "
+                          : "text-danger fs-14 "
                       }`}
                     >
-                      {item.description}
+                      {index + 1}. {item.description}
                     </span>
                   </div>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <span>{item.transaction_date}</span>
+                  <div className="d-flex justify-content-between align-items-center  ">
+                    <span className="passbook-title fw-bold">Date:</span>
+                    <span className="passbook-title">
+                      {item.transaction_date}
+                    </span>
+                  </div>
+
+                  <div className="d-flex justify-content-between align-items-center   ">
+                    <span className="passbook-title fw-bold">Amount:</span>
                     <span
-                      className={
-                        item.reqType === "Credit"
+                      className={`
+                        passbook-title + ${item.reqType === "Credit"
                           ? "text-success"
-                          : "text-danger"
-                      }
+                          : "text-danger"}
+                      `}
                     >
-                      {item.reqType === "Credit" ? "+" : "-"}{" "}
+                      {item.reqType === "Credit" ? "+" : "-"}
                       {item.transaction_amount}&nbsp;Rs
                     </span>
                   </div>
 
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="d-flex justify-content-between flex-column align-items-center">
+                  <div className="d-flex justify-content-between ">
+                    <div className="d-flex justify-content-between flex-column align-items-start">
                       <span className="passbook-title">Previous Amount</span>
-                      <span>{item.previous_amount}</span>
+                      <span className="passbook-title">₹ {parseFloat(item.previous_amount).toFixed(1)}</span>
                     </div>
-                    <div className="d-flex justify-content-between flex-column align-items-center">
+                    <div className="d-flex justify-content-between flex-column align-items-start">
                       <span className="passbook-title">Current Amount</span>
-                      <span>{item.current_amount}</span>
+                      <span className="passbook-title">₹ {parseFloat(item.current_amount).toFixed(1)}</span>
                     </div>
                   </div>
                 </div>

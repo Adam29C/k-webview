@@ -22,10 +22,10 @@ const Passbook = () => {
                         <div className="d-flex justisfy-content-between align-items-center ">
                           <i class={`icon-size mx-4 ms-1  ${item.icon}`}></i>
                           <div className="d-flex  flex-column">
-                            <span class="fw-bold text-sm text-left">
+                            <span class="fw-bold text-sm text-left fs-15">
                               {item.name}
                             </span>
-                            <p class="card-text">{item.description}</p>
+                            <p class="card-text fs-13">{item.description}</p>
                           </div>
                         </div>
                         <div className=" d-flex justify-content-center align-items-center bgr">
