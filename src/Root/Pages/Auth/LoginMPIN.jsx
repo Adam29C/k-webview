@@ -81,7 +81,7 @@ const Welcome = () => {
           <>
           
             <img src={secoLogo} alt="" className=" ms-2" />
-
+device - {deviceId }
             <div class="input-group mb-3  mt-4">
               <span class="input-group-text" id="basic-addon1">
                 <i class="fa-solid fa-unlock-keyhole primary-color icon-color"></i>

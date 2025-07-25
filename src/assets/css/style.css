@@ -1621,3 +1621,15 @@ body.dark .offcanvas.success-offcanvas .btn-close {
 .tab-list-card {
   justify-content: center !important;
 }
+
+
+
+.react-tabs__tab:focus:after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    left: -4px;
+    right: -4px;
+    bottom: -5px;
+    background: none !important;
+}

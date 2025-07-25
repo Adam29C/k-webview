@@ -48,6 +48,9 @@ const VerifyUser = () => {
     }
   };
 
+  console.log("location?.state?.username" ,location?.state);
+  
+
   return (
     <Authcontainer
       title="Welcome To"
@@ -66,6 +69,8 @@ const VerifyUser = () => {
               aria-describedby="basic-addon1"
               placeholder="Enter User Name "
               id="mobileNumber"
+              disabled={location?.state?.username}
+              value={location?.state?.username || username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>

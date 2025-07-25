@@ -1,21 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogTitle,
   DialogContent,
   DialogContentText,
   DialogActions,
-  Button,
-
 } from "@mui/material";
 
-const MyAlertDialog = ({ ShowModal, setShowModal, title, body ,   btn_title }) => {
+const MyAlertDialog = ({ ShowModal, setShowModal, title, body, btnFunction, btn_title }) => {
   return (
     <>
-      {/* <Button variant="outlined" onClick={setShowModal}>
-        Open alert dialog
-      </Button> */}
-
       <Dialog
         open={ShowModal}
         onClose={() => setShowModal(false)}
@@ -43,7 +37,9 @@ const MyAlertDialog = ({ ShowModal, setShowModal, title, body ,   btn_title }) =
         </DialogContent>
 
         <DialogActions>
-          <button className="primary-button">{btn_title}</button>
+          <button className="primary-button" onClick={btnFunction}>
+            {btn_title}
+          </button>
         </DialogActions>
       </Dialog>
     </>

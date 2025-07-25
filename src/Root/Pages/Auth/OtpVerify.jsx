@@ -34,12 +34,17 @@ const VerifyUser = () => {
       paylaod
     );
 
-    console.log("response", response);
+    // console.log("response", response);
 
     if (response.status) {
       navigate("/userverify", {
         replace: true,
-        state: { mobileNumber: location.state.mobileNumber, otp: SubmitOTP },
+        state: {
+          mobileNumber: location.state.mobileNumber,
+          otp: SubmitOTP,
+          newUser: location.state.newUser,
+          username: location.state.username,
+        },
       });
       // navigate("/userverify", { replace: true });
     } else {
@@ -56,7 +61,6 @@ const VerifyUser = () => {
       children={
         <>
           <div class="input-group mb-3  mt-4">
-           
             <span class="input-group-text" id="basic-addon1">
               <i class="fa-solid fa-user icon-color"></i>
             </span>

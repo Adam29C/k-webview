@@ -32,9 +32,6 @@ const Welcome = () => {
     } else if (MobileNumber.length != 10) {
       toast.error("Enter Valid Mobile Number");
     } else {
-      // localStorage.setItem("mobile", MobileNumber);
-      // window.location.href = "/verify";
-
       let paylaod = { mobile: MobileNumber, deviceId: deviceId };
       let Url = PageIndex.apiRoutes.VERIFY_NUMBER_FOR_REGISTER_USER;
 
@@ -43,16 +40,43 @@ const Welcome = () => {
         paylaod
       );
 
-      if (response.status) {
-        if (response?.data?.type === "already") {
-          setShowModal(true);
-          setPreRegistedUser(response.data);
+      if (response.status === 0) {
+        let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
+        const response1 = await PageIndex.authServices.FOR_POST_REQUEST(
+          Url,
+          paylaod
+        );
+
+        let isNewUser = false;
+
+        if (response1.data.newDeviceId === response1.data.oldDeviceId) {
+          isNewUser = true;
         } else {
-          navigate("/verify", {
-            replace: true,
-            state: { mobileNumber: MobileNumber, otp: response.otp },
-          });
+          isNewUser = false;
         }
+
+        // return
+        navigate("/verify", {
+          replace: true,
+          state: {
+            mobileNumber: MobileNumber,
+            otp: response1.otp,
+            newUser: isNewUser,
+            username: response1.data.userName,
+          },
+        });
+
+        // }
+
+        // if (response?.data?.type === "already") {
+        //   setShowModal(true);
+        //   setPreRegistedUser(response.data);
+        // } else {
+        //   navigate("/verify", {
+        //     replace: true,
+        //     state: { mobileNumber: MobileNumber, otp: response.otp },
+        //   });
+        // }
 
         // navigate("/verify", {
         //   replace: true,
@@ -84,7 +108,9 @@ const Welcome = () => {
   };
 
   const handleConfirm = async () => {
-    let paylaod = { mobile: MPIN, deviceId: deviceId };
+    console.log("PreRegistedUser", PreRegistedUser);
+
+    let paylaod = { mobile: MobileNumber, deviceId: deviceId };
     let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
     const response12 = await PageIndex.authServices.FOR_POST_REQUEST(
       Url,
@@ -94,7 +120,12 @@ const Welcome = () => {
     if (response12.status) {
       navigate("/verify", {
         replace: true,
-        state: { mobileNumber: MobileNumber, otp: response12.otp },
+        state: {
+          mobileNumber: MobileNumber,
+          otp: response12.otp,
+          newUser: isNewUser,
+          username: response12.data.userName,
+        },
       });
     }
   };
@@ -169,7 +200,7 @@ const Welcome = () => {
               </>
             }
             btn_title="Proceed"
-            btn-function={handleConfirm}
+            btnFunction={() => handleConfirm()}
           />
         </>
       )}

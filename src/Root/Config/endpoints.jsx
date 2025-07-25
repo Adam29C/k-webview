@@ -6,7 +6,7 @@ export const apiRoutes = {
 
   // --- Authentications  ----
 
-  VERIFY_NUMBER_FOR_REGISTER_USER: `${baseUrl}/user/checkMobile`,
+  VERIFY_NUMBER_FOR_REGISTER_USER: `${baseUrl}/user/verifyMobile`,
   SEND_OTP_FOR_REGISTER_USER: `${baseUrl}/user/sendMobileOtp`,
   VARIFY_OTP_FOR_REGISTER_USER: `${baseUrl}/user/existOtpVerify`,
   CHECK_USERNAME_FOR_REGISTER_USER: `${baseUrl}/user/checkUsername`,

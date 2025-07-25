@@ -20,3 +20,6 @@
   border-radius: 30px;
 }
 
+.react-tabs__tab {
+  position: relative;
+}
