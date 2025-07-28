@@ -4,7 +4,7 @@ import SplashScreen from "./SplashScreen";
 import CustomDialog from "../../Components/Custom-modal";
 import PageIndex from "../pageIndex";
 import toast from "react-hot-toast";
-import { data, replace, useNavigate } from "react-router-dom";
+import { data, Link, replace, useNavigate } from "react-router-dom";
 import { DeviceID } from "../../Config/baseurl";
 import { GetFirebseAndDeviceID } from "../../helpers/GetFirebseAndDeviceID";
 import secoLogo from "../../../assets/svgs/logo-third.svg";
@@ -37,11 +37,19 @@ const Welcome = () => {
         paylaod
       );
 
+
+      console.log("response.status" ,response);
+      
       if (response.status) {
+        localStorage.setItem("userData", JSON.stringify(response.data));
+
         navigate("/home", {
           replace: true,
           // state: { mobileNumber: MobileNumber, otp: response.otp },
         });
+
+
+
 
         // let Url = PageIndex.apiRoutes.SEND_OTP_FOR_REGISTER_USER;
 
@@ -76,40 +84,37 @@ const Welcome = () => {
   return (
     <>
       <Authcontainer
-        icon={false}
+        icon={true}
+        // title="MPIN Registration"
         children={
           <>
-          
-            <img src={secoLogo} alt="" className=" ms-2" />
-device - {deviceId }
-            <div class="input-group mb-3  mt-4">
-              <span class="input-group-text" id="basic-addon1">
-                <i class="fa-solid fa-unlock-keyhole primary-color icon-color"></i>
-              </span>
+         deviceId -- {deviceId}
+            <h6 className="otp-login-text">Login With MPIN</h6>
+            <div class="floating-phone">
+              <i className="fa-solid fa-lock input-icon icon-color"></i>
               <input
-                type="text"
-                pattern="[0-9]*"
-                aria-describedby="basic-addon1"
-                inputMode="numeric"
-                class="form-control"
-                aria-label="Username"
-                placeholder="Login With MPIN"
-                id="mobileNumber"
-                onChange={
-                  (e) => {
-                    const value = e.target.value;
-                    if (/^\d*$/.test(value)) {
-                      setMPIN(value);
-                    }
-                  }
-                  // setMobileNumber(e.target.value)
-                }
+                type="password"
+                id="phoneInput"
+                placeholder=""
+                maxLength="4"
+                value={MPIN}
+                onChange={(e) => setMPIN(e.target.value)}
               />
+              <label for="phoneInput" class="float-label">
+                Enter MPIN
+              </label>
             </div>
-            {/* <button className=" position-absolute  mt-5 primary-button ">Submit</button> */}
-            <button className="   primary-button " onClick={() => LoginUser()}>
+            <button className="primary-button " onClick={() => LoginUser()}>
               Get OTP
             </button>
+
+            <Link
+              to={"/forgetopt"}
+              // onClick={handleResend}
+              className="    fw-bold manaage-otp-font "
+            >
+              Forgot MPIN ??
+            </Link>
             {/* otp- {ids.firebaseId} */}
           </>
         }

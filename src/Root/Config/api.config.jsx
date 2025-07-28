@@ -7,9 +7,24 @@ const dataservice = axios.create({
 
 dataservice.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token1 = localStorage.getItem("token1");
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const token = userData?.token;
 
-    config.headers.Authorization = `Bearer ${token}`;
+    console.log("browse logi token token1", token1);
+    console.log("app login token", token);
+
+    const manageToken = token1 || token;
+
+    if (manageToken) {
+      // Token exists, do something
+      console.log("Token found:", manageToken);
+    } else {
+      // No token found, handle accordingly
+      console.log("No token found");
+    }
+
+    config.headers.Authorization = `Bearer ${manageToken}`;
 
     return config;
   },

@@ -10,20 +10,17 @@ const MPINSet = () => {
   let location = useLocation();
   let navigate = useNavigate();
 
+  // console.log("location?.state", location?.state);
+
   const [mpin, setMpin] = useState("");
   const [confirmMpin, setConfirmMpin] = useState("");
   const [showMpin, setShowMpin] = useState(false);
   const [showConfirmMpin, setShowConfirmMpin] = useState(false);
   const [printConsole, setprintConsole] = useState(false);
 
-
-  const toggleMpinVisibility = () => setShowMpin(!showMpin);
-  const toggleConfirmMpinVisibility = () =>
-    setShowConfirmMpin(!showConfirmMpin);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Step 1: Empty Check
     if (!mpin || !confirmMpin) {
       toast.error("MPIN and Confirm MPIN should not be empty");
       return;
@@ -43,14 +40,14 @@ const MPINSet = () => {
 
     // Step 4: Construct payload
     const payload = {
-      username: location.state?.username,
-      mobile: location.state?.mobileNumber,
+      username: location?.state?.username,
+      mobile: location?.state?.mobileNumber,
       deviceId: deviceId,
       firebaseId: firebaseId,
-      deviceVerifyOTP: location.state?.otp,
+      deviceVerifyOTP: location?.state?.otp,
       deviceName: deviceName,
       userMpin: mpin,
-      name: location.state?.username,
+      name: location?.state?.username,
     };
 
     try {
@@ -60,7 +57,7 @@ const MPINSet = () => {
         payload
       );
 
-      setprintConsole(response.toString())
+      setprintConsole(response.toString());
       if (response?.status) {
         localStorage.setItem("token", response.data.token);
         navigate("/home", { replace: true });
@@ -70,7 +67,7 @@ const MPINSet = () => {
 
       setShowMpin(JSON.stringify(response));
     } catch (error) {
-      setprintConsole(error.toString())
+      setprintConsole(error.toString());
 
       console.error("Submission error:", error);
       toast.error("An error occurred. Please try again.");
@@ -84,13 +81,40 @@ const MPINSet = () => {
       icon={false}
       children={
         <>
-          <form
-            onSubmit={handleSubmit}
-            className="p-3  ms-2 rounded shadow-sm w-100"
-          >
-            <div className="mb-3">
+          <form onSubmit={handleSubmit} className="p-3  ms-2 rounded  w-100">
+            <div class="floating-phone ">
+              <i className="fa-solid fa-lock input-icon icon-color"></i>
+              <input
+                type="password"
+                id="phoneInput"
+                placeholder=""
+                maxLength="4"
+                value={mpin}
+                onChange={(e) => setMpin(e.target.value)}
+              />
+              <label for="phoneInput" class="float-label">
+                Enter MPIN
+              </label>
+            </div>
+            <div class="floating-phone mt-3 ">
+              <i className="fa-solid fa-lock input-icon icon-color"></i>
+
+              <input
+                type="password"
+                id="phoneInput"
+                placeholder=""
+                maxLength="4"
+                value={confirmMpin}
+                onChange={(e) => setConfirmMpin(e.target.value)}
+              />
+              <label for="phoneInput" class="float-label">
+                Confirm MPIN
+              </label>
+            </div>
+            {/* <div className="mb-3">
               <div className="input-container">
-                <i className="fa-solid fa-lock input-icon"></i>
+                <i className="fa-solid fa-lock input-icon icon-color"></i>
+
                 <input
                   type="password"
                   className="styled-input"
@@ -102,7 +126,6 @@ const MPINSet = () => {
               </div>
             </div>
             <div className="mb-3">
-              {/* <label className="form-label">MPIN</label> */}
 
               <div className="input-container">
                 <i className="fa-solid fa-lock input-icon"></i>
@@ -115,9 +138,8 @@ const MPINSet = () => {
                   onChange={(e) => setConfirmMpin(e.target.value)}
                 />
               </div>
-            </div>
-            showMpin ={printConsole && printConsole.toString()}
-            <button className=" mt-5 primary-button w-100">Submit</button>
+            </div> */}
+            <button className=" mt-5 primary-button ">Set Mpin</button>
           </form>
           <PagesIndex.Toast />
         </>

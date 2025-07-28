@@ -147,7 +147,7 @@ const Tabs = () => {
           <TabPanel>
             <div className="mx-3 tab-list-card rounded-5 my-2">
               <div className="contact-card-container ">
-                <div className="  homeicon-div  ">
+                <div className="  homeicon-div mx-1 ">
                   <i className="fab fa-whatsapp text-success homeicon fw-bolder  me-2"></i>
                   <span className="contact-number">{GetContact?.number}</span>
                 </div>
@@ -194,7 +194,6 @@ const Tabs = () => {
             <StarlineGameCard
               dataArrayofstarlinegames={dataArrayofstarlinegames}
             />
-        
           </TabPanel>
           <TabPanel>
             {/* <p>Cards for Jackpot</p> */}

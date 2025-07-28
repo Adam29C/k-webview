@@ -26,7 +26,7 @@ const NastedLayout = ({ title, route, showhide, children }) => {
 
         <div className="container-fluid   mt-2  bg-light">
           <div className="row">
-            <div className="col-12  overflow-scroll" style={{ height: "80vh" }}>
+            <div className="col-12  overflow-scroll" style={{ height: "90vh" }}>
               {children}
               {/* <Outlet />  */}
             </div>

@@ -3,14 +3,21 @@ import "./panelgroupboard.css";
 import NastedLayout from "../../Containers/NastedLayout";
 import PagesIndex from "../../Pages/pageIndex";
 function PanelGroupBoard() {
-    const { state } = PagesIndex.useLocation();
+  const navigate = PagesIndex.useNavigate();
+  const { state } = PagesIndex.useLocation();
+  const { selectedProvider, getProfile } = PagesIndex.useSelector(
+    (state) => state.CommonSlice
+  );
+
+  const [GameTypeSelect, setGameTypeSelect] = PagesIndex.useState("Open");
+  const [GameSessions, setGameSessions] = PagesIndex.useState();
 
   return (
     <NastedLayout
-      title={`${state.title.toUpperCase()} dashboard `}
+      title={`${selectedProvider?.providerName} dashboard `}
       route={"/maingame"}
     >
-      <div className="headerpadd20">
+      {/* <div className="headerpadd20">
         <div className="date-header20">
           <span className="date-text20">
             <div
@@ -27,8 +34,30 @@ function PanelGroupBoard() {
           </span>
           <div className="day-label20">MAYA DAY Open</div>
         </div>
-      </div>
-      <div className="form-box20">
+      </div> */}
+      <div className="form-box20 ">
+        <div className="form-group13">
+          <label>Select&nbsp;Game&nbsp;Type</label>
+          <select
+            onChange={(e) => setGameTypeSelect(e.target.value)}
+            value={GameTypeSelect}
+          >
+            {GameSessions?.gameSession === "Close" ? (
+              <option value="Close">
+                {selectedProvider?.providerName} CLOSE
+              </option>
+            ) : (
+              <>
+                <option value="Open">
+                  {selectedProvider?.providerName} OPEN
+                </option>
+                <option value="Close">
+                  {selectedProvider?.providerName} CLOSE
+                </option>
+              </>
+            )}
+          </select>
+        </div>
         <div className="form-group20">
           <label>PANNA</label>
           <input type="text" />
@@ -67,7 +96,7 @@ function PanelGroupBoard() {
           <button className="submit-button20">Submit</button>
         </div>
       </div>
-       </NastedLayout>
+    </NastedLayout>
   );
 }
 

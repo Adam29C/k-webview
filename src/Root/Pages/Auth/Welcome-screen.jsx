@@ -8,8 +8,10 @@ import toast from "react-hot-toast";
 import { data, replace, useNavigate } from "react-router-dom";
 import { DeviceID } from "../../Config/baseurl";
 import { GetFirebseAndDeviceID } from "../../helpers/GetFirebseAndDeviceID";
+import { Mobile_regex } from "../../helpers/Valid_rejex";
 
 const Welcome = () => {
+  // let deviceId = "";
   const navigate = useNavigate();
   const { deviceId, firebaseId, deviceName } = GetFirebseAndDeviceID();
 
@@ -47,13 +49,13 @@ const Welcome = () => {
           paylaod
         );
 
-        let isNewUser = false;
+        // let isNewUser = false;
 
-        if (response1.data.newDeviceId === response1.data.oldDeviceId) {
-          isNewUser = true;
-        } else {
-          isNewUser = false;
-        }
+        // if (response1.data.newDeviceId === response1.data.oldDeviceId) {
+        //   isNewUser = true;
+        // } else {
+        //   isNewUser = false;
+        // }
 
         // return
         navigate("/verify", {
@@ -61,8 +63,8 @@ const Welcome = () => {
           state: {
             mobileNumber: MobileNumber,
             otp: response1.otp,
-            newUser: isNewUser,
-            username: response1.data.userName,
+            // newUser: isNewUser,
+            // username: response1.data.userName,
           },
         });
 
@@ -117,6 +119,14 @@ const Welcome = () => {
       paylaod
     );
 
+    let isNewUser = false;
+
+    if (PreRegistedUser.newDeviceId === PreRegistedUser.oldDeviceId) {
+      isNewUser = true;
+    } else {
+      isNewUser = false;
+    }
+
     if (response12.status) {
       navigate("/verify", {
         replace: true,
@@ -124,7 +134,7 @@ const Welcome = () => {
           mobileNumber: MobileNumber,
           otp: response12.otp,
           newUser: isNewUser,
-          username: response12.data.userName,
+          username: PreRegistedUser.userName,
         },
       });
     }
@@ -141,17 +151,37 @@ const Welcome = () => {
       ) : (
         <>
           <Authcontainer
-            title="Welcome To"
+            title="Login"
             subtitle="India’s best Satta Matka Application Welcomes You !!!"
             icon={true}
             children={
               <>
-                <div class="input-group mb-3  mt-4">
-                  {/* deviceId = {deviceId} <br />
-                  deviceName = {deviceName} <br />
-                  firebaseId = {firebaseId} <br /> */}
-                  {/* <label htmlFor="basic-addon1">Phone Number</label> */}
-                  {/* test--- {first && first} */}
+                {/* <h6>Login</h6> */}
+
+                <div class="floating-phone ">
+                  <div className="border-end-4 bg-dark">
+                    <i class="fa-solid fa-phone primary-color icon-color phone-icon  "></i>
+                    <span class="phone-prefix mx-1 primary-color">+91</span>
+                  </div>
+                  <input
+                    type="number"
+                    id="phoneInput"
+                    placeholder=""
+                    maxLength="10"
+                    value={MobileNumber}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (/^\d*$/.test(value) && value.length <= 10) {
+                        setMobileNumber(value);
+                      }
+                    }}
+                  />
+                  <label for="phoneInput" class="float-label">
+                    Phone Number
+                  </label>
+                </div>
+
+                {/* <div class="input-group mb-3  mt-4">
                   <span class="input-group-text" id="basic-addon1">
                     <i class="fa-solid fa-phone primary-color icon-color"></i>
                     +91
@@ -175,7 +205,7 @@ const Welcome = () => {
                       // setMobileNumber(e.target.value)
                     }
                   />
-                </div>
+                </div> */}
                 {/* <button className=" position-absolute  mt-5 primary-button ">Submit</button> */}
                 <button className="   primary-button " onClick={() => getOTP()}>
                   Get OTP

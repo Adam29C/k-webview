@@ -86,5 +86,7 @@ export const sidebar = [
     id: 14,
     title: "Logout",
     icon: "fa-solid fa-arrow-right-from-bracket",
+    path: "loginmpin",
+
   },
 ];

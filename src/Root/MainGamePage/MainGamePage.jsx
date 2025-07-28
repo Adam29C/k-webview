@@ -148,7 +148,7 @@ const MainGamePage = () => {
             style={{ textDecoration: "none", color: "inherit" }}
             state={{ gametype: item }}
           >
-            <div className="icon-card border  border-dark" key={index}>
+            <div className="icon-card  " key={index}>
               <div className={`icon ${item.className}`}></div>
               <div className="icon-label-main">{item.label}</div>
             </div>

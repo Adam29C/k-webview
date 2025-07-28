@@ -1,20 +1,84 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Authcontainer from "../../Containers/auth-container";
 import OtpInput from "react-otp-input";
 import PagesIndex from "../pageIndex";
 import toast from "react-hot-toast";
-const OtpVerify = () => {
+import { useLocation, useNavigate } from "react-router-dom";
+import { GetFirebseAndDeviceID } from "../../helpers/GetFirebseAndDeviceID";
+const ForgetOTP = () => {
+  let location = useLocation();
+  let navigate = useNavigate();
+  const { deviceId, firebaseId, deviceName } = GetFirebseAndDeviceID();
+
   const { getProfile } = PagesIndex.useSelector((state) => state.CommonSlice);
 
-  console.log("getProfile", getProfile);
-
   const [otp, setOtp] = useState("");
+  const [showOtp, setshowOtp] = useState("");
+
+  const [Details, setDetails] = useState("");
   const [timer, setTimer] = useState(30);
   const [canResend, setCanResend] = useState(true);
 
-  const SubmitOTP = async (event) => {
+  // useEffect(() => {
+  //   if (timer === 0) {
+  //     setCanResend(true);
+  //     return;
+  //   }
+
+  //   const interval = setInterval(() => {
+  //     setTimer((prev) => prev - 1);
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, [timer]);
+
+  // const sendOTP = async () => {
+  //   const payload = {
+  //     deviceId: deviceId,
+  //   };
+
+  //   const res = await PagesIndex.commanservice.FOR_POST_REQUEST(
+  //     `${PagesIndex.apiRoutes.FORGET_OTP_SEND}`,
+  //     payload
+  //   );
+  // };
+
+  const handleResend = async () => {
+    setTimer(59);
+    setCanResend(false);
+
     const payload = {
-      mobileNumber: getProfile.mobile,
+      deviceId: deviceId,
+    };
+
+    const res = await PagesIndex.commanservice.FOR_POST_REQUEST(
+      `${PagesIndex.apiRoutes.FORGET_OTP_SEND}`,
+      payload
+    );
+
+
+    console.log("res.status" ,res);
+    
+
+    if (res.status) {
+      setDetails(res);
+      setshowOtp(res.otp);
+      toast.success(res.message);
+    } else {
+      toast.error(res.data.message);
+    }
+    // if (!res.data.status) {
+    //   toast.error(res.data.message);
+    // }
+  };
+
+  PagesIndex.useEffect(() => {
+    return handleResend();
+  }, []);
+
+  const SubmitOTP = async () => {
+    const payload = {
+      mobileNumber: Details?.mobile && Details?.mobile,
       otp: otp,
     };
 
@@ -24,62 +88,31 @@ const OtpVerify = () => {
     );
 
     if (res.status) {
+      navigate("/mpin", {
+        replace: true,
+        state: {
+          username: Details?.userName,
+          mobileNumber: Details?.mobile,
+          otp: otp,
+        },
+      });
+
       toast.success(res.message);
     } else {
       toast.error(res.message);
     }
   };
 
-  PagesIndex.useEffect(() => {
-    if (timer === 0) {
-      setCanResend(true);
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [timer]);
-
-  const handleResend = async () => {
-    setTimer(30);
-    setCanResend(false);
-
-    const payload = {
-      mobileNumber: getProfile.mobile,
-    };
-
-    const res = await PagesIndex.commanservice.FOR_POST_REQUEST(
-      `${PagesIndex.apiRoutes.FORGET_OTP_SEND}`,
-      payload
-    );
-
-    // if (res.status) {
-
-    if (res.status) {
-      toast.success(res.message);
-      return;
-    } else {
-      toast.error(res.data.message);
-    }
-    if (!res.data.status) {
-      toast.error(res.data.message);
-      return;
-    }
-  };
-  // };
-
   return (
     <>
       <Authcontainer
-        title="OTP Verification"
+        title2="OTP Verification"
         subtitle="India’s best Satta Matka Application Welcomes You !!!"
         icon={false}
         children={
           <>
-            <div className="d-flex justify-content-center align-items-center mt-5 rounded-4">
+            showOtp- {showOtp}
+            <div className="d-flex justify-content-center align-items-center  rounded-4">
               <OtpInput
                 value={otp}
                 onChange={setOtp}
@@ -89,25 +122,29 @@ const OtpVerify = () => {
                 renderInput={(props) => <input {...props} />}
                 // onPaste={handlePaste}
                 containerStyle="OTP-input"
+                inputType="number"
               />
             </div>
-            <div className="d-flex  align-items-center my-3 text-secondary">
+            <div className="d-flex  align-items-center my-1 text-secondary">
               {canResend ? (
-                <button
+                <span
                   onClick={handleResend}
-                  className=" text-secondary  btn btn-link"
+                  className=" text-secondary fw-bold manaage-otp-font "
                 >
                   Resend OTP
-                </button>
+                </span>
               ) : (
-                <span>Resend in - {timer}s</span>
+                <span className="manaage-otp-font">Resend in - {timer}s</span>
               )}
               {/* <span className="fw-bold">Resend OTP</span> */}
             </div>
-            <button className="primary-button  " onClick={() => SubmitOTP()}>
-              submit
+            <button
+              className="primary-button mt-4 "
+              onClick={() => SubmitOTP()}
+            >
+              SUBMIT
             </button>
-            <PagesIndex.Toast position={"top-center"} />
+            <PagesIndex.Toast position={"bottom-center"} />
           </>
         }
       />
@@ -115,4 +152,4 @@ const OtpVerify = () => {
   );
 };
 
-export default OtpVerify;
+export default ForgetOTP;
